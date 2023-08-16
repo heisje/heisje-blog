@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main>젠킨스테스트!!~~!!!</main>;
+  return <main>젠킨스!테스트!!~~!!!</main>;
 }
