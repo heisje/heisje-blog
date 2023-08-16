@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main>abc</main>;
+  return <main>젠킨스되어라~</main>;
 }
