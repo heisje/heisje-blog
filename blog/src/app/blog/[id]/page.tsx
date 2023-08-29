@@ -1,6 +1,24 @@
-export default async function Blog() {
-  console.log('aa');
-  const res = await fetch(`/api/blog/1`);
-  //const posts = await res.json();
-  return <>블로그페이지n</>;
+type Props = {
+  params: {
+    id: string,
+  },
 }
+export default async function Blog({ params: { id } }: Props) {
+  const res = await fetch(`http://localhost:3000/api/blog/${id}`);
+  const posts = await res.json();
+  return <>블로그{posts.id}</>;
+}
+
+// export async function generateStaticParams() {
+//   return[
+//     {
+//       id:1
+//     },
+//     {
+//       id:2
+//     },{
+//       id:3
+//     },
+//   ]
+//
+// }
