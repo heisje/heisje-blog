@@ -1,3 +1,3 @@
 export default function Example() {
-  return <>메인</>;
+  return <>블로그페이지</>;
 }
