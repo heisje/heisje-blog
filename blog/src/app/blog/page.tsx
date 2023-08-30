@@ -1,31 +1,23 @@
-import {getAllPosts} from "@/utils/getAllPosts";
-import PostType from '@/interfaces/post'
+import { getAllPosts } from '@/utils/getAllPosts';
+import React from 'react';
 
-type Props = {
-  params: {
-    allPosts: PostType[]
-  },
-}
-export default function Example({ params: { allPosts } }: Props) {
-  console.log(allPosts)
-  return <>블로그페이지
+export default function Example() {
+  const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt']);
 
-    {/*{allPosts.map((post)=>{*/}
-    {/*  return(<>{post.title}</>)*/}
-    {/*})}*/}
-  </>;
-}
-
-export async function generateStaticParams():Promise<any[]> {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
-  console.log("a", allPosts)
-
-  return allPosts
+  return (
+    <>
+      <h1>블로그페이지</h1>
+      <div>
+        {allPosts.map((post) => {
+          return (
+            <React.Fragment key={post.date}>
+              {post.title}
+              <h1>slug</h1>
+              <div>{post.slug}</div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </>
+  );
 }
