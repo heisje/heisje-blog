@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Icon = ({ src }) => {
+const Icon = ({ src }: any) => {
   return (
     <>
       <Link href={src}>

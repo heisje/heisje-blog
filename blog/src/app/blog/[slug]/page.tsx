@@ -1,9 +1,8 @@
 import { getAllPosts, getPostBySlug, getPostSlugs } from '@/utils/getAllPosts';
-import Post from '@/interfaces/post';
 import markdownToHtml from '@/utils/markdownToHtml';
 import Head from 'next/head';
 import React from 'react';
-import PostBody from '@/components/Post/postBody';
+import PostBody from '@/components/Post/PostBody';
 import PostHead from '@/components/Post/PostHead';
 
 type Props = {

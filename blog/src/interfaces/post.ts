@@ -13,4 +13,4 @@ type Post = {
   content: string;
 };
 
-export { Post };
+export type { Post };

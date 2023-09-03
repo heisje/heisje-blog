@@ -1,7 +1,7 @@
 import markdownStyles from './markdown.module.css';
 import Head from 'next/head';
 
-export default function PostHead({ meta }) {
+export default function PostHead({ meta }: any) {
   return (
     <Head>
       <title>{`${meta.title}`}</title>

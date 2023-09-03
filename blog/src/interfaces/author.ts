@@ -3,4 +3,4 @@ type Author = {
   picture: string;
 };
 
-export { Author };
+export type { Author };
