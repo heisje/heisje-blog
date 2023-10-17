@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      display: 'Pretendard, system-ui, Noto Sans KR', // Adds a new `font-display` class
-    },가
+      display: 'system-ui, Pretendard, Noto Sans KR', // Adds a new `font-display` class
+    },
     extend: {},
   },
   plugins: [],
