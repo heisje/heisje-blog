@@ -107,9 +107,7 @@ export default function About() {
             >
               naver
             </Link>
-            <p className="underline decoration-blue-400 decoration-dotted decoration-4 underline-offset-4">
-              텍스트 내용
-            </p>
+            <p className="underline decoration-blue-400 decoration-4 underline-offset-4">텍스트 내용</p>
           </div>
         </article>
         <article className={'mb-40'}>
