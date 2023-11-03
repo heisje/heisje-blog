@@ -1,0 +1,63 @@
+
+
+.box10{
+    @apply font-medium text-zinc-500;
+
+}
+
+.logo{
+    @apply inline-block mr-2;
+    @apply text-3xl font-extrabold;
+    vertical-align: middle;
+}
+
+.logo10{
+    @apply bg-clip-text text-zinc-800;
+    /*@apply text-transparent bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%;*/
+}
+
+.box20{
+    @apply inline-block;
+    @apply px-1 py-1 my-6 bg-zinc-50 ;
+    @apply rounded-full border border-zinc-50;
+    @apply shadow-lg shadow-blue-100/50 ;
+    @apply hover:shadow-xl hover:shadow-blue-100/70;
+    @apply hover:bg-blue-100/20 ;
+    @apply transition;
+
+    & li:not(:last-child) {
+        @apply mr-1
+    }
+
+}
+
+.box30{
+    @apply inline-block;
+
+    vertical-align: middle;
+}
+
+
+.box40{
+    @apply inline-block px-3 py-1;
+    @apply rounded-full;
+    @apply hover:bg-blue-100/75 hover:text-blue-900 hover:shadow-lg hover:shadow-blue-500/20 ;
+    @apply transition;
+
+    vertical-align: middle;
+}
+
+.box41{
+    @apply inline-block px-2 py-1;
+    @apply rounded-full;
+    @apply hover:bg-blue-100/75 hover:text-blue-900 hover:shadow-lg hover:shadow-blue-500/20 ;
+    @apply transition;
+
+    vertical-align: middle;
+}
+
+.activeLink{
+    @apply bg-blue-100/30 text-blue-900 shadow-sm shadow-blue-500/20 ;
+    @apply transition;
+}
+

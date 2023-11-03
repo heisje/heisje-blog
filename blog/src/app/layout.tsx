@@ -1,17 +1,8 @@
-import './globals.css';
+import '../styles/globals.css';
 import type { Metadata } from 'next';
-import { Inter, Noto_Sans_KR } from 'next/font/google';
-import {} from 'next/font/google';
 import Nav from '@/components/Nav';
 import Head from 'next/head';
-
-const inter = Inter({ subsets: ['latin'] });
-
-const notoSansKr = Noto_Sans_KR({
-  // preload: true, 기본값
-  subsets: ['latin'], // 또는 preload: false
-  weight: ['100', '400', '700', '900'], // 가변 폰트가 아닌 경우, 사용할 fontWeight 배열
-});
+import { pretendard } from '@/styles/fonts';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <Head>
         <meta charSet="utf-8" />
       </Head>
-      <body className={`font-display bg-white px-4 mx-auto max-w-[640px]`}>
+      <body className={`${pretendard.className} font-display bg-white px-4 mx-auto max-w-[640px]`}>
         <Nav />
         {children}
       </body>
