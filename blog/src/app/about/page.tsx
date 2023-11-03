@@ -68,11 +68,17 @@ export default function About() {
         </header>
 
         <article className={'mb-40'}>
-          <h1>Stacks.</h1>
+          <h1>
+            <span>Stacks.</span>
+          </h1>
           <div>
-            <h5>Frontend</h5>
-            <ul>
-              <li>NextJS</li>
+            <h5 className={'circle'}>Frontend</h5>
+            <ul className={'test'}>
+              <li>
+                Nex
+                <br />
+                tJS
+              </li>
               <li>ReactJS</li>
               <li>TypeScript</li>
               <li>JavaScript</li>
@@ -106,6 +112,7 @@ export default function About() {
         <article className={'mb-40'}>
           <div>
             <h2>Projects.</h2>
+            <div className="overflow-x-auto"></div>
             <div>날짜</div>
             <div>이름</div>
             <div>설명</div>

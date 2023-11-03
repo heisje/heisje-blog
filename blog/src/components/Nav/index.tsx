@@ -2,15 +2,10 @@ import Link from 'next/link';
 
 const Nav = () => {
   return (
-    <nav className={'flex justify-between my-6 text-2xl font-semibold '}>
-      <ul>
+    <nav className={'my-6 text-2xl font-semibold '}>
+      <ul className={'flex justify-between'}>
         <li>
-          <Link href={'/'}>heisje</Link>
-        </li>
-      </ul>
-      <ul className={'flex space-x-16'}>
-        <li>
-          <Link href={'/about'}>about</Link>
+          <Link href={'/about'}>heisje</Link>
         </li>
         <li>
           <Link href={'/blog'}>blog</Link>
