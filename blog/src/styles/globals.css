@@ -1,12 +1,9 @@
+@import "scrollbar.css";
+@import "colors.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
 @layer base {
   h1 {
@@ -18,36 +15,19 @@
   }
 }
 
-
-
 body {
   /*color: rgb(var(--foreground-rgb));*/
-  color:rgb(var(--primary-color));
+  /*background-color: rgb(var(--foreground-rgb));*/
+  @apply bg-white dark:bg-stone-800 ;
   /*overflow-y: overlay;*/
+  @apply font-display px-4 mx-auto max-w-[640px];
+  /*@apply bg-white;*/
   @apply text-base;
 }
 
-::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
-}
+/*about*/
 
-::-webkit-scrollbar-thumb {
-  outline: none;
-  border-radius: 10px;
-  border: 4px solid transparent;
-  box-shadow: inset 6px 6px 0 rgba(34, 34, 34, 0.15);
-}
 
-::-webkit-scrollbar-thumb:hover {
-  border: 4px solid transparent;
-  box-shadow: inset 6px 6px 0 rgba(34, 34, 34, 0.3);
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: none;
-  background-color: transparent;
-}
 .circle::before{
   content: '·';
   @apply mx-1.5 w-1.5 h-1.5 font-black text-4xl text-blue-400;
@@ -68,13 +48,4 @@ body {
   top: 50%;
   transform: translateY(-50%);
   @apply fill-amber-300;
-
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
 }

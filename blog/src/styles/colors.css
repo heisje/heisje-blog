@@ -1,0 +1,13 @@
+[data-theme='light'] {
+    --foreground-rgb: 255, 0, 0;
+}
+
+[data-theme='dark'] {
+    --foreground-rgb: 0, 0, 255;
+}
+
+/*@media (prefers-color-scheme: dark) {*/
+/*    :root {*/
+/*        --foreground-rgb: 0, 0, 0;*/
+/*    }*/
+/*}*/

@@ -2,7 +2,6 @@
 
 .box10{
     @apply font-medium text-zinc-500;
-
 }
 
 .logo{
@@ -57,7 +56,7 @@
 }
 
 .activeLink{
-    @apply bg-blue-100/30 text-blue-900 shadow-sm shadow-blue-500/20 ;
+    @apply bg-blue-400/10 text-blue-900 shadow-sm shadow-blue-500/20 ;
     @apply transition;
 }
 

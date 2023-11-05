@@ -3,6 +3,7 @@ import styles from './Nav.module.css';
 import NavLink from '@/components/Nav/NavLink';
 import { Outfit } from 'next/font/google';
 import { FiMoon, FiSearch, FiSun } from 'react-icons/fi';
+import NavTheme from '@/components/Nav/NavTheme';
 
 const questrial = Outfit({
   weight: '400',
@@ -11,7 +12,7 @@ const questrial = Outfit({
 
 const Nav = () => {
   const paths = [
-    { href: '/resume', text: 'about' },
+    { href: '/about', text: 'about' },
     { href: '/blog', text: 'blog' },
   ];
   return (
@@ -33,18 +34,7 @@ const Nav = () => {
           </div>
         </li>
       </ul>
-      <ul className={`${styles.box20} ml-4`}>
-        <li className={`${styles.box30} ${styles.box41} h-8`}>
-          <div className={'flex h-full items-center'}>
-            <FiSun size={'20'} />
-          </div>
-        </li>
-        <li className={`${styles.box30} ${styles.box41} h-8`}>
-          <div className={'flex h-full items-center'}>
-            <FiMoon size={'20'} />
-          </div>
-        </li>
-      </ul>
+      <NavTheme />
     </nav>
   );
 };
