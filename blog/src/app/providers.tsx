@@ -1,7 +1,6 @@
 'use client';
 import { ThemeProvider } from 'next-themes';
 import { ReactNode, useEffect, useState } from 'react';
-import styles from '../components/test123.module.css';
 
 interface Props {
   children: ReactNode;
