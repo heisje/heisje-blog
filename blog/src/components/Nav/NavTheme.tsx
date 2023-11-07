@@ -19,7 +19,6 @@ const NavTheme = () => {
         </div>
       </li>
       <li
-        key="tta"
         onClick={() => setTheme('dark')}
         className={`h-8 ${styles.boxLi} ${styles.icon} ${isMounted && theme === 'dark' ? styles.activeLink : ''}`}
       >
