@@ -1,37 +1,29 @@
 'use client';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 import styles from '@/components/Nav/Nav.module.css';
+import useMounted from '@/hook/useMounted';
 
 const NavTheme = () => {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <></>;
-  }
+  const { isMounted } = useMounted();
 
   return (
-    <ul className={styles.box20}>
+    <ul className={styles.boxUl}>
       <li
         onClick={() => setTheme('light')}
-        className={`${theme !== 'dark' ? styles.activeLink : ''} inline-block ${styles.box41} h-8`}
+        className={`h-8 ${styles.boxLi} ${styles.icon} ${isMounted && theme !== 'dark' ? styles.activeLink : ''}`}
       >
-        <div className={'flex h-full items-center'}>
+        <div>
           <FiSun size={'20'} />
         </div>
       </li>
-
       <li
+        key="tta"
         onClick={() => setTheme('dark')}
-        className={`${theme === 'dark' ? styles.activeLink : ''} inline-block ${styles.box41} h-8`}
+        className={`h-8 ${styles.boxLi} ${styles.icon} ${isMounted && theme === 'dark' ? styles.activeLink : ''}`}
       >
-        <div className={'flex h-full items-center'}>
+        <div>
           <FiMoon size={'20'} />
         </div>
       </li>

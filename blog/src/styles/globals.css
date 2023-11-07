@@ -20,7 +20,6 @@ body {
   @apply text-base;
   background-color: rgba(var(--back));
   color: rgba(var(--front));
-  /*color: var(--front);*/
   @apply transition;
 }
 

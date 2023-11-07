@@ -22,16 +22,16 @@ const Nav = () => {
         <span>Heisje</span>
       </Link>
 
-      <ul className={styles.box20}>
+      <ul className={`${styles.boxUl} mr-2`}>
         {paths.map(({ href, text }) => {
           return (
-            <li className={'inline-block '} key={href}>
+            <li key={href}>
               <NavLink href={href} text={text} />
             </li>
           );
         })}
-        <li className={`inline-block h-8 ${styles.box41}`}>
-          <div className={'flex h-full items-center'}>
+        <li className={`h-8 ${styles.boxLi} ${styles.icon}`}>
+          <div>
             <FiSearch size={'20'} />
           </div>
         </li>

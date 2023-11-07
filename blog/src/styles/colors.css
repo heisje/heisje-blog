@@ -30,12 +30,20 @@
     --front: var(--c-gray-800);
     --back: var(--white);
     --primary: rgb(96 165 250);
+
+    /*Nav*/
+    --nav-ul: var(--primary-200);
+    --nav-active: var(--primary-800);
 }
 
 .dark {
     --front: var(--c-gray-100);
     --back: var(--c-gray-900);
     --primary: rgb(96 165 250);
+
+    /*Nav*/
+    --nav-ul: var(--primary-50);
+    --nav-active: var(--primary-400);
 }
 
 
