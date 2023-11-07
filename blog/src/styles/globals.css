@@ -7,25 +7,22 @@
 
 @layer base {
   h1 {
-    @apply text-4xl font-semibold mb-12;
+    @apply text-4xl font-semibold;
   }
 
   h2 {
-    @apply text-3xl font-semibold mb-12;
+    @apply text-3xl font-semibold;
   }
 }
 
 body {
-  /*color: rgb(var(--foreground-rgb));*/
-  /*background-color: rgb(var(--foreground-rgb));*/
-  @apply bg-white dark:bg-stone-800 ;
-  /*overflow-y: overlay;*/
   @apply font-display px-4 mx-auto max-w-[640px];
-  /*@apply bg-white;*/
   @apply text-base;
+  background-color: rgba(var(--back));
+  color: rgba(var(--front));
+  /*color: var(--front);*/
+  @apply transition;
 }
-
-/*about*/
 
 
 .circle::before{

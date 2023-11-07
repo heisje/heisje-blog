@@ -20,14 +20,7 @@ export default function Providers({ children }: Props) {
   const DEFAULT_THEME = 'system';
 
   return (
-    <ThemeProvider
-      attribute={'class'}
-      storageKey={STORAGE_KEY}
-      value={{
-        light: 'light',
-        dark: 'dark',
-      }}
-    >
+    <ThemeProvider attribute={'class'} storageKey={STORAGE_KEY} themes={['light', 'dark']}>
       {children}
     </ThemeProvider>
   );
