@@ -1,14 +1,13 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allPosts } from '@/../.contentlayer/generated';
-import * as console from 'console';
+import { Post } from '@/../.contentlayer/generated/types';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
-  const a = allPosts.map(({ _raw }) => ({
-    // 마크다운 파일의 파일명을 기반으로 id를 지정합니다.
+  // 마크다운 파일의 파일명을 기반으로 Slug를 지정합니다.
+  return allPosts.map(({ _raw }) => ({
     slug: _raw.flattenedPath,
   }));
-
-  return a;
 }
 
 const PostDetailPage = ({ params: { slug } }: any) => {
@@ -23,8 +22,13 @@ const PostDetailPage = ({ params: { slug } }: any) => {
 
   return (
     <div>
-      <h1>{post?.title}</h1>
-      <span>{post?.category}</span>
+      <Image
+        className={'w-full h-full object-cover '}
+        src={`${post?.thumbnail}`}
+        alt={`${post?.title}`}
+        width={100}
+        height={100}
+      />
       <MDXComponent />
     </div>
   );

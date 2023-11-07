@@ -1,6 +1,6 @@
 .boxUl {
-    @apply inline-block;
-    @apply px-1 py-1 my-6 ;
+    @apply inline-block my-1;
+    @apply px-1 py-1;
     @apply rounded-full border;
 
     border-color: rgba(var(--nav-ul), 0.1);

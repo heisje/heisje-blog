@@ -41,7 +41,7 @@ export const Post = defineDocumentType(() => ({
 
 const contentSource = makeSource({
   // 마크다운 파일이 저장되어 있는 루트 폴더
-  contentDirPath: './testposts',
+  contentDirPath: './posts',
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [],

@@ -12,12 +12,12 @@ const questrial = Outfit({
 
 const Nav = () => {
   const paths = [
-    { href: '/about', text: 'about' },
-    { href: '/blog', text: 'blog' },
+    { href: '/about', text: 'Resume' },
+    { href: '/posts', text: 'Posts' },
   ];
 
   return (
-    <nav className={`${questrial.className}`}>
+    <nav className={`${questrial.className} my-6`}>
       <Link className={'inline-block mr-2 align-middle text-3xl font-extrabold'} href={'/'}>
         <span>Heisje</span>
       </Link>
