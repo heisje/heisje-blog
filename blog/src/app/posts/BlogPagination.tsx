@@ -18,6 +18,7 @@ type props = {
   maxSize: number;
 };
 
+// 페이지 생성
 function generatePagination(currentPage: number, totalPages: number) {
   const pagination = [];
   const maxPagesToShow = 5;

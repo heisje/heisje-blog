@@ -48,7 +48,7 @@ next dev
 
 ### BLOG Main
 - [ ] Search
-- [ ] Pagination
+- [X] Pagination
 - [ ] Category
 - [ ] Tag
 
