@@ -49,6 +49,8 @@ next dev
 ### BLOG Main
 - [ ] Search
 - [ ] Pagination
+- [ ] Category
+- [ ] Tag
 
 ### BLOG Detail
 - [ ] 댓글
@@ -61,3 +63,7 @@ next dev
 - [ ] footer
 - [ ] body
 - [ ] dark / white mode
+
+### 기타
+- [ ] Post 정렬
+- [ ] 다크모드 새로고침

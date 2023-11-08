@@ -18,6 +18,7 @@ export type Post = {
   category: string
   thumbnail?: string | undefined
   createdAt: IsoDateTimeString
+  tags?: string[] | undefined
   /** MDX file body */
   body: MDX
 

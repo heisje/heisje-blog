@@ -31,7 +31,7 @@
 }
 
 body {
-  @apply font-display px-4 mx-auto max-w-[640px];
+  @apply font-display;
   @apply text-base;
   background-color: rgba(var(--back));
   color: rgba(var(--front));

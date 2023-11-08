@@ -10,14 +10,18 @@ const questrial = Outfit({
   subsets: ['latin'],
 });
 
-const Nav = () => {
+type props = {
+  className: string;
+};
+
+const Nav = ({ className }: props) => {
   const paths = [
     { href: '/about', text: 'Resume' },
-    { href: '/posts', text: 'Posts' },
+    { href: '/posts?page=1', text: 'Posts' },
   ];
 
   return (
-    <nav className={`${questrial.className} my-6`}>
+    <nav className={`${questrial.className} my-6 ${className}`}>
       <Link className={'inline-block mr-2 align-middle text-3xl font-extrabold'} href={'/'}>
         <span>Heisje</span>
       </Link>
