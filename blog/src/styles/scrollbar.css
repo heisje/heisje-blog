@@ -7,12 +7,12 @@
     outline: none;
     border-radius: 10px;
     border: 4px solid transparent;
-    box-shadow: inset 6px 6px 0 rgba(34, 34, 34, 0.15);
+    box-shadow: inset 6px 6px 0 rgba(var(--c-gray-400), 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
     border: 4px solid transparent;
-    box-shadow: inset 6px 6px 0 rgba(34, 34, 34, 0.3);
+    box-shadow: inset 6px 6px 0 rgba(var(--c-gray-400), 1);
 }
 
 ::-webkit-scrollbar-track {
