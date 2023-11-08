@@ -1,5 +1,6 @@
 @import "scrollbar.css";
 @import "colors.css";
+@import "markdown.css";
 
 @tailwind base;
 @tailwind components;

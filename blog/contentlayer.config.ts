@@ -2,6 +2,9 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import highlight from 'rehype-highlight';
 import rehypePrettyCode from 'rehype-pretty-code';
+import remarkBreaks from 'remark-breaks';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -48,10 +51,12 @@ const contentSource = makeSource({
   contentDirPath: './posts',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkBreaks],
     rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, { behavior: 'append' }],
       [
-        rehypePrettyCode,
+        rehypePrettyCode as any,
         {
           theme: 'github-dark', // 코드작성시 적용할 테마
         },

@@ -21,7 +21,7 @@ const PostDetailPage = ({ params: { slug } }: any) => {
   const MDXComponent = useMDXComponent(post?.body.code || '');
 
   return (
-    <div>
+    <div className={'markdown-body'}>
       <Image
         className={'w-full h-full object-cover '}
         src={`${post?.thumbnail}`}

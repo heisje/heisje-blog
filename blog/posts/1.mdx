@@ -9,16 +9,15 @@ tags:
     - b
 ---
 # Promise와 Callback의 차이, async await 조금
-
-# 결론
-
-Callback, Promise, async await는 전부 비동기를 처리하는 방법이다.
-
-### 콜백함수
+## 1javascript
+### 1javascript
+#### 1javascript
+##### 1javascript
+###### 1javascript
 
 - 단점
     - 콜백지옥이 나타날 수 있다.
-    - 비동기 로직의 결과값을 callback안에서 처리를 해야한다. 콜백 밖에서 알기 어렵다.
+        - 비동기 로직의 결과값을 callback안에서 처리를 해야한다. 콜백 밖에서 알기 어렵다.
 
 ### Promise
 
@@ -154,32 +153,32 @@ result.then(res => {
 프로미스를 사용하게 되면 프로미스 객체에 비동기가 처리된 결과값이 저장됩니다. 콜백의 경우 매번 비동기를 실행해야지 그 값을 사용할 수 있지만 프로미스는 .then 메소드를 통해서 저장되어 있는 값을 원하는 때에 사용할 수 있습니다.
 
 ---
-
+---
 ### 2. 가독성
 
- ```js
- function async(result, callback) {
-   setTimeout(() => {
-     callback(result, function (result) {
-       console.log(result);
-     });
-   }, 1000);
- }
- 
- async(0, function (res, callback) {
-   callback(res)
-   async(res + 1, function (res, callback) {
-     callback(res)
-     async(res + 1, function (res, callback) {
-       callback(res)
-     });
-   });
+```javascript
+function async(result, callback) {
+setTimeout(() => {
+ callback(result, function (result) {
+   console.log(result);
  });
- 
- // 0
- // 1
- // 2
- ```
+}, 1000);
+}
+
+async(0, function (res, callback) {
+callback(res)
+async(res + 1, function (res, callback) {
+ callback(res)
+ async(res + 1, function (res, callback) {
+   callback(res)
+ });
+});
+});
+
+// 0
+// 1
+// 2
+```
 
 위처럼 비동기 로직의 결과를 다음 비동기로 전달해서 실행해야 할 때 callback은 점점 깊어져서 가독성이 안좋아진다.
 
@@ -431,10 +430,64 @@ f().catch(alert); // TypeError: failed to fetch // (*)
 
 `.catch`를 추가하는 걸 잊으면 처리되지 않은 프라미스 에러가 발생합니다. 이런 에러는 전역 이벤트 핸들러 `unhandledrejection`을 사용해 잡을 수 있습니다.
 
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
+
+> 이것은 인용문입니다.
+>
+> 여러 줄의 인용문을 만들기 위해
+> 이 기호를 사용합니다.
+
+<dl>
+  <dt>정의 용어</dt>
+  <dd>이 용어에 대한 설명입니다.</dd>
+</dl>
+
+`이것은 인라인 코드입니다`
+
+```markdown
+여러 줄의 코드를
+여기에 작성할 수 있습니다.
+```
 
 
+<details>
+<summary>이것은 접을 수 있는 섹션의 제목입니다</summary>
+
+여기에 세부 내용이 들어갑니다. 이 부분은 사용자가 `<summary>` 태그를 클릭할 때 보이게 됩니다.
+
+- 목록 아이템 1
+- 목록 아이템 2
+- 목록 아이템 3
+
+또한 **볼드체**, *이탤릭체*, 그리고 [링크](#) 같은 마크다운 포맷팅을 세부 내용 안에서 자유롭게 사용할 수 있습니다.
+
+</details>
+
+__하이__
+<samp>This is sample output from a computer program.</samp>
+<pre>
+이 텍스트는
+    정확히 표시됩니다.
+</pre>
+
+The best price was <del>$199.99</del> <ins>$149.99</ins>.
+
+`[See footnote 1]`
+See footnote [1]
 # Reference
 
+<p>The <abbr title="World Health Organization">WHO</abbr> is a specialized agency of the United Nations responsible for international public health.</p>
+
+**아리가또**
+The capital of France is <mark>Paris</mark>.
+This is regular text - <small>and this is smaller text.</small>
+H<sub>2</sub>O is the chemical formula for water.
+The area of the square is 15m<sup>2</sup>.
+
+
+
+[이것은 링크 텍스트입니다](http://www.example.com)
+[이것은 링크 텍스트입니다](http://www.example.com)
 - https://velog.io/@wngud4950/%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4Promise%EB%9E%80-%EC%BD%9C%EB%B0%B1%ED%95%A8%EC%88%98%EC%99%80%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90
 - https://danbom425.tistory.com/34
 - https://jcon.tistory.com/189
