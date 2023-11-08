@@ -40,7 +40,7 @@ export default function About() {
               <h1 className={'flex-shrink-0 mb-0'}>
                 안녕하세요!
                 <br />
-                사용자의 니즈를 파악하는
+                야호 이건 또 언제 만드냐
                 <br />
                 개발자 김희제입니다.
               </h1>
