@@ -1,5 +1,4 @@
 'use client';
-
 import styles from '@/components/Nav/Nav.module.css';
 import useMounted from '@/hook/useMounted';
 import { useEffect } from 'react';
@@ -50,8 +49,8 @@ const BlogPagination = ({ page, maxSize }: props) => {
 
   const onClick = (num: number) => {
     return () => {
-      window.scroll({ top: 0, behavior: 'smooth' });
-      router.push(`${pathname}?page=${num}`, { scroll: false });
+      // window.scroll({ top: 0, behavior: 'smooth' });
+      router.push(`${pathname}?page=${num}`, { scroll: true });
     };
   };
 

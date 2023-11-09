@@ -2,6 +2,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allPosts } from '@/../.contentlayer/generated';
 import { Post } from '@/../.contentlayer/generated/types';
 import Image from 'next/image';
+import PostComment from '@/app/posts/[slug]/PostComment';
 
 export async function generateStaticParams() {
   // 마크다운 파일의 파일명을 기반으로 Slug를 지정합니다.
@@ -30,6 +31,8 @@ const PostDetailPage = ({ params: { slug } }: any) => {
         height={100}
       />
       <MDXComponent />
+
+      <PostComment />
     </div>
   );
 };
