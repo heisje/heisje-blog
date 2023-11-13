@@ -47,21 +47,22 @@ export const Post = defineDocumentType(() => ({
 }));
 
 const contentSource = makeSource({
-  // 마크다운 파일이 저장되어 있는 루트 폴더
   contentDirPath: './posts',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkBreaks],
+    remarkPlugins: [
+      remarkBreaks, // 자동 공백
+    ],
     rehypePlugins: [
-      rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: 'append' }],
+      rehypeSlug, // rehypeAuto의 상위 의존
+      [rehypeAutolinkHeadings, { behavior: 'append' }], // 자동 헤드 링크 추가
       [
         rehypePrettyCode as any,
         {
-          theme: 'github-dark', // 코드작성시 적용할 테마
+          theme: 'github-dark',
         },
-      ],
-      highlight,
+      ], // 코드 테마
+      highlight, // 코드 테마
     ],
   },
 });
