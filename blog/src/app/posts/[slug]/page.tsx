@@ -4,7 +4,7 @@ import Image from 'next/image';
 import PostComment from '@/app/posts/[slug]/PostComment';
 import { Metadata, ResolvingMetadata } from 'next';
 import * as process from 'process';
-import Favicon from '@/app/favicon.ico';
+import { rootURL } from '@/utils/rootURL';
 
 // 마크다운 파일의 파일명을 기반으로 Slug를 지정합니다.
 export async function generateStaticParams() {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
     title: `${post?.title} | heisje Dev`,
     description: `[${post?.category}] ${post?.description}`,
     openGraph: {
-      images: [`${post?.thumbnail}`],
+      images: [`${rootURL}${post?.thumbnail}`],
     },
   };
 }
