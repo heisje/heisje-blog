@@ -1,8 +1,19 @@
 import { allPosts, Post } from '@/contentlayer/generated';
 
+// 필요한 PostData자료구조
+type PostsType = {
+  [tag: string]: Post[][];
+};
+
 const postSize = 2;
 let posts: Post[][] = [];
-let tags: string[] = [];
+const categories: Set<string> = new Set(); // category 저장
+const tags: Set<string> = new Set(); // tag 저장
+
+// 심볼기반(category, tag)이 key인 Post 페이지네이션
+const symbolPosts: PostsType = {
+  All: [],
+};
 
 // 포스트 정렬
 const sortPosts = () => {
@@ -14,17 +25,21 @@ const sortPosts = () => {
 };
 
 // 포스트 카테고리 분석
-const searchCategoryPosts = () => {};
-
-// 포스트 태그 분석
-export const searchTagPosts = () => {
-  return allPosts.reduce((tags: string[], post: Post) => {
-    const temp = post?.tags || [];
-    return [...tags, ...temp];
+const searchCategoryPosts = () => {
+  return allPosts.reduce((tempCategories: string[], post: Post) => {
+    return [...tempCategories, post?.category];
   }, []);
 };
 
-// 전체 포스트 제작
+// 포스트 태그 분석
+export const searchTagPosts = () => {
+  return allPosts.reduce((tempTags: string[], post: Post) => {
+    const temp = post?.tags || [];
+    return [...tempTags, ...temp];
+  }, []);
+};
+
+// 전체 포스트 페이지네이션
 const slicePosts = (posts: Post[]): Post[][] => {
   const result: Post[][] = [];
   const temp = [...posts];
@@ -32,6 +47,32 @@ const slicePosts = (posts: Post[]): Post[][] => {
     result.push(temp.slice(i, i + postSize));
   }
   return result;
+};
+
+// 카테고리 및 태그 기반 페이지네이션
+const sliceSymbolPosts = () => {
+  const tempPosts: Post[] = sortPosts(); // 정렬된 Posts를 가져옴
+  const symbols: string[] = [...getCategory(), ...getTags()]; // 카테고리와 태그들을 가져옴
+
+  const temp = [...tempPosts];
+  for (let i = 0; i < temp.length; i += postSize) {
+    symbolPosts['All'].push(temp.slice(i, i + postSize));
+  }
+
+  // category나 tags가 존재하면 필터에 포함시킨 뒤 페이지네이션 배열을 추가한다.
+  symbols.forEach((symbol: string) => {
+    symbolPosts[symbol] = [];
+    const temp = tempPosts.filter((post) => {
+      if (post?.tags) {
+        const tagsArray = Array.isArray(post.tags) ? post.tags : [post.tags];
+        return post.category === symbol || tagsArray.includes(symbol);
+      }
+      return post.category === symbol;
+    });
+    for (let i = 0; i < temp.length; i += postSize) {
+      symbolPosts[symbol].push(temp.slice(i, i + postSize));
+    }
+  });
 };
 
 // 전체 포스트 참조
@@ -43,9 +84,29 @@ export const getPosts = () => {
   return posts;
 };
 
+// 전체 태그 참조
 export const getTags = () => {
-  if (!tags.length) {
-    tags = searchTagPosts();
+  if (!tags.size) {
+    searchTagPosts().forEach((tag) => {
+      tags.add(tag);
+    });
   }
-  return tags;
+  return Array.from(tags);
+};
+
+// 전체 카테고리 참조
+export const getCategory = () => {
+  if (!categories.size) {
+    searchCategoryPosts().forEach((category) => {
+      categories.add(category);
+    });
+  }
+  return Array.from(categories);
+};
+
+export const getSymbolPosts = () => {
+  if (!symbolPosts['All'].length) {
+    sliceSymbolPosts();
+  }
+  return symbolPosts;
 };

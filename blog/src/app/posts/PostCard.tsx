@@ -10,7 +10,7 @@ const PostCard = ({ post }: any) => {
     <Link
       href={`/posts/${link}`}
       className={
-        'block overflow-hidden border border-c-gray-500/20 rounded-2xl my-3 duration-300 transition-origin origin-bottom-left hover:-rotate-1 hover:shadow-xl hover:shadow-c-gray-400/10 cursor-pointer'
+        'block overflow-hidden border border-c-gray-500/20 rounded-2xl mb-6 duration-300 transition-origin origin-bottom-left hover:-rotate-1 hover:shadow-xl hover:shadow-c-gray-400/10 cursor-pointer'
       }
     >
       <div className={'rounded-2xl  w-full aspect-video relative'}>

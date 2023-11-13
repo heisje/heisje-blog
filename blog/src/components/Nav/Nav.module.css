@@ -23,7 +23,7 @@
     }
 
     & .activeLink{
-        background-color: rgba(var(--primary-400), 0.1);
+        background-color: rgba(var(--primary-400), 0.2);
         color: rgba(var(--nav-active));
         @apply shadow-sm shadow-primary-500/20 ;
     }
