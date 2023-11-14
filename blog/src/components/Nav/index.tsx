@@ -16,7 +16,7 @@ type props = {
 
 const Nav = ({ className }: props) => {
   const paths = [
-    { href: '/about', text: 'Resume' },
+    { href: '/about', text: 'About' },
     { href: '/posts?page=1', text: 'Posts' },
   ];
 

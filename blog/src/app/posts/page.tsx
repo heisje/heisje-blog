@@ -30,12 +30,12 @@ export default function page({ searchParams }: any) {
 
       {/*카테고리*/}
       <aside>
-        <ul className={'my-4'}>
+        <ul className={'mt-4'}>
           {allSymbols.map((symbol) => (
             <Link
               key={symbol}
-              className={`inline-block mr-2 py-1 px-3 rounded-xl ${
-                paramSymbol === symbol ? 'bg-primary/80 text-white' : 'bg-c-gray-400/10'
+              className={`inline-block mb-4 mr-2 py-1 px-3 rounded-xl border border-c-gray-500/20 shadow-xl shadow-c-gray-400/5 hover:shadow-primary-400/30 hover:bg-primary/80 hover:text-white transition duration-100 ${
+                paramSymbol === symbol ? 'bg-primary/80 text-white' : 'bg-c-gray-300/5'
               }`}
               href={`/posts?symbol=${symbol}&page=1`}
             >

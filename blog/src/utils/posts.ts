@@ -5,7 +5,7 @@ type PostsType = {
   [tag: string]: Post[][];
 };
 
-const postSize = 2;
+const postSize = 5;
 let posts: Post[][] = [];
 const categories: Set<string> = new Set(); // category 저장
 const tags: Set<string> = new Set(); // tag 저장
@@ -52,7 +52,7 @@ const slicePosts = (posts: Post[]): Post[][] => {
 // 카테고리 및 태그 기반 페이지네이션
 const sliceSymbolPosts = () => {
   const tempPosts: Post[] = sortPosts(); // 정렬된 Posts를 가져옴
-  const symbols: string[] = [...getCategory(), ...getTags()]; // 카테고리와 태그들을 가져옴
+  const symbols: string[] = [...getTags(), ...getCategory()]; // 카테고리와 태그들을 가져옴
 
   const temp = [...tempPosts];
   for (let i = 0; i < temp.length; i += postSize) {

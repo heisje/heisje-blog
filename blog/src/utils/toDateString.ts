@@ -2,9 +2,9 @@ import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
 
 export const toDateString = (date: Date) => {
   const options: DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+    year: '2-digit',
+    month: '2-digit',
+    day: '2-digit',
   };
 
   if (date === undefined) {
