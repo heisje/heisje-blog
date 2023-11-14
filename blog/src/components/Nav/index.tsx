@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import NavLink from '@/components/Nav/NavLink';
+import { NavLink, NavSearch } from '@/components/Nav/NavLink';
 import { Outfit } from 'next/font/google';
-import { FiMoon, FiSearch, FiSun } from 'react-icons/fi';
 import NavTheme from '@/components/Nav/NavTheme';
 import styles from './Nav.module.css';
 
@@ -20,12 +19,16 @@ const Nav = ({ className }: props) => {
     { href: '/posts?page=1', text: 'Posts' },
   ];
 
+  // const searchPosts = getSearchPosts(); // 검색만을 위한 배열
+
   return (
-    <nav className={`${questrial.className} my-6 ${className}`}>
+    <nav className={`${questrial.className} my-6 ${className} `}>
+      {/*로고*/}
       <Link className={'inline-block mr-2 align-middle text-3xl font-extrabold'} href={'/'}>
         <span>Heisje</span>
       </Link>
 
+      {/*중앙네비*/}
       <ul className={`${styles.boxUl} mr-2`}>
         {paths.map(({ href, text }) => {
           return (
@@ -34,12 +37,10 @@ const Nav = ({ className }: props) => {
             </li>
           );
         })}
-        <li className={`h-8 ${styles.boxLi} ${styles.icon}`}>
-          <div>
-            <FiSearch size={'20'} />
-          </div>
-        </li>
+        <NavSearch />
       </ul>
+
+      {/*테마 네비*/}
       <NavTheme />
     </nav>
   );

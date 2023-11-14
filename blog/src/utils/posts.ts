@@ -1,14 +1,24 @@
 import { allPosts, Post } from '@/contentlayer/generated';
 
 // 필요한 PostData자료구조
-type PostsType = {
+export type PostsType = {
   [tag: string]: Post[][];
 };
 
-const postSize = 5;
+// 검색에 필요한 자료구조
+export type searchPostsType = {
+  url: string;
+  title: string;
+  description: string;
+  keywords: string;
+};
+
+export const postSize = 5;
 let posts: Post[][] = [];
 const categories: Set<string> = new Set(); // category 저장
 const tags: Set<string> = new Set(); // tag 저장
+
+const searchPosts: searchPostsType[] = []; // 서치 할 Post내용 저장
 
 // 심볼기반(category, tag)이 key인 Post 페이지네이션
 const symbolPosts: PostsType = {
@@ -109,4 +119,20 @@ export const getSymbolPosts = () => {
     sliceSymbolPosts();
   }
   return symbolPosts;
+};
+
+export const getSearchPosts = () => {
+  if (!searchPosts.length) {
+    const tempPosts: Post[] = sortPosts(); // 정렬된 Posts를 가져옴
+    tempPosts.forEach((post) => {
+      const tempKeyword: string[] = [post.title, post.description, post.category, ...(post?.tags || [])];
+      searchPosts.push({
+        url: post._raw.flattenedPath,
+        title: post.title,
+        description: post.description,
+        keywords: tempKeyword.join(' '),
+      });
+    });
+  }
+  return searchPosts;
 };

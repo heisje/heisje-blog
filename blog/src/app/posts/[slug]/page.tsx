@@ -44,13 +44,15 @@ const PostDetailPage = ({ params: { slug } }: { params: { slug: string } }) => {
 
   return (
     <div className={'markdown-body'}>
-      <Image
-        className={'w-full h-full object-cover '}
-        src={`${post?.thumbnail}`}
-        alt={`${post?.title}`}
-        width={100}
-        height={100}
-      />
+      {post?.thumbnail && (
+        <Image
+          className={'w-full h-full object-cover rounded-2xl'}
+          src={`${post?.thumbnail}`}
+          alt={`${post?.title}`}
+          width={100}
+          height={100}
+        />
+      )}
       <MDXComponent />
 
       {!process?.env?.IS_LOCAL ? <PostComment /> : <div>DevMode</div>}

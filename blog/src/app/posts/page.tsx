@@ -2,7 +2,7 @@ import React from 'react';
 import BlogPagination from '@/app/posts/BlogPagination';
 
 import PostCard from '@/app/posts/PostCard';
-import { getCategory, getSymbolPosts, getTags, searchTagPosts } from '@/utils/posts';
+import { getCategory, getSymbolPosts, getTags } from '@/utils/posts';
 import Link from 'next/link';
 
 export default function page({ searchParams }: any) {
@@ -40,6 +40,7 @@ export default function page({ searchParams }: any) {
               href={`/posts?symbol=${symbol}&page=1`}
             >
               {symbol}
+              {/*<span className={'text-sm'}>{` (${symbolPosts[symbol].length})`}</span>*/}
             </Link>
           ))}
         </ul>

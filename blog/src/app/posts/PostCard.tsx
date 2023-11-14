@@ -35,19 +35,20 @@ const PostCard = ({ post }: { post: Post }) => {
         </div>
         <h1 className={'text-2xl'}>{post?.title}</h1>
         <div className={'text-c-gray-500'}>{post?.description}</div>
-        {/*<div>{post?.category}</div>*/}
-        <div className={'mt-2'}>
-          {post?.tags?.map((tag) => {
-            return (
-              <div
-                className={'inline-block mr-2 py-0 px-2 rounded-xl border bg-c-gray-300/5 border-c-gray-500/20'}
-                key={tag}
-              >
-                {tag}
-              </div>
-            );
-          })}
-        </div>
+        {post?.tags ? (
+          <div className={'mt-2'}>
+            {post?.tags?.map((tag) => {
+              return (
+                <div
+                  className={'inline-block mr-2 py-0 px-2 rounded-xl border bg-c-gray-300/5 border-c-gray-500/20'}
+                  key={tag}
+                >
+                  {tag}
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
     </Link>
   );
