@@ -53,15 +53,15 @@ const NavSearchModal = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [searchQuery, setSearchQuery] = useState(''); // 검색어 상태
   const searchPosts = getSearchPosts(); // 전체 검색 키워드가 들어있는 배열
-  const resultPosts = useMemo(() => {
-    if (searchQuery.length < 2) return [];
-    if (searchQuery.length >= 2)
-      return [
-        ...searchPosts.filter((post) => {
-          return post.keywords.toLowerCase().includes(searchQuery.toLowerCase());
-        }),
-      ];
-  }, [searchQuery]); // 검색 결과 배열
+  // const resultPosts = useMemo(() => {
+  //   if (searchQuery.length < 2) return [];
+  //   if (searchQuery.length >= 2)
+  //     return [
+  //       ...searchPosts.filter((post) => {
+  //         return post.keywords.toLowerCase().includes(searchQuery.toLowerCase());
+  //       }),
+  //     ];
+  // }, [searchQuery]); // 검색 결과 배열
 
   // 모달이 표시되고 isDisplay가 true일 때 input 요소에 포커스를 설정
   useEffect(() => {
@@ -112,24 +112,24 @@ const NavSearchModal = ({
           </div>
 
           {/*검색 결과*/}
-          {resultPosts && resultPosts.length ? (
-            <ul
-              className={`${styles.resultPostUl} max-w-full backdrop-blur-2xl rounded-2xl border border-c-gray-500/30`}
-            >
-              {resultPosts.map((post) => (
-                <li
-                  key={post.url}
-                  className={
-                    'w-full border-b last:border-b-0 border-c-gray-500/30 rounded-t-2xl last:rounded-t-none last:rounded-b-2xl hover:bg-primary/30 '
-                  }
-                >
-                  <Link className={'block w-full p-3 '} href={`/posts/${post.url}`}>
-                    {post.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : null}
+          {/*{resultPosts && resultPosts.length ? (*/}
+          {/*  <ul*/}
+          {/*    className={`${styles.resultPostUl} max-w-full backdrop-blur-2xl rounded-2xl border border-c-gray-500/30`}*/}
+          {/*  >*/}
+          {/*    {resultPosts.map((post) => (*/}
+          {/*      <li*/}
+          {/*        key={post.url}*/}
+          {/*        className={*/}
+          {/*          'w-full border-b last:border-b-0 border-c-gray-500/30 rounded-t-2xl last:rounded-t-none last:rounded-b-2xl hover:bg-primary/30 '*/}
+          {/*        }*/}
+          {/*      >*/}
+          {/*        <Link className={'block w-full p-3 '} href={`/posts/${post.url}`}>*/}
+          {/*          {post.title}*/}
+          {/*        </Link>*/}
+          {/*      </li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*) : null}*/}
         </div>
       </div>
     </>
