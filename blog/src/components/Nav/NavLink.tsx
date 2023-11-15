@@ -52,7 +52,7 @@ const NavSearchModal = ({
   // input을 참조
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [searchQuery, setSearchQuery] = useState(''); // 검색어 상태
-  const searchPosts = getSearchPosts(); // 전체 검색 키워드가 들어있는 배열
+  // const searchPosts = getSearchPosts(); // 전체 검색 키워드가 들어있는 배열
   // const resultPosts = useMemo(() => {
   //   if (searchQuery.length < 2) return [];
   //   if (searchQuery.length >= 2)
@@ -104,6 +104,7 @@ const NavSearchModal = ({
 
             {/*검색 input*/}
             <input
+              id={'SEARCH'}
               ref={inputRef}
               className={'bg-transparent outline-0 border-0'}
               placeholder={'Posts 검색'}
