@@ -6,7 +6,7 @@ import styles from './Nav.module.css';
 import { FiSearch } from 'react-icons/fi';
 import { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
 
-import { getSearchPosts } from '@/utils/posts';
+import { getSearchPosts, searchPostsType } from '@/utils/posts';
 
 interface NavLinkProps {
   text: string;
@@ -28,7 +28,7 @@ const NavLink = ({ text, href }: NavLinkProps) => {
 /*
  * 검색 아이콘
  */
-const NavSearch = () => {
+const NavSearch = ({ searchPosts }: { searchPosts: searchPostsType[] }) => {
   const [isDisplay, setIsDisplay] = useState(false);
   return (
     <>
@@ -37,7 +37,7 @@ const NavSearch = () => {
           <FiSearch size={'20'} />
         </div>
       </li>
-      <NavSearchModal isDisplay={isDisplay} setIsDisplay={setIsDisplay} />
+      <NavSearchModal isDisplay={isDisplay} setIsDisplay={setIsDisplay} searchPosts={searchPosts} />
     </>
   );
 };
@@ -45,23 +45,24 @@ const NavSearch = () => {
 const NavSearchModal = ({
   isDisplay,
   setIsDisplay,
+  searchPosts,
 }: {
   isDisplay: boolean;
   setIsDisplay: Dispatch<SetStateAction<boolean>>;
+  searchPosts: searchPostsType[];
 }) => {
   // input을 참조
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [searchQuery, setSearchQuery] = useState(''); // 검색어 상태
-  // const searchPosts = getSearchPosts(); // 전체 검색 키워드가 들어있는 배열
-  // const resultPosts = useMemo(() => {
-  //   if (searchQuery.length < 2) return [];
-  //   if (searchQuery.length >= 2)
-  //     return [
-  //       ...searchPosts.filter((post) => {
-  //         return post.keywords.toLowerCase().includes(searchQuery.toLowerCase());
-  //       }),
-  //     ];
-  // }, [searchQuery]); // 검색 결과 배열
+  const resultPosts = useMemo(() => {
+    if (searchQuery.length < 2) return [];
+    if (searchQuery.length >= 2)
+      return [
+        ...searchPosts.filter((post) => {
+          return post.keywords.toLowerCase().includes(searchQuery.toLowerCase());
+        }),
+      ];
+  }, [searchQuery]); // 검색 결과 배열
 
   // 모달이 표시되고 isDisplay가 true일 때 input 요소에 포커스를 설정
   useEffect(() => {
@@ -113,24 +114,24 @@ const NavSearchModal = ({
           </div>
 
           {/*검색 결과*/}
-          {/*{resultPosts && resultPosts.length ? (*/}
-          {/*  <ul*/}
-          {/*    className={`${styles.resultPostUl} max-w-full backdrop-blur-2xl rounded-2xl border border-c-gray-500/30`}*/}
-          {/*  >*/}
-          {/*    {resultPosts.map((post) => (*/}
-          {/*      <li*/}
-          {/*        key={post.url}*/}
-          {/*        className={*/}
-          {/*          'w-full border-b last:border-b-0 border-c-gray-500/30 rounded-t-2xl last:rounded-t-none last:rounded-b-2xl hover:bg-primary/30 '*/}
-          {/*        }*/}
-          {/*      >*/}
-          {/*        <Link className={'block w-full p-3 '} href={`/posts/${post.url}`}>*/}
-          {/*          {post.title}*/}
-          {/*        </Link>*/}
-          {/*      </li>*/}
-          {/*    ))}*/}
-          {/*  </ul>*/}
-          {/*) : null}*/}
+          {resultPosts && resultPosts.length ? (
+            <ul
+              className={`${styles.resultPostUl} max-w-full backdrop-blur-2xl rounded-2xl border border-c-gray-500/30`}
+            >
+              {resultPosts.map((post) => (
+                <li
+                  key={post.url}
+                  className={
+                    'w-full border-b last:border-b-0 border-c-gray-500/30 rounded-t-2xl last:rounded-t-none last:rounded-b-2xl hover:bg-primary/30 '
+                  }
+                >
+                  <Link className={'block w-full p-3 '} href={`/posts/${post.url}`}>
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
     </>

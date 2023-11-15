@@ -3,6 +3,7 @@ import { NavLink, NavSearch } from '@/components/Nav/NavLink';
 import { Outfit } from 'next/font/google';
 import NavTheme from '@/components/Nav/NavTheme';
 import styles from './Nav.module.css';
+import { getSearchPosts } from '@/utils/posts';
 
 const questrial = Outfit({
   weight: '400',
@@ -19,7 +20,7 @@ const Nav = ({ className }: props) => {
     { href: '/posts?page=1', text: 'Posts' },
   ];
 
-  // const searchPosts = getSearchPosts(); // 검색만을 위한 배열
+  const searchPosts = getSearchPosts(); // 검색만을 위한 배열
 
   return (
     <nav className={`${questrial.className} my-6 ${className} `}>
@@ -37,7 +38,7 @@ const Nav = ({ className }: props) => {
             </li>
           );
         })}
-        <NavSearch />
+        <NavSearch searchPosts={searchPosts} />
       </ul>
 
       {/*테마 네비*/}
