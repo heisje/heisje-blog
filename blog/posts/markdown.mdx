@@ -1,0 +1,263 @@
+---
+title: 개발자라면 꼭 알아야할 마크다운 사용법(문법)에 대해 알아보자
+description: 마크다운으로 쉽고 빠르고 예쁘게 문서정리하기. 개발자라면 꼭 알아야할 md문법에 대해 알아보자!
+category: 개발
+createdAt: 2023-11-19
+---
+# 마크다운 사용법 대해 알아보자.
+
+## 마크다운이란?
+
+확장자 `.md`파일을 마크다운 문서라고 한다.
+
+마크다운은 문서를 쉽고 빠르게 작성하면 예쁘게 변환해주는 마크업 언어이다.
+개발자라면 들어보고 사용해봤을 Notion, Discord, bear... 에서도 지원하는 문법이다.
+그러니까 꼭! 알아야한다. 해당 글도 md를 기반으로 만들어져있다.
+
+파싱하는 사람 마음대로 태그를 변환하지만, 깃허브에서 변환해주는 방식도(미리보기대로) 알려드릴게요!.
+
+> 마크다운 언어이기 때문에, 기본적인 `<div>` `<a>` `<img>` 와 같은 태그도 사용할 수 있다.
+> 이 글에선 기본적인 HTML태그는 패스!
+> 자세히 알고싶으면 [깃허브의 서식 지정 구문](https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
+
+
+# markdown 문법
+# 1. 제목 (Headings)
+  텍스트 앞에 `#`을 붙여서 Heading태그로 만들 수 있습니다.
+  ```
+  # 제목 1
+  ## 제목 2
+  ### 제목 3
+  ...
+  ###### 제목 6
+  ```
+  위의 `md`파일은 다음처럼 변환됩니다.
+  ```
+  <h1>제목 1</h1>
+  <h2>제목 2</h2>
+  <h3>제목 3</h3>
+  ...
+  <h6>제목 3</h6>
+  ```
+  - 미리보기 :
+
+      <h1>제목 1</h1>
+      <h2>제목 2</h2>
+      <h3>제목 3</h3>
+      <h4>제목 4</h4>
+      <h5>제목 5</h5>
+      <h6>제목 6</h6>
+
+# 2. 강조 (Emphasis)
+
+### 굵게(bold):
+- 마크다운: `**텍스트**` 또는 `__텍스트__`
+- HTML: `<strong>텍스트</strong>`또는 `<b>텍스트</b>`
+- 미리보기:
+  - **텍스트**
+
+### 기울임(italic):
+- 마크다운: `*텍스트*` 또는 `_텍스트_`
+- HTML: `<em>텍스트</em>` 또는 `<i>텍스트</i>`
+- 미리보기:
+  - *텍스트*
+
+### 취소선(strikethrough):
+- 마크다운: `~~텍스트~~`
+- HTML: `<del>텍스트</del>`
+- 미리보기:
+  - <del>텍스트</del>
+
+# 3. 목록 (Lists)
+### 순서 없는 목록(unordered list):
+- 마크다운 :
+  ```
+  - 항목 1
+  - 항목 2
+  - 항목 3
+    - 항목 3-1
+    - 항목 3-2
+  ```
+   또는
+  ```
+  * 항목 1
+  * 항목 2
+  * 항목 3
+    * 항목 3-1
+    * 항목 3-2
+  ```
+- HTML:
+  ```
+  <ul>
+    <li>항목 1</li>
+    <li>항목 2</li>
+    <li>항목 3</li>
+    <ul>
+      <li>항목 3-1</li>
+      <li>항목 3-2</li>
+    </ul>
+  </ul>
+  ```
+- 미리보기:
+  <ul>
+    <li>항목 1</li>
+    <li>항목 2</li>
+    <li>항목 3</li>
+    <ul>
+      <li>항목 3-1</li>
+      <li>항목 3-2</li>
+    </ul>
+  </ul>
+
+
+### 순서 있는 목록(ordered list):
+- 마크다운 : 주의) 마크다운 파싱 방법과 css에따라 많이 다르다.
+  ```
+  1. 항목 1
+  2. 항목 2
+  3. 항목 3
+    a. 항목 3-1
+    b. 항목 3-2
+    ```
+  또는
+  ```
+  a. 항목 1
+  b. 항목 2
+  c. 항목 3
+    d. 항목 3-1
+    f. 항목 3-2
+  ```
+- HTML:
+  ```
+  <ol>
+    <li>항목 1</li>
+    <li>항목 2</li>
+    <li>항목 3</li>
+    <ol>
+      <li>항목 3-1</li>
+      <li>항목 3-2</li>
+    </ol>
+  </ol>
+  ```
+- 미리보기:
+  <ol>
+    <li>항목 1</li>
+    <li>항목 2</li>
+    <li>항목 3</li>
+    <ol>
+      <li>항목 3-1</li>
+      <li>항목 3-2</li>
+    </ol>
+  </ol>
+
+# 4. 링크 (Links)
+- 마크다운: `[미리보기 텍스트](https://example.com/)`
+- HTML: `<a href="https://example.com/">미리보기 텍스트</a>`
+- 미리보기:
+  <a href="https://example.com/">미리보기 텍스트</a>
+
+# 5. 이미지 (Images)
+- 마크다운: `![마우스를 올리거나 에러시 보이는 텍스트](https://source.unsplash.com/random/100x100)`
+- HTML: `<img src="https://source.unsplash.com/random/100x100" alt="마우스를 올리거나 에러시 보이는 텍스트">`
+- 미리보기:
+  <img src="https://source.unsplash.com/random/100x100" alt="마우스를 올리거나 에러시 보이는 텍스트" />
+- 에러시 :
+  <img src="/assets/abcasdafd/" alt="마우스를 올리거나 에러시 보이는 텍스트" />
+
+# 6. 인용문 (Blockquotes)
+- 마크다운: 파서에 따라 조금 다르다.
+  ```
+  > 인용문1
+  > 인용문2
+  >> 중첩 인용문
+  ```
+- HTML:
+  ```
+  <blockquote>
+  <p>인용문1<br>
+    인용문2</p>
+  <blockquote>
+    <p>중첩 인용문</p>
+  </blockquote>
+  </blockquote>
+  ```
+- 미리보기:
+  > 인용문1
+  > 인용문2
+  >> 중첩 인용문
+
+# 7. 코드 (Code)
+
+### 인라인 코드(inline code):
+- 마크다운: \`\`\`와 \`\`\`사이에 원하는 코드를 적으면 된다. 앞의 ```뒤에 원하는 문법을 적으면 자동으로 색이 바뀐다.
+  파서에 따라 다르게 바뀐다.
+  ````
+  ```javascript
+  console.log('Hello, world');
+  ```
+  ````
+- HTML:
+  ````
+  <pre><code>console.log('Hello, world');</code></pre>
+  ````
+- 미리보기:
+  ```javascript
+    console.log('Hello, world');
+  ```
+
+# 8. 수평선 (Horizontal Rules)
+- 마크다운: --- 또는 ***
+- HTML: `<hr />`
+- 미리보기 :
+  ---
+  ***
+
+# 9. 표 (Tables)
+- 마크다운
+  ```
+  | 헤더 1 | 헤더 2 |
+  |--------|--------|
+  | 셀 1   | 셀 2   |
+  ```
+- html
+  ```
+  <table>
+    <thead>
+      <tr>
+        <th>헤더 1</th>
+        <th>헤더 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>셀 1</td>
+        <td>셀 2</td>
+      </tr>
+    </tbody>
+  </table>
+  ```
+- 미리보기:
+  <del>내 블로그는 mdx는 지원이 안된다....</del>
+  <table>
+    <thead>
+    <tr>
+      <th>헤더 1</th>
+      <th>헤더 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>셀 1</td>
+      <td>셀 2</td>
+    </tr>
+    </tbody>
+  </table>
+
+# 마무리
+마크다운의 기본 문법만 알고 있으면 다양한 도구와 플랫폼에서 지원하기 때문에, 손쉽게 스타일이 적용된 문서를 작성할 수 있다.
+Notion에서도 지원이 잘 되니까 외워서 사용해보자~ 개발 블로그를 만들거라면 꼭 외우자!
+
+# 레퍼런스
+- [https://gist.github.com/ihoneymon/652be052a0727ad59601](https://gist.github.com/ihoneymon/652be052a0727ad59601)
+- [https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax](https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
