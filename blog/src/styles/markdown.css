@@ -174,7 +174,7 @@
     }
 
     & h1 {
-        margin: .67em 0;
+        margin: 2em 0 0.5em 0;
         font-weight: var(--base-text-weight-semibold, 600);
         padding-bottom: .3em;
         font-size: 2em;
@@ -182,6 +182,7 @@
     }
 
     & h2 {
+        margin: 2em 0 0.5em 0;
         font-weight: var(--base-text-weight-semibold, 600);
         padding-bottom: .3em;
         font-size: 1.5em;
