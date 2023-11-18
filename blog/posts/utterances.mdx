@@ -1,0 +1,119 @@
+---
+title: Next13 블로그에 깃허브 댓글기능 추가하기 (+다크모드 설정)
+description: Next13에 깃허브 댓글 기능을 추가해보자
+category: Next.JS
+createdAt: 2023-11-19
+---
+# Next13 블로그에 깃허브 댓글기능 추가하기
+
+# 서론
+Utterances를 사용하면 **정말 쉽게** 깃허브 댓글 기능을 구현할 수 있다.
+자체 UI를 제공해 귀찮은 CSS도 안할 수 있다 ^0^
+깃허브 이슈기반으로 구동되어 깃허브 알림도 받을 수 있어서 1석 3조!
+> 다음 글을 읽고 재구성하였습니다. [https://computasha.github.io/etc-utterances/](https://computasha.github.io/etc-utterances/)
+
+# 따라하기
+### 1. 다음 블로그 글을 **4번 테마설정**까지 따라한다. 친절하게 잘 설명이 되있어서 패스!
+- [https://computasha.github.io/etc-utterances/](https://computasha.github.io/etc-utterances/)
+> 만약 다음 글이 안될 경우 [https://utteranc.es/](https://utteranc.es/)사이트로 바로가서 `Enable Utterances`단계까지 세팅한다.
+### 2. copy 버튼으로 html을 가져온 뒤, 해당하는 속성을 다음과 같이 대치해주자.
+  > 참고: [이슈: React에서 사용 예시](https://github.com/utterance/utterances/issues/161)
+  ```javascript
+  'use client';
+  import React from 'react';
+
+  const PostComment: React.FC = () => {
+
+    return (
+      <section
+        ref={(elem) => {
+          if (!elem) {
+            return;
+          }
+          const scriptElem = document.createElement('script');
+          scriptElem.src = 'https://utteranc.es/client.js';
+          scriptElem.async = true;
+          scriptElem.setAttribute('repo', '깃허브닉네임/레포지토리이름');
+          scriptElem.setAttribute('issue-term', 'pathname');
+          scriptElem.setAttribute('theme', `github-dark`);
+          scriptElem.setAttribute('label', '💬');
+          scriptElem.crossOrigin = 'anonymous';
+          elem.replaceChildren(scriptElem);
+        }}
+      />
+    );
+  };
+
+  export default PostComment;
+  ```
+### 3. 다크모드 설정
+- 넥스트13은 `next-themes`의 `useTheme`를 통해 테마를 관리할 수 있다. 밑의 예시는 `next-themes`의 `useTheme()`훅을 사용해 테마를 반영한 예시다.
+1. 요 링크[https://www.npmjs.com/package/next-themes](https://www.npmjs.com/package/next-themes)를 들어간다.
+2. RootLayout을 `ThemeProvider`로 감싸준다.
+  ```javascript
+  import { ThemeProvider } from 'next-themes'
+
+  export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ko">
+      <body>
+          <ThemeProvider>
+            <main>{children}</main>
+          </ThemeProvider>
+      </body>
+    </html>
+    );
+  }
+  ```
+3. darkmode를 class로 관리하거나, storageKey를 설정해주고 싶으면 다음과 같이 설정한다.
+  - 저 같은 경우는 `tailwind.config.ts`에서 `darkMode: 'class'`를 설정해주었으므로 다음과 같이 작성했습니다.
+  ```javascript
+  <ThemeProvider attribute={'class'} storageKey={'theme'} defaultTheme={'system'}>
+    {children}
+  </ThemeProvider>
+  ```
+
+### 4. useTheme를 사용하여 반응형을 구현했다.
+```javascript
+'use client';
+import React from 'react';
+import { useTheme } from 'next-themes';
+
+const PostComment: React.FC = () => {
+  const { theme } = useTheme();
+
+  return (
+    <section
+      ref={(elem) => {
+        if (!elem) {
+          return;
+        }
+        const scriptElem = document.createElement('script');
+        scriptElem.src = 'https://utteranc.es/client.js';
+        scriptElem.async = true;
+        scriptElem.setAttribute('repo', '깃허브닉네임/레포지토리이름');
+        scriptElem.setAttribute('issue-term', 'pathname');
+        scriptElem.setAttribute('theme', `github-${theme}`);
+        scriptElem.setAttribute('label', '💬');
+        scriptElem.crossOrigin = 'anonymous';
+        elem.replaceChildren(scriptElem);
+      }}
+    />
+  );
+};
+
+export default PostComment;
+```
+
+# 마무리
+ui도 구현되있어서 쉽게 적용해서 기분좋았습니다. 추가로 localhost에서 오류가 나기 때문에 `.env.local`파일을 생성해서 local에서는 생성 안되게 만들었다!
+```javascript
+{!process?.env?.IS_LOCAL ? <PostComment /> : <div>DevMode</div>}
+```
+다음은 저의 댓글 컴포넌트 깃허브입니다. [https://github.com/heisje/heisje-blog/blob/main/blog/src/app/posts/%5Bslug%5D/PostComment.tsx](https://github.com/heisje/heisje-blog/blob/main/blog/src/app/posts/%5Bslug%5D/PostComment.tsx)
+
+# 레퍼런스
+- [https://github.com/utterance/utterances/issues/161](https://github.com/utterance/utterances/issues/161)
+- [https://computasha.github.io/etc-utterances/](https://computasha.github.io/etc-utterances/)
+- [https://github.com/ChangJuneKim/bloggggg](https://github.com/ChangJuneKim/bloggggg)
+- [https://utteranc.es/](https://utteranc.es/)

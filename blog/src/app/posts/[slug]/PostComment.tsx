@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTheme } from 'next-themes';
 
 const PostComment: React.FC = () => {

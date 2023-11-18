@@ -7,7 +7,6 @@ interface Props {
 }
 export default function Providers({ children }: Props) {
   const STORAGE_KEY = 'theme';
-  // const THEMES = ['light', 'dark'] as const;
   const DEFAULT_THEME = 'system';
 
   return (
