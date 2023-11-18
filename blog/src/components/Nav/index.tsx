@@ -10,40 +10,44 @@ const questrial = Outfit({
   subsets: ['latin'],
 });
 
-type props = {
-  className: string;
-};
-
-const Nav = ({ className }: props) => {
+const Nav = () => {
   const paths = [
-    { href: '/about', text: 'About' },
-    { href: '/posts?page=1', text: 'Posts' },
+    { href: '/about', text: '<About />', check: '/about' },
+    { href: '/posts?page=1', text: '<Posts />', check: '/posts' },
   ];
 
   const searchPosts = getSearchPosts(); // 검색만을 위한 배열
 
   return (
-    <nav className={`${questrial.className} my-6 ${className} `}>
-      {/*로고*/}
-      <Link className={'inline-block mr-2 align-middle text-3xl font-extrabold'} href={'/'}>
-        <span>Heisje</span>
-      </Link>
+    <>
+      <header className={'flex flex-col items-center my-12 px-4 mx-auto max-w-[640px]'}>
+        <Link className={'block text-xl font-light transition hover:opacity-50'} href={'/'}>
+          <span>
+            <span className={`font-extrabold text-primary-500`}>{`<h10>`}</span>내 개발일지
+            <span className={`font-extrabold text-primary-500`}>{`</h10>`}</span>
+          </span>
+        </Link>
 
-      {/*중앙네비*/}
-      <ul className={`${styles.boxUl} mr-2`}>
-        {paths.map(({ href, text }) => {
-          return (
-            <li key={href}>
-              <NavLink href={href} text={text} />
-            </li>
-          );
-        })}
-        <NavSearch searchPosts={searchPosts} />
-      </ul>
+        <nav className={`${questrial.className} mt-3 `}>
+          {/*로고*/}
+          <ul className={`${styles.boxUl} mr-2`}>
+            {/*중앙네비*/}
 
-      {/*테마 네비*/}
-      <NavTheme />
-    </nav>
+            {paths.map(({ href, text, check }) => {
+              return (
+                <li key={href}>
+                  <NavLink href={href} text={text} check={check} />
+                </li>
+              );
+            })}
+            <NavSearch searchPosts={searchPosts} />
+          </ul>
+
+          {/*테마 네비*/}
+          <NavTheme />
+        </nav>
+      </header>
+    </>
   );
 };
 

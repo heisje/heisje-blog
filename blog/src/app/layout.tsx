@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <meta charSet="utf-8" />
         </Head>
         <Providers>
-          <Nav className={'px-4 mx-auto max-w-[640px]'} />
+          <Nav />
           <main className={'px-4 min-h-screen mx-auto max-w-[640px]'}>{children}</main>
         </Providers>
         <Footer />

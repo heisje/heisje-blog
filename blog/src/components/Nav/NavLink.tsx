@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
 import styles from './Nav.module.css';
 import { FiSearch } from 'react-icons/fi';
@@ -11,15 +11,17 @@ import { getSearchPosts, searchPostsType } from '@/utils/posts';
 interface NavLinkProps {
   text: string;
   href: string;
+  check: string;
 }
 
 /*
  * about과 post Nav
  */
-const NavLink = ({ text, href }: NavLinkProps) => {
+const NavLink = ({ text, href, check }: NavLinkProps) => {
   const pathname = usePathname();
+
   return (
-    <Link href={href} className={`${styles.boxLi} ${styles.text} ${pathname === href ? styles.activeLink : ''}`}>
+    <Link href={href} className={`${styles.boxLi} ${styles.text} ${pathname === check ? styles.activeLink : ''}`}>
       <span>{text}</span>
     </Link>
   );
@@ -130,6 +132,35 @@ const NavSearchModal = ({
                   </Link>
                 </li>
               ))}
+            </ul>
+          ) : searchQuery.length >= 2 ? (
+            <ul
+              className={`${styles.resultPostUl} max-w-full backdrop-blur-2xl rounded-2xl border border-c-gray-500/30`}
+            >
+              <li
+                className={
+                  'w-full border-b last:border-b-0 border-c-gray-500/30 rounded-t-2xl last:rounded-t-none last:rounded-b-2xl hover:bg-primary/30 '
+                }
+              >
+                <span className={'block w-full p-3 '}>해당하는 검색어가 없어요!</span>
+              </li>
+              <li
+                className={
+                  'cursor-pointer w-full border-b last:border-b-0 border-c-gray-500/30 rounded-t-2xl last:rounded-t-none last:rounded-b-2xl hover:bg-primary/30 '
+                }
+              >
+                <span
+                  onClick={() => {
+                    setSearchQuery('JS');
+                    if (inputRef.current) {
+                      inputRef.current.value = 'JS';
+                    }
+                  }}
+                  className={'block w-full p-3 '}
+                >
+                  추천 키워드 : JS
+                </span>
+              </li>
             </ul>
           ) : null}
         </div>

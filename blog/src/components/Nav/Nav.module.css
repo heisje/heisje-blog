@@ -3,7 +3,7 @@
     @apply px-1 py-1;
     @apply rounded-full border;
 
-    border-color: rgba(var(--nav-ul), 0.1);
+    border-color: rgba(var(--nav-ul), 0.3);
     transition: color 0.1s, background-color 0.1s, box-shadow 0.1s;
 
     background-color: rgba(var(--nav-ul), 0.05);

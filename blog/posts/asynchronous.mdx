@@ -1,0 +1,38 @@
+---
+title: 'Promise와 Callback의 차이, async await 조금'
+description: 안녕하세요. 미리보기 내용입니다.
+category: JS
+createdAt: 2023-11-17
+tags:
+    - JS
+---
+# 요약
+Callback, Promise, async await 모두 비동기를 처리하는 방법이다.
+**콜백함수**는 콜백 지옥과 같은 문제점이 있다.
+**Promise**를 사용하면 흐름을 이해하긴 좋지만, then 지옥이 나타날 수 있다.
+**async await**로 Promise객체를 더 쉽게 사용할 수 있다. try-catch로 에러처리를 해야한다.
+
+
+# 비동기 처리가 무엇인지 부터!
+특정 코드의 실행을 완료할 때 까지 기다리지 않고 다른 코드를 먼저 수행하는 것이다. 자바스크립트에서는 콜백함수, Promise, async await문법으로 비동기를 다룰 수 있다.
+> 자바스크립트의 비동기 동작원리. https://www.youtube.com/watch?v=8aGhZQkoFbQ
+
+
+# Callback을 사용한 비동기 처리
+우선 가장 기본이 되는 콜백 함수를 알아보자!
+callback 함수란
+1. 다른 함수의 인자로써 이용되는 함수.
+2. 어떤 이벤트에 의해 호출되어지는 함수.
+```javascript
+function async(callback) { // 콜백 함수를 받아서 1초 후에 실행합니다.
+  setTimeout(() => {
+    callback("1초 후 실행");
+  }, 1000);
+}
+
+function message(msg) {
+  console.log(msg); // 받은 인자를 콘솔에 출력합니다.
+}
+
+async(message);
+```
