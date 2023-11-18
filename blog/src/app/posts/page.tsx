@@ -15,7 +15,7 @@ export default function page({ searchParams }: any) {
 
   const allTags = getTags();
   const categories = getCategory();
-  const allSymbols = ['All', ...allTags, ...categories];
+  const allSymbols = Array.from(new Set(['All', ...allTags, ...categories]));
 
   return (
     <>

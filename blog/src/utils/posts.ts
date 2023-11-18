@@ -114,6 +114,7 @@ export const getCategory = () => {
   return Array.from(categories);
 };
 
+// 검색 심볼들을 내보내기
 export const getSymbolPosts = () => {
   if (!symbolPosts['All'].length) {
     sliceSymbolPosts();
@@ -121,6 +122,7 @@ export const getSymbolPosts = () => {
   return symbolPosts;
 };
 
+// 검색을 위한 포스트 생성
 export const getSearchPosts = () => {
   if (!searchPosts.length) {
     const tempPosts: Post[] = sortPosts(); // 정렬된 Posts를 가져옴
