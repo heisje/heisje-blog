@@ -15,6 +15,11 @@ https://heisje.site/
 - tailwind
 - Docker
 - Jenkins
+- EC2/ubuntu/Nginx
+
+## 아키텍처
+
+![blog-architecture](./assets/blog-architecture.png)
 
 ## 환경 설정
 
@@ -43,39 +48,40 @@ next dev
 
 ### BLOG Core
 
-- [ ] Md to Mdx
+- [x] Mdx to MdxComponent
 - [ ] Mdx Components
   - [ ] Image
   - [ ] Youtube
   - [ ] codepen
-- [ ] SSG
+- [x] SSG
 - [ ] Read Count
-- [ ] Category
-- [ ] Tag
+- [x] Category
+- [x] Tag
 - [ ] SEO (Tag / Category...)
 
 ### BLOG Main
 
-- [ ] Search
+- [x] Search
 - [x] Pagination
-- [ ] Category
-- [ ] Tag
+- [x] Category
+- [x] Tag
 
 ### BLOG Detail
 
-- [ ] 댓글
+- [x] 댓글
 - [ ] 목차
 - [ ] 이전글 이후글
 
 ### Home
 
-- [ ] header
-- [ ] nav
-- [ ] footer
-- [ ] body
-- [ ] dark / white mode
+- [x] header
+- [x] nav
+- [x] footer
+- [x] body
+- [x] dark / white mode
 
 ### 기타
 
-- [ ] Post 정렬
-- [ ] 다크모드 새로고침
+- [x] Post 정렬
+- [x] 다크모드 새로고침
+- [ ] 사용자기반 다크모드
