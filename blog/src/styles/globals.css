@@ -48,6 +48,28 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
 
+/*.test{*/
+/*  width: 300px;*/
+/*  height: 300px;*/
+/*  border-radius: 100%;*/
+/*  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);*/
+/*  background-size: 400% 400%;*/
+/*  animation: gradient 25s ease infinite;*/
+/*  filter: blur(0px);*/
+/*  @keyframes gradient {*/
+/*    0% {*/
+/*      background-position: 0% 50%;*/
+/*    }*/
+/*    50% {*/
+/*      background-position: 100% 50%;*/
+/*    }*/
+/*    100% {*/
+/*      background-position: 0% 50%;*/
+/*    }*/
+/*  }*/
+
+/*}*/
+
 /*.circle::before{*/
 /*  content: '·';*/
 /*  @apply mx-1.5 w-1.5 h-1.5 font-black text-4xl text-blue-400;*/
