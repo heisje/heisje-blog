@@ -48,6 +48,18 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
 
+/*@font-face {*/
+/*  font-family: 'strech pro';*/
+/*  src: url('../../public/fonts/stretchpro.otf') format('otf');*/
+/*  font-weight: normal;*/
+/*  !*font-style: normal;*!*/
+/*  !*font-display: swap;*!*/
+/*}*/
+
+/*.test {*/
+/*  font-family: 'strech pro', sans-serif;*/
+/*}*/
+
 /*.test{*/
 /*  width: 300px;*/
 /*  height: 300px;*/

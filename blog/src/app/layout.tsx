@@ -6,6 +6,7 @@ import { pretendard } from '@/styles/fonts';
 import Providers from '@/app/providers';
 import Footer from '@/components/Footer';
 import Favicon from './favicon.ico';
+import localFont from 'next/font/local';
 
 export const metadata: Metadata = {
   title: '김희제의 기술 블로그',
@@ -13,18 +14,20 @@ export const metadata: Metadata = {
   icons: [{ rel: 'icon', url: Favicon.src }],
 };
 
+const PretendardVariableWoff2 = localFont({ src: 'fonts/PretendardVariable.woff2' });
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.className}`}>
+      <body className={`${PretendardVariableWoff2.className}`}>
         <Head>
           <meta charSet="utf-8" />
         </Head>
         <Providers>
           <Nav />
-          <main className={'px-4 min-h-screen mx-auto max-w-[640px]'}>{children}</main>
+          {children}
+          <Footer />
         </Providers>
-        <Footer />
       </body>
     </html>
   );
