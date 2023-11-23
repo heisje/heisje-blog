@@ -41,7 +41,7 @@ export default function Example() {
   return (
     <Suspense fallback={<div className={`w-full h-full bg-blue-500`}>로딩중</div>}>
       {/*<Delay />*/}
-      <div className={`${myFont.className} w-full h-screen bg-blue-500`}>Developer HEEJE'S BLOG</div>
+      <div className={`${myFont.className} w-full h-screen bg-blue-500`}>Developer HEEJE{"'"}S BLOG</div>
 
       {/*<div className={'relative w-full h-screen bg-blue-500'}>*/}
       {/*  <div className={`absolute block border-2 border-black bg-red-400 w-80 h-80 rounded-full`} ref={goButton}>*/}
