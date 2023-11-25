@@ -5,8 +5,11 @@ import PostComment from './PostComment';
 import { Metadata, ResolvingMetadata } from 'next';
 import * as process from 'process';
 import { rootURL } from '@/utils/rootURL';
+import PostCounter from '@/app/(main)/posts/[slug]/PostCounter';
 
-// 마크다운 파일의 파일명을 기반으로 Slug를 지정합니다.
+/*
+ * mdx slug를 기반으로 params SSG 생성
+ * */
 export async function generateStaticParams() {
   return allPosts.map(({ _raw }): { slug: string } => ({
     slug: _raw.flattenedPath,
@@ -17,6 +20,9 @@ type Props = {
   params: { slug: string };
 };
 
+/*
+ * 메타데이터 생성 함수
+ * */
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   const postId: string = params.slug;
 
@@ -56,6 +62,7 @@ const PostDetailPage = ({ params: { slug } }: { params: { slug: string } }) => {
       <MDXComponent />
 
       {!process?.env?.IS_LOCAL ? <PostComment /> : <div>DevMode</div>}
+      <PostCounter slug={slug} />
     </div>
   );
 };

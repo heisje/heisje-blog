@@ -64,7 +64,7 @@ const NavSearchModal = ({
           return post.keywords.toLowerCase().includes(searchQuery.toLowerCase());
         }),
       ];
-  }, [searchQuery]); // 검색 결과 배열
+  }, [searchQuery, searchPosts]); // 검색 결과 배열
 
   // 모달이 표시되고 isDisplay가 true일 때 input 요소에 포커스를 설정
   useEffect(() => {
