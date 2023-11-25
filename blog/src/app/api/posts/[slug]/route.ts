@@ -8,7 +8,7 @@ export async function GET(request: Request, { params }: { params: { slug: string
   try {
     const client = await MongoClient.connect(url);
     const db = client.db('posts');
-    const collection = db.collection('slug'); // 데이터베이스에서 'meetups' 라는 컬렉션을 가져온다. (없으면 생성한다.)
+    // const collection = db.collection('slug'); // 데이터베이스에서 'meetups' 라는 컬렉션을 가져온다. (없으면 생성한다.)
 
     // 조회수 조회
     const document = await db.collection('slug').findOne({ _slug: params.slug });
