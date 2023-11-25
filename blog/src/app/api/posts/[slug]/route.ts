@@ -3,7 +3,6 @@ import { MongoClient } from 'mongodb';
 
 export async function GET(request: Request, { params }: { params: { slug: string } }) {
   const url = process.env.DB_URL || '';
-  console.log(url);
 
   // 일반 조회
   try {
@@ -23,7 +22,7 @@ export async function GET(request: Request, { params }: { params: { slug: string
 
 export async function POST(request: Request, { params }: { params: { slug: string } }) {
   const url = process.env.DB_URL || '';
-  console.log(url);
+
   // 일반 조회
   try {
     const client = await MongoClient.connect(url);
