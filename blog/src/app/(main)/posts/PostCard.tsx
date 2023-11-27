@@ -21,20 +21,24 @@ const PostCard = ({ post }: { post: Post }) => {
             className={'w-full h-full object-cover '}
             src={post?.thumbnail}
             alt={`${post?.title}`}
-            width={1000}
-            height={1000}
+            width={608}
+            height={608}
           />
         </div>
       ) : null}
 
       {/*텍스트*/}
       <div className={'p-4 '}>
+        {/*카테고리*/}
         <div className={'mb-1 flex justify-between'}>
           <div>{post?.category}</div>
           <div className={'text-c-gray-500'}>{date}</div>
         </div>
+        {/*제목*/}
         <h1 className={'text-2xl'}>{post?.title}</h1>
+        {/*설명*/}
         <div className={'text-c-gray-500'}>{post?.description}</div>
+        {/*태그*/}
         {post?.tags ? (
           <div className={'mt-2'}>
             {post?.tags?.map((tag) => {

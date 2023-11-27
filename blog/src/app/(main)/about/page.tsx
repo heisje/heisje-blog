@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { FaLinkedin, FaSquareGithub } from 'react-icons/fa6';
+import aboutTitleImg from '@public/images/aboutTitle.png';
 
 function AboutStack() {
   return null;
@@ -68,13 +69,9 @@ export default function About() {
             </div>
             <Image
               className={'w-0 y-0 sm:w-48 sm:h-48 rounded-3xl'}
-              src={'/images/aboutTitle.png'}
+              src={aboutTitleImg}
               alt={'소개사진'}
-              width={300}
-              height={300}
               placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==" // 추가
-              priority
             />
           </div>
         </header>

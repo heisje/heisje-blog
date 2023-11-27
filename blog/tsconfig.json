@@ -23,7 +23,7 @@
       "@/*": ["./src/*"],
       "@/contentlayer/generated": ["./.contentlayer/generated"],
       "@/contentlayer/generated/*": ["./.contentlayer/generated/*"],
-
+      "@public/*":["./public/*"]
     },
   },
 

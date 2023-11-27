@@ -1,11 +1,12 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { allPosts } from '@/../.contentlayer/generated';
+import { allPosts, Post } from '@/../.contentlayer/generated';
 import Image from 'next/image';
 import PostComment from './PostComment';
 import { Metadata, ResolvingMetadata } from 'next';
 import * as process from 'process';
 import { rootURL } from '@/utils/rootURL';
 import PostCounter from '@/app/(main)/posts/[slug]/PostCounter';
+import { toDateString } from '@/utils/toDateString';
 
 /*
  * mdx slug를 기반으로 params SSG 생성
@@ -48,22 +49,50 @@ const PostDetailPage = ({ params: { slug } }: { params: { slug: string } }) => {
 
   const MDXComponent = useMDXComponent(post?.body.code || '');
 
+  // 날짜
+  const date: string = toDateString(new Date(post?.createdAt || ''));
+
   return (
-    <div className={'markdown-body'}>
+    <article>
+      <div>
+        <span className={'font-bold'}>{post?.category}.</span>
+        {/*태그*/}
+      </div>
+      <h1 className={'block my-3'}>{post?.title}</h1>
+
+      <div className={'text-c-gray-500/70 flex justify-between'}>
+        <span>{date}</span>
+        <span>작성자 김희제</span>
+      </div>
+
+      <div className={'mb-3 py-2 border-b'}>
+        {post?.tags
+          ? post?.tags.map((tag) => {
+              return (
+                <div
+                  className={'inline-block mr-2 py-0 px-2 rounded-xl border bg-c-gray-300/5 border-c-gray-500/20'}
+                  key={tag}
+                >
+                  {tag}
+                </div>
+              );
+            })
+          : null}
+      </div>
+
       {post?.thumbnail && (
-        <Image
-          className={'w-full h-full object-cover rounded-2xl'}
-          src={`${post?.thumbnail}`}
-          alt={`${post?.title}`}
-          width={100}
-          height={100}
-        />
+        <div className={'mb-8 w-full h-full object-cover rounded-2xl'}>
+          <Image src={`${post?.thumbnail}`} alt={`${post?.title}`} width={608} height={608} />
+        </div>
       )}
-      <MDXComponent />
+
+      <div className={'markdown-body'}>
+        <MDXComponent />
+      </div>
 
       {!process?.env?.IS_LOCAL ? <PostComment /> : <div>DevMode</div>}
       <PostCounter slug={slug} />
-    </div>
+    </article>
   );
 };
 
