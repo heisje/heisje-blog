@@ -10,7 +10,7 @@ async function init() {
   try {
     client = await clientPromise;
     db = await client.db('posts');
-    posts = await db.collection('slug');
+    posts = db.collection('slug');
   } catch (error) {
     throw new Error('Failed to stablish connection to database');
   }

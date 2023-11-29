@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogPagination from './BlogPagination';
+import PostsPagination from './PostsPagination';
 
 import PostCard from './PostCard';
 import { getCategory, getSymbolPosts, getTags } from '@/utils/posts';
@@ -18,7 +18,7 @@ export default function page({ searchParams }: any) {
   const allSymbols = Array.from(new Set(['All', ...allTags, ...categories]));
 
   return (
-    <>
+    <section>
       {/*블로그 소개글*/}
       <header className={'flex h-48 items-center border border-c-gray-500/20 rounded-2xl'}>
         <div className="mx-auto text-3xl font-extrabold">
@@ -53,7 +53,7 @@ export default function page({ searchParams }: any) {
         })}
       </article>
 
-      <BlogPagination page={paramPage} maxSize={maxSize} />
-    </>
+      <PostsPagination page={paramPage} maxSize={maxSize} />
+    </section>
   );
 }

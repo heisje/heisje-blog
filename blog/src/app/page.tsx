@@ -1,6 +1,7 @@
 'use client';
 import { Suspense, useEffect, useState, useRef } from 'react';
 import localFont from 'next/font/local';
+import { HomeHeader } from '@/app/HomeComponents';
 
 // const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 // const Delay = async () => {
@@ -11,7 +12,7 @@ import localFont from 'next/font/local';
 // };
 const myFont = localFont({ src: 'fonts/stretchpro.otf' });
 
-export default function Example() {
+export default function HomePage() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const goButton = useRef<HTMLDivElement | null>(null);
 
@@ -39,34 +40,36 @@ export default function Example() {
   }, []);
 
   return (
-    <Suspense fallback={<div className={`w-full h-full bg-blue-500`}>로딩중</div>}>
-      {/*<Delay />*/}
-      <div className={`${myFont.className} w-full h-screen bg-blue-500`}>Developer HEEJE{"'"}S BLOG</div>
+    <section className={'px-4 min-h-screen mx-auto max-w-[640px]'}>
+      <HomeHeader />
+      <Suspense fallback={<div className={`w-full h-full bg-blue-500`}>로딩중</div>}>
+        <div className={`w-full h-screen`}>Developer HEEJE{"'"}S BLOG</div>
 
-      {/*<div className={'relative w-full h-screen bg-blue-500'}>*/}
-      {/*  <div className={`absolute block border-2 border-black bg-red-400 w-80 h-80 rounded-full`} ref={goButton}>*/}
-      {/*    {JSON.stringify(mousePos)}*/}
-      {/*    {JSON.stringify(goButtonPosition)}*/}
-      {/*  </div>*/}
-      {/*  <div*/}
-      {/*    className={`absolute block border-2 border-black w-80 h-80 rounded-full`}*/}
-      {/*    style={{ transform: `translate(${mousePos.x / 10}px, ${mousePos.y / 10}px)` }}*/}
-      {/*  >*/}
-      {/*    {JSON.stringify(mousePos)}*/}
-      {/*  </div>*/}
-      {/*  <div*/}
-      {/*    className={`absolute block border-2 border-black w-80 h-80 rounded-full`}*/}
-      {/*    style={{ transform: `translate(${mousePos.x / 7}px, ${mousePos.y / 7}px)` }}*/}
-      {/*  >*/}
-      {/*    {JSON.stringify(mousePos)}*/}
-      {/*  </div>*/}
-      {/*  <div*/}
-      {/*    className={`absolute block border-2 border-black w-80 h-80 rounded-full`}*/}
-      {/*    style={{ transform: `translate(${mousePos.x / 8}px, ${mousePos.y / 8}px)` }}*/}
-      {/*  >*/}
-      {/*    {JSON.stringify(mousePos)}*/}
-      {/*  </div>*/}
-      {/*</div>*/}
-    </Suspense>
+        {/*<div className={'relative w-full h-screen bg-blue-500'}>*/}
+        {/*  <div className={`absolute block border-2 border-black bg-red-400 w-80 h-80 rounded-full`} ref={goButton}>*/}
+        {/*    {JSON.stringify(mousePos)}*/}
+        {/*    {JSON.stringify(goButtonPosition)}*/}
+        {/*  </div>*/}
+        {/*  <div*/}
+        {/*    className={`absolute block border-2 border-black w-80 h-80 rounded-full`}*/}
+        {/*    style={{ transform: `translate(${mousePos.x / 10}px, ${mousePos.y / 10}px)` }}*/}
+        {/*  >*/}
+        {/*    {JSON.stringify(mousePos)}*/}
+        {/*  </div>*/}
+        {/*  <div*/}
+        {/*    className={`absolute block border-2 border-black w-80 h-80 rounded-full`}*/}
+        {/*    style={{ transform: `translate(${mousePos.x / 7}px, ${mousePos.y / 7}px)` }}*/}
+        {/*  >*/}
+        {/*    {JSON.stringify(mousePos)}*/}
+        {/*  </div>*/}
+        {/*  <div*/}
+        {/*    className={`absolute block border-2 border-black w-80 h-80 rounded-full`}*/}
+        {/*    style={{ transform: `translate(${mousePos.x / 8}px, ${mousePos.y / 8}px)` }}*/}
+        {/*  >*/}
+        {/*    {JSON.stringify(mousePos)}*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+      </Suspense>
+    </section>
   );
 }

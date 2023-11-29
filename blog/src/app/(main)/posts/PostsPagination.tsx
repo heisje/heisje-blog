@@ -38,7 +38,7 @@ function generatePagination(currentPage: number, totalPages: number) {
   return pagination;
 }
 
-const BlogPagination = ({ page, maxSize }: props) => {
+const PostsPagination = ({ page, maxSize }: props) => {
   const isMounted = useMounted();
   const pagination = generatePagination(page, maxSize);
 
@@ -83,4 +83,4 @@ const BlogPagination = ({ page, maxSize }: props) => {
   );
 };
 
-export default BlogPagination;
+export default PostsPagination;
