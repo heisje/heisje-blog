@@ -1,9 +1,9 @@
 .boxUl {
     @apply inline-block my-1;
     @apply px-1 py-1;
-    @apply rounded-full border;
+    @apply rounded-xl border;
 
-    border-color: rgba(var(--nav-ul), 0.3);
+    border-color: rgba(var(--nav-ul), 0.2);
     transition: color 0.1s, background-color 0.1s, box-shadow 0.1s;
 
     background-color: rgba(var(--nav-ul), 0.05);
@@ -31,7 +31,7 @@
 
 .boxLi{
     @apply inline-block ;
-    @apply rounded-full;
+    @apply rounded-lg;
     @apply cursor-pointer;
 
     transition: color 0.1s, background-color 0.1s, box-shadow 0.1s;

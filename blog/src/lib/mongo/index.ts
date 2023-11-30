@@ -6,7 +6,7 @@ const options = {};
 if (!URL) throw new Error('Add Mongo URL');
 
 let client: MongoClient = new MongoClient(URL, options);
-let clientPromise: any;
+let clientPromise: Promise<MongoClient>;
 
 clientPromise = client.connect();
 

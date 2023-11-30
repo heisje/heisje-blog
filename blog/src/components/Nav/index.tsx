@@ -4,6 +4,7 @@ import { Outfit } from 'next/font/google';
 import NavTheme from '@/components/Nav/NavTheme';
 import styles from './Nav.module.css';
 import { getSearchPosts } from '@/utils/posts';
+import NavLogo from '@/components/Nav/NavLogo';
 
 const questrial = Outfit({
   weight: '400',
@@ -12,23 +13,20 @@ const questrial = Outfit({
 
 const Nav = () => {
   const paths = [
-    { href: '/about', text: '<About />', check: '/about' },
-    { href: '/posts?page=1', text: '<Posts />', check: '/posts' },
+    { href: '/about', text: 'About', check: '/about' },
+    { href: '/posts?page=1', text: 'Posts', check: '/posts' },
   ];
 
   const searchPosts = getSearchPosts(); // 검색만을 위한 배열
 
   return (
     <>
-      <header className={'flex flex-col items-center my-12 px-4 mx-auto max-w-[640px]'}>
+      <header className={'sm:flex sm:flex-row sm:justify-between items-center my-12 px-4 mx-auto max-w-[640px]'}>
         <Link className={'block text-xl font-light transition hover:opacity-50'} href={'/'}>
-          <span>
-            <span className={`font-extrabold text-primary-500`}>{`<h10>`}</span>내 개발일지
-            <span className={`font-extrabold text-primary-500`}>{`</h10>`}</span>
-          </span>
+          <NavLogo />
         </Link>
 
-        <nav className={`${questrial.className} mt-3 `}>
+        <nav className={`${questrial.className} block mt-3 sm:mt-0`}>
           {/*로고*/}
           <ul className={`${styles.boxUl} mr-2`}>
             {/*중앙네비*/}

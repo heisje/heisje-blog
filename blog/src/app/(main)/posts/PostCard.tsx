@@ -11,7 +11,7 @@ const PostCard = ({ post }: { post: Post }) => {
     <Link
       href={`/posts/${link}`}
       className={
-        'block overflow-hidden border border-c-gray-500/20 rounded-2xl mb-6 duration-300 transition-origin origin-bottom-left hover:-rotate-1 hover:shadow-xl hover:shadow-primary-400/10 cursor-pointer'
+        'block overflow-hidden border border-c-gray-500/20 rounded-xl mb-6 duration-300 transition-origin origin-bottom-left hover:-rotate-1 hover:shadow-xl hover:shadow-primary-400/10 cursor-pointer'
       }
     >
       {/*썸네일*/}
@@ -35,7 +35,7 @@ const PostCard = ({ post }: { post: Post }) => {
           <div className={'text-c-gray-500'}>{date}</div>
         </div>
         {/*제목*/}
-        <h1 className={'text-2xl'}>{post?.title}</h1>
+        <h1 className={'text-2xl font-medium'}>{post?.title}</h1>
         {/*설명*/}
         <div className={'text-c-gray-500'}>{post?.description}</div>
         {/*태그*/}

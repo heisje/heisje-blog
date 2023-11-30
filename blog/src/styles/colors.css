@@ -32,7 +32,7 @@
     --primary: rgb(96 165 250);
 
     /*Nav*/
-    --nav-ul: var(--primary-200);
+    --nav-ul: var(--primary-300);
     --nav-active: var(--primary-800);
 }
 
@@ -42,7 +42,7 @@
     --primary: rgb(96 165 250);
 
     /*Nav*/
-    --nav-ul: var(--primary-50);
+    --nav-ul: var(--primary-200);
     --nav-active: var(--primary-400);
 }
 

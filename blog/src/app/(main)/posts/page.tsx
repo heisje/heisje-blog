@@ -20,7 +20,7 @@ export default function page({ searchParams }: any) {
   return (
     <section>
       {/*블로그 소개글*/}
-      <header className={'flex h-48 items-center border border-c-gray-500/20 rounded-2xl'}>
+      <header className={'flex h-48 items-center border border-c-gray-500/20 rounded-xl'}>
         <div className="mx-auto text-3xl font-extrabold">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500">
             김희제의 개발 포스팅
@@ -34,7 +34,7 @@ export default function page({ searchParams }: any) {
           {allSymbols.map((symbol) => (
             <Link
               key={symbol}
-              className={`inline-block mb-4 mr-2 py-1 px-3 rounded-xl border border-c-gray-500/20 shadow-xl shadow-c-gray-400/5 hover:shadow-primary-400/30 hover:bg-primary/80 hover:text-white transition duration-100 ${
+              className={`inline-block mb-4 mr-2 py-1 px-3 rounded-lg border border-c-gray-500/20 shadow-xl shadow-c-gray-400/5 hover:shadow-primary-400/30 hover:bg-primary/80 hover:text-white transition duration-100 ${
                 paramSymbol === symbol ? 'bg-primary/80 text-white' : 'bg-c-gray-300/5'
               }`}
               href={`/posts?symbol=${symbol}&page=1`}
