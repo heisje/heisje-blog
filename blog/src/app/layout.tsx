@@ -2,7 +2,6 @@ import '../styles/globals.css';
 import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Head from 'next/head';
-import { pretendard } from '@/styles/fonts';
 import Providers from '@/app/providers';
 import Footer from '@/components/Footer';
 import Favicon from './favicon.ico';
@@ -65,8 +64,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <meta charSet="utf-8" />
         </Head>
         <Providers>
-          <div></div>
-
           <Nav />
           {children}
           <Footer />
