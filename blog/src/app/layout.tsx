@@ -16,14 +16,57 @@ export const metadata: Metadata = {
 
 const PretendardVariableWoff2 = localFont({ src: 'fonts/PretendardVariable.woff2' });
 
+const Pretendard = localFont({
+  src: [
+    {
+      path: 'fonts/Pretendard-Thin.woff2',
+      weight: '100',
+    },
+    {
+      path: 'fonts/Pretendard-ExtraLight.woff2',
+      weight: '200',
+    },
+    {
+      path: 'fonts/Pretendard-Light.woff2',
+      weight: '300',
+    },
+    {
+      path: 'fonts/Pretendard-Regular.woff2',
+      weight: '400',
+    },
+    {
+      path: 'fonts/Pretendard-Medium.woff2',
+      weight: '500',
+    },
+    {
+      path: 'fonts/Pretendard-SemiBold.woff2',
+      weight: '600',
+    },
+    {
+      path: 'fonts/Pretendard-Bold.woff2',
+      weight: '700',
+    },
+    {
+      path: 'fonts/Pretendard-ExtraBold.woff2',
+      weight: '800',
+    },
+    {
+      path: 'fonts/Pretendard-Black.woff2',
+      weight: '900',
+    },
+  ],
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${PretendardVariableWoff2.className}`}>
+      <body className={`${Pretendard.className}`}>
         <Head>
           <meta charSet="utf-8" />
         </Head>
         <Providers>
+          <div></div>
+
           <Nav />
           {children}
           <Footer />
