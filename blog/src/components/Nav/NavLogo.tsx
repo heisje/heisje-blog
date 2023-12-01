@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
 import useMounted from '@/hook/useMounted';
 
@@ -8,12 +8,28 @@ const TEXTS = ['10', 'j'];
 const NavLogo = () => {
   const [index, setIndex] = React.useState(0);
   const { isMounted } = useMounted();
-  React.useEffect(() => {
-    const intervalId = setInterval(
-      () => setIndex((index) => index + 1),
-      15000, // every 3 seconds
-    );
-    return () => clearTimeout(intervalId);
+  const intervalId = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
+    const startInterval = () => {
+      intervalId.current = setInterval(() => setIndex((index) => index + 1), 5000);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        startInterval();
+      } else {
+        clearInterval(intervalId.current);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    startInterval();
+
+    return () => {
+      clearInterval(intervalId.current);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   return (
