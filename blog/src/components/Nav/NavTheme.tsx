@@ -1,10 +1,10 @@
 'use client';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useTheme } from 'next-themes';
-import styles from '@/components/Nav/Nav.module.css';
+import styles from '@/components/Header/Nav.module.css';
 import useMounted from '@/hook/useMounted';
 
-const NavTheme = () => {
+export const NavTheme = () => {
   const { theme, setTheme } = useTheme();
   const { isMounted } = useMounted();
 
@@ -29,5 +29,3 @@ const NavTheme = () => {
     </ul>
   );
 };
-
-export default NavTheme;
