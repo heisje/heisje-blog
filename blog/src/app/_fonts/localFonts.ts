@@ -43,4 +43,4 @@ export const Pretendard = localFont({
   ],
 });
 
-const myFont = localFont({ src: '_fonts/stretchpro.otf' });
+// const myFont = localFont({ src: '_fonts/stretchpro.otf' });

@@ -19,17 +19,17 @@ export const AboutHeader = () => {
   return (
     <div className={'flex flex-wrap justify-between items-center'}>
       <div>
-        <h1 className={'flex-shrink-0 mb-0'}>
-          <span className={'font-light'}>안녕하세요!</span>
+        <h1 className={'flex-shrink-0 mb-0  font-light'}>
+          <span>안녕하세요!</span>
           <br />
-          <span className={'font-light'}>UX와 DX에 관심이 많은</span>
+          <span>UX와 DX에 관심이 많은</span>
 
           <br />
-          <span className={'font-light'}>
+          <span>
             개발자 <span className={'font-bold'}>김희제</span>입니다.
           </span>
         </h1>
-        <div className={'flex flex-wrap items-center mt-3'}>
+        <div className={'flex flex-wrap items-center mt-3 text-heading'}>
           <Link href={'https://github.com/heisje'} className={'mr-2 transition hover:text-primary-400'}>
             <FaSquareGithub className={'text-4xl'} />
           </Link>

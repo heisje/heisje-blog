@@ -7,6 +7,7 @@ import { FiSearch } from 'react-icons/fi';
 import { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
 
 import { getSearchPosts, searchPostsType } from '@/utils/posts';
+import { questrial } from '@/components/Nav/index';
 
 interface NavLinkProps {
   text: string;
@@ -21,7 +22,10 @@ const NavLink = ({ text, href, check }: NavLinkProps) => {
   const pathname = usePathname();
 
   return (
-    <Link href={href} className={`${styles.boxLi} ${styles.text} ${pathname === check ? styles.activeLink : ''}`}>
+    <Link
+      href={href}
+      className={`${questrial.className} ${styles.boxLi} ${styles.text} ${pathname === check ? styles.activeLink : ''}`}
+    >
       <span>{text}</span>
     </Link>
   );

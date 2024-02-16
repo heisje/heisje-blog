@@ -51,7 +51,7 @@ export default function About() {
         </div>
 
         <div>
-          <h1 className={'mb-4'}>Projects.</h1>
+          <h1 className={'mb-4'}>Dev Projects.</h1>
           <AboutProjects />
         </div>
 

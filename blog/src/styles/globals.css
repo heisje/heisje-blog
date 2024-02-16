@@ -25,19 +25,29 @@
   h4,
   h5,
   h6 {
-    @apply font-bold
-    mb-1;
+    @apply
+      font-bold
+      mb-1
+      text-c-gray-800 dark:text-c-gray-50
+    ;
   }
 
 }
 
 body {
-  @apply font-display;
-  @apply text-base;
+  @apply
+    font-display
+    text-base font-light
+    text-c-gray-600 dark:text-c-gray-300
+    transition
+  ;
+
   background-color: rgba(var(--back));
-  color: rgba(var(--front));
-  @apply transition;
 }
+
+/**
+* 하이
+*/
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

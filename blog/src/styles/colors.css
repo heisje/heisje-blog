@@ -46,6 +46,14 @@
     --nav-active: var(--primary-400);
 }
 
+@layer base {
+    .text-heading{
+        @apply text-c-gray-800 dark:text-c-gray-50
+    }
+    .text-body{
+        @apply text-c-gray-600 dark:text-c-gray-300
+    }
+}
 
 /*@media (prefers-color-scheme: dark) {*/
 /*    :root {*/

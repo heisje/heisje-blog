@@ -6,14 +6,14 @@ import styles from './Nav.module.css';
 import { getSearchPosts } from '@/utils/posts';
 import NavLogo from '@/components/Nav/NavLogo';
 
-const questrial = Outfit({
+export const questrial = Outfit({
   weight: '400',
   subsets: ['latin'],
 });
 
 const Nav = () => {
   const paths = [
-    { href: '/about', text: 'About', check: '/about' },
+    { href: '/about', text: 'Portfolio', check: '/about' },
     { href: '/posts?page=1', text: 'Posts', check: '/posts' },
   ];
 
@@ -21,12 +21,14 @@ const Nav = () => {
 
   return (
     <>
-      <header className={'sm:flex sm:flex-row sm:justify-between items-center my-12 px-4 mx-auto max-w-[640px]'}>
+      <header
+        className={`${questrial.className} font-normal sm:flex sm:flex-row sm:justify-between items-center my-12 px-4 mx-auto max-w-[640px]`}
+      >
         <Link className={'block text-xl font-light transition hover:opacity-50'} href={'/'}>
           <NavLogo />
         </Link>
 
-        <nav className={`${questrial.className} block mt-3 sm:mt-0`}>
+        <nav className={`block mt-3 sm:mt-0`}>
           {/*로고*/}
           <ul className={`${styles.boxUl} mr-2`}>
             {/*중앙네비*/}

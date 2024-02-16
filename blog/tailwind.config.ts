@@ -48,6 +48,12 @@ const config: Config = {
         info: '',
 
         // secondary: '#ec4899', // 보조색상
+        light: {
+          pop: 'rgb(29 78 216)',
+        },
+        dark: {
+          pop: 'rgb(113 113 122)',
+        },
       },
     },
   },
