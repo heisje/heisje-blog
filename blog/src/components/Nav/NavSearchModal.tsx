@@ -1,3 +1,5 @@
+'use client';
+
 import { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
 import { searchPostsType } from '@/utils/posts';
 import styles from '@/components/Nav/Nav.module.css';

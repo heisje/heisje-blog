@@ -1,11 +1,8 @@
 'use client';
 
 import { getSearchPosts, searchPostsType } from '@/utils/posts';
-import { useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
 import { NavSearchLink } from '@/components/Nav/NavSearchLink';
 import styles from './Nav.module.css';
-import { paths } from '@/components/Nav/index';
 import { NavSearchItem } from '@/components/Nav/NavSearchItem';
 
 /**
@@ -13,14 +10,18 @@ import { NavSearchItem } from '@/components/Nav/NavSearchItem';
  * @param
  * @constructor
  */
-export const NavSearch = () => {
-  const searchPosts = getSearchPosts(); // 검색만을 위한 배열
+
+export const NavSearch = ({ searchPosts }: { searchPosts: searchPostsType[] }) => {
+  const paths = [
+    { href: '/about', text: 'Portfolio', check: '/about' },
+    { href: '/posts?page=1', text: 'Posts', check: '/posts' },
+  ];
 
   return (
     <ul className={`${styles.boxUl} mr-2`}>
-      {/*중앙네비*/}
+      {/*/!*중앙네비*!/*/}
       {paths.map(({ href, text, check }) => {
-        return <NavSearchLink key={href} href={href} text={text} check={check} />;
+        return <NavSearchLink key={text} href={href} text={text} check={check} />;
       })}
       <NavSearchItem searchPosts={searchPosts} />
     </ul>

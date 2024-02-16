@@ -1,5 +1,5 @@
 import { Outfit } from 'next/font/google';
-import Nav from '@/components/Nav';
+import { Nav } from '@/components/Nav';
 import { Logo } from '@/components/Header/Logo';
 
 export const questrial = Outfit({
