@@ -54,7 +54,7 @@ next dev
   - [ ] Youtube
   - [ ] codepen
 - [x] SSG
-- [ ] Read Count
+- [x] Read Count
 - [x] Category
 - [x] Tag
 - [ ] SEO (Tag / Category...)
@@ -90,3 +90,4 @@ next dev
 테일윈드 단일로 반응형 컬러구현이 어려워 post-css를 같이 활용해 반응형으로 컬러가 구현됨. 테일윈드는 고정적인 컬러를 활용할 때 사용됨.
 
 현재 세부적인 반응형 컬러를 위해 `text-heading` `text-body` 두가지 컬러만 사용하고 나머지는 전역으로 처리
+
