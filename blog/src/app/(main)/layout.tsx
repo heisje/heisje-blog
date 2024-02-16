@@ -1,10 +1,5 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
-import Nav from '@/components/Nav';
-import Head from 'next/head';
-import { pretendard } from '@/styles/fonts';
-import Providers from '@/app/providers';
-import Footer from '@/components/Footer';
 import Favicon from '@/app/favicon.ico';
 
 export const metadata: Metadata = {
