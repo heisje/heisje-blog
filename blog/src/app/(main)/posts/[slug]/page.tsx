@@ -4,7 +4,7 @@ import Image from 'next/image';
 import PostComment from './PostComment';
 import { Metadata, ResolvingMetadata } from 'next';
 import * as process from 'process';
-import { rootURL } from '@/utils/rootURL';
+import { rootURL } from '@/constants';
 import PostCounter from '@/app/(main)/posts/[slug]/PostCounter';
 import { toDateString } from '@/utils/toDateString';
 

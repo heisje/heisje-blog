@@ -54,10 +54,3 @@
         @apply text-c-gray-600 dark:text-c-gray-300
     }
 }
-
-/*@media (prefers-color-scheme: dark) {*/
-/*    :root {*/
-/*        --background: red;*/
-/*        --foreground: white;*/
-/*    }*/
-/*}*/
