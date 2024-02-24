@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
 import useMounted from '@/hook/useMounted';
 import Link from 'next/link';
-
-const TEXTS = ['10', 'j'];
+import { Pretendard } from '@/app/_fonts/localFonts';
+const TEXTS = ['heisje.devLog', '김희제블로그'];
 
 export const Logo = () => {
   const [index, setIndex] = React.useState(0);
@@ -13,7 +13,7 @@ export const Logo = () => {
 
   useEffect(() => {
     const startInterval = () => {
-      intervalId.current = setInterval(() => setIndex((index) => index + 1), 5000);
+      intervalId.current = setInterval(() => setIndex((index) => index + 1), 10000);
     };
 
     const handleVisibilityChange = () => {
@@ -36,15 +36,13 @@ export const Logo = () => {
   return (
     <Link className={'block text-xl font-light transition hover:opacity-50'} href={'/'}>
       <div className={'font-medium text-primary-500 dark:text-primary-400'}>
-        <span>{'<h'}</span>
-        <span className={'inline-block'}>
+        <span className={`${Pretendard.className} inline-block`}>
           {isMounted ? (
             <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
           ) : (
-            '10'
+            'heisje.devLog'
           )}
         </span>
-        <span>{' />'}</span>
       </div>
     </Link>
   );

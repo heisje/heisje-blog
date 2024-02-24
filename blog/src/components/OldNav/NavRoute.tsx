@@ -1,9 +1,9 @@
 'use client';
 
 import { getSearchPosts, searchPostsType } from '@/utils/posts';
-import { NavSearchLink } from '@/components/Nav/NavSearchLink';
+import { NavSearchLink } from '@/components/OldNav/NavSearchLink';
 import styles from './Nav.module.css';
-import { NavSearchItem } from '@/components/Nav/NavSearchItem';
+import { NavRouteItem } from '@/components/OldNav/NavRouteItem';
 
 /**
  * 네비검색아이템
@@ -11,7 +11,7 @@ import { NavSearchItem } from '@/components/Nav/NavSearchItem';
  * @constructor
  */
 
-export const NavSearch = ({ searchPosts }: { searchPosts: searchPostsType[] }) => {
+export const NavRoute = ({ searchPosts }: { searchPosts: searchPostsType[] }) => {
   const paths = [
     { href: '/about', text: 'Portfolio', check: '/about' },
     { href: '/posts?page=1', text: 'Posts', check: '/posts' },
@@ -23,7 +23,7 @@ export const NavSearch = ({ searchPosts }: { searchPosts: searchPostsType[] }) =
       {paths.map(({ href, text, check }) => {
         return <NavSearchLink key={text} href={href} text={text} check={check} />;
       })}
-      <NavSearchItem searchPosts={searchPosts} />
+      <NavRouteItem searchPosts={searchPosts} />
     </ul>
   );
 };

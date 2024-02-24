@@ -1,6 +1,7 @@
-import { NavSearch } from '@/components/Nav/NavSearch';
-import { NavTheme } from '@/components/Nav/NavTheme';
 import { getSearchPosts } from '@/utils/posts';
+import { NavBar } from '@/components/Nav/NavBar';
+import { NavItem } from '@/components/Nav/NavItem';
+import { Outfit } from 'next/font/google';
 
 export const paths = [
   { href: '/about', text: 'Portfolio', check: '/about' },
@@ -12,8 +13,17 @@ export const Nav = () => {
 
   return (
     <nav className={`block mt-3 sm:mt-0`}>
-      <NavSearch searchPosts={searchPosts} />
-      <NavTheme />
+      <NavBar>
+        {paths.map((path) => (
+          <NavItem.route key={path.text} path={path} />
+        ))}
+        <NavItem.search searchPosts={searchPosts} />
+      </NavBar>
+
+      <NavBar>
+        <NavItem.theme type={'light'} />
+        <NavItem.theme type={'dark'} />
+      </NavBar>
     </nav>
   );
 };

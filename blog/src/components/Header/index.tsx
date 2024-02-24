@@ -1,6 +1,7 @@
 import { Outfit } from 'next/font/google';
 import { Nav } from '@/components/Nav';
 import { Logo } from '@/components/Header/Logo';
+import { StaticLogo } from '@/components/Header/StaticLogo';
 
 export const questrial = Outfit({
   weight: '400',

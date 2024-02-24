@@ -3,7 +3,7 @@
 import { searchPostsType } from '@/utils/posts';
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { NavSearchModal } from '@/components/Nav/NavSearchModal';
+import { NavSearchModal } from '@/components/OldNav/NavSearchModal';
 import styles from './Nav.module.css';
 
 /**
@@ -11,7 +11,7 @@ import styles from './Nav.module.css';
  * @param searchPosts
  * @constructor
  */
-export const NavSearchItem = ({ searchPosts }: { searchPosts: searchPostsType[] }) => {
+export const NavRouteItem = ({ searchPosts }: { searchPosts: searchPostsType[] }) => {
   const [isDisplay, setIsDisplay] = useState(false);
   return (
     <>

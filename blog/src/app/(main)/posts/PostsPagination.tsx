@@ -1,5 +1,5 @@
 'use client';
-import styles from '@/components/Nav/Nav.module.css';
+import styles from '@/components/OldNav/Nav.module.css';
 import useMounted from '@/hook/useMounted';
 import { useEffect } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';

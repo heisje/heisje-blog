@@ -1,0 +1,76 @@
+.boxUl {
+    @apply inline-block my-1;
+    @apply px-1 py-1;
+    @apply rounded-xl border;
+
+    border-color: rgba(var(--nav-ul), 0.2);
+    transition: color 0.1s, background-color 0.1s, box-shadow 0.1s;
+
+    background-color: rgba(var(--nav-ul), 0.05);
+    box-shadow: 0 10px 15px -3px rgba(var(--c-gray-400), 0.05), 0 4px 6px -4px rgba(var(--c-gray-400), 0.05);
+    &:hover{
+        background-color: rgba(var(--nav-ul), 0.05);
+        box-shadow: 0 10px 15px -3px rgba(var(--primary-400), 0.2), 0 4px 6px -4px rgba(var(--primary-400), 0.2);
+    }
+    color: rgba(var(--front), 0.7);
+
+    & li:not(:last-child) {
+        @apply mr-1
+    }
+
+    & li{
+        @apply inline-block;
+    }
+
+    & .activeLink{
+        background-color: rgba(var(--primary-400), 0.2);
+        color: rgba(var(--nav-active));
+        @apply shadow-sm shadow-primary-500/20 ;
+    }
+}
+
+.boxLi{
+    @apply inline-block ;
+    @apply rounded-lg;
+    @apply cursor-pointer;
+
+    transition: color 0.1s, background-color 0.1s, box-shadow 0.1s;
+    &:hover{
+        background-color: rgba(var(--primary-400), 0.1);
+        color: rgba(var(--nav-active));
+        box-shadow: 0 10px 15px -3px rgba(var(--primary-400), 0.2), 0 4px 6px -4px rgba(var(--primary-400), 0.2);
+    }
+    vertical-align: middle;
+
+    &.text{
+        @apply px-3 py-1;
+    }
+
+    &.icon{
+        @apply px-2 py-1;
+        &>div{
+            @apply flex h-full items-center;
+        }
+    }
+
+}
+
+.searchWidth{
+    max-width: min(600px, 90vw);
+    width: 50%;
+    min-width: min(300px, 90vw);
+}
+.searchModal{
+    outline: none; /* 포커스 스타일 제거 */
+    background-color: rgba(var(--back), 0.8);
+    border: 2px solid rgba(var(--primary-400), 0.3);
+}
+
+.resultPostUl{
+    background-color: rgba(var(--back), 0.6);
+}
+
+
+
+
+

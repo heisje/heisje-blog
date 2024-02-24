@@ -44,7 +44,7 @@ export default function HomePage() {
       </div>
       <Suspense fallback={<div className={`w-full h-full bg-blue-500`}>로딩중</div>}>
         <div className={`w-full h-screen mt-4`}>
-          블로그 만들기가 유행하길래 나만의 블로그를 만들었습니다. 이왕 만든 김에 재밌는 글을 쓰기 위해 노력하겠습니다.
+          공부한 것을 정리할 겸 나만의 블로그를 만들었습니다. 이왕 만든 김에 재밌는 글을 쓰기 위해 노력하겠습니다.
           <div className={'mt-12'}>
             <h3>블로그 스펙</h3>
             <div className={'flex flex-wrap'}>

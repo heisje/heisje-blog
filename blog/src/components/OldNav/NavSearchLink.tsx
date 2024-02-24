@@ -11,7 +11,7 @@ interface NavLinkProps {
 }
 
 /*
- * about과 post Nav
+ * about과 post OldNav
  */
 export const NavSearchLink = ({ text, href, check }: NavLinkProps) => {
   const pathname = usePathname();
