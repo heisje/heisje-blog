@@ -40,9 +40,8 @@ const allTags: string[] = (() => {
   return Array.from(tags);
 })();
 
-// 카테고리 및 태그 기반 페이지네이션
+// 심볼기반(category, tag)이 key인 Post 페이지네이션
 const slicedSymbolPosts = (() => {
-  // 심볼기반(category, tag)이 key인 Post 페이지네이션
   const symbolPosts: PostsType = {
     All: [],
   };
@@ -88,4 +87,5 @@ export const posts = {
   allTags,
   allCategories,
   slicedSymbolPosts,
+  allSymbols: Object.keys(slicedSymbolPosts),
 };

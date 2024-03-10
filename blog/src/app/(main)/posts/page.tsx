@@ -5,36 +5,29 @@ import PostCard from './PostCard';
 import { posts } from '@/utils/posts';
 import Link from 'next/link';
 
-export default function page({ searchParams }: any) {
-  // 페이지네이션 param
-  const paramPage = parseInt(searchParams?.page);
-  // 검색어 / default = 'all'
-  const paramSymbol = searchParams?.symbol || 'All';
+type ParamsType = {
+  page?: string;
+  symbol?: string;
+};
 
-  // 전체 검색어 정렬 포스트
-  const symbolPosts = posts.slicedSymbolPosts;
-  const showPosts = symbolPosts[paramSymbol][paramPage - 1];
-  const maxSize = symbolPosts[paramSymbol].length;
-
-  // 모든 태그들
-  const allTags = posts.allTags;
-  const categories = posts.allCategories;
-  const allSymbols = Array.from(new Set(['All', ...allTags, ...categories]));
+export default function page({ searchParams: { page = '1', symbol = 'All' } }: { searchParams: ParamsType }) {
+  const showPosts = posts.slicedSymbolPosts[symbol][parseInt(page) - 1]; // 보여줄 포스트
+  const maxSize = posts.slicedSymbolPosts[symbol].length; // 페이지네이션 최대 크기
 
   return (
     <>
       {/*카테고리*/}
       <aside>
         <ul className={'mt-4'}>
-          {allSymbols.map((symbol) => (
+          {posts.allSymbols.map((checkSymbol) => (
             <Link
-              key={symbol}
+              key={checkSymbol}
               className={`inline-block mb-4 mr-2 py-1 px-3 rounded-lg border border-c-gray-500/20 shadow-xl shadow-c-gray-400/5 hover:shadow-primary-400/30 hover:bg-primary/80 hover:text-white transition duration-100 ${
-                paramSymbol === symbol ? 'bg-primary/80 text-white' : 'bg-c-gray-300/5'
+                checkSymbol === symbol ? 'bg-primary/80 text-white' : 'bg-c-gray-300/5'
               }`}
-              href={`/posts?symbol=${symbol}&page=1`}
+              href={`/posts?symbol=${checkSymbol}&page=1`}
             >
-              {symbol}
+              {checkSymbol}
             </Link>
           ))}
         </ul>
@@ -47,7 +40,7 @@ export default function page({ searchParams }: any) {
         })}
       </article>
 
-      <PostsPagination page={paramPage} maxSize={maxSize} />
+      <PostsPagination page={parseInt(page)} maxSize={maxSize} />
     </>
   );
 }
