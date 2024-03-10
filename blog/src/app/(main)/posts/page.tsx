@@ -2,32 +2,27 @@ import React from 'react';
 import PostsPagination from './PostsPagination';
 
 import PostCard from './PostCard';
-import { getCategory, getSymbolPosts, getTags } from '@/utils/posts';
+import { postsData } from '@/utils/posts';
 import Link from 'next/link';
 
 export default function page({ searchParams }: any) {
-  const paramPage = parseInt(searchParams?.page); // pagination param
-  const paramSymbol = searchParams?.symbol || 'All'; // symbol default = 'all'
+  // 페이지네이션 param
+  const paramPage = parseInt(searchParams?.page);
+  // 검색어 / default = 'all'
+  const paramSymbol = searchParams?.symbol || 'All';
 
-  const symbolPosts = getSymbolPosts();
+  // 전체 검색어 정렬 포스트
+  const symbolPosts = postsData.getSymbolPosts;
   const showPosts = symbolPosts[paramSymbol][paramPage - 1];
   const maxSize = symbolPosts[paramSymbol].length;
 
-  const allTags = getTags();
-  const categories = getCategory();
+  // 모든 태그들
+  const allTags = postsData.getTags;
+  const categories = postsData.getCategories;
   const allSymbols = Array.from(new Set(['All', ...allTags, ...categories]));
 
   return (
-    <section>
-      {/*블로그 소개글*/}
-      <header className={'flex h-48 items-center border border-c-gray-500/20 rounded-xl'}>
-        <div className="mx-auto text-3xl font-extrabold">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500">
-            김희제의 개발 포스팅
-          </span>
-        </div>
-      </header>
-
+    <>
       {/*카테고리*/}
       <aside>
         <ul className={'mt-4'}>
@@ -40,7 +35,6 @@ export default function page({ searchParams }: any) {
               href={`/posts?symbol=${symbol}&page=1`}
             >
               {symbol}
-              {/*<span className={'text-sm'}>{` (${symbolPosts[symbol].length})`}</span>*/}
             </Link>
           ))}
         </ul>
@@ -54,6 +48,6 @@ export default function page({ searchParams }: any) {
       </article>
 
       <PostsPagination page={paramPage} maxSize={maxSize} />
-    </section>
+    </>
   );
 }

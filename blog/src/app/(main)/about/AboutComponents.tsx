@@ -15,39 +15,41 @@ const techs = {
   postit: ['ml5.js', 'p5.js', 'JavaScript'],
 };
 
-export const AboutHeader = () => {
+export const AboutHeader = ({ className }: { className: string }) => {
   return (
-    <div className={'flex flex-wrap justify-between items-center'}>
-      <div>
-        <h1 className={'flex-shrink-0 mb-0  font-light'}>
-          <span>안녕하세요!</span>
-          <br />
-          <span>UX와 DX에 관심이 많은</span>
+    <header className={className}>
+      <div className={'flex flex-wrap justify-between items-center'}>
+        <div>
+          <h1 className={'flex-shrink-0 mb-0  font-light'}>
+            <span>안녕하세요!</span>
+            <br />
+            <span>UX와 DX에 관심이 많은</span>
 
-          <br />
-          <span>
-            개발자 <span className={'font-bold'}>김희제</span>입니다.
-          </span>
-        </h1>
-        <div className={'flex flex-wrap items-center mt-3 text-heading'}>
-          <Link href={'https://github.com/heisje'} className={'mr-2 transition hover:text-primary-400'}>
-            <FaSquareGithub className={'text-4xl'} />
-          </Link>
-          <Link
-            href={'https://www.linkedin.com/in/heeje-kim-715488286/'}
-            className={'transition hover:text-primary-400'}
-          >
-            <FaLinkedin className={'text-4xl'} />
-          </Link>
+            <br />
+            <span>
+              개발자 <span className={'font-bold'}>김희제</span>입니다.
+            </span>
+          </h1>
+          <div className={'flex flex-wrap items-center mt-3 text-heading'}>
+            <Link href={'https://github.com/heisje'} className={'mr-2 transition hover:text-primary-400'}>
+              <FaSquareGithub className={'text-4xl'} />
+            </Link>
+            <Link
+              href={'https://www.linkedin.com/in/heeje-kim-715488286/'}
+              className={'transition hover:text-primary-400'}
+            >
+              <FaLinkedin className={'text-4xl'} />
+            </Link>
+          </div>
         </div>
+        <Image
+          className={'w-0 y-0 sm:w-48 sm:h-48 rounded-3xl'}
+          src={aboutTitleImg}
+          alt={'소개사진'}
+          placeholder="blur"
+        />
       </div>
-      <Image
-        className={'w-0 y-0 sm:w-48 sm:h-48 rounded-3xl'}
-        src={aboutTitleImg}
-        alt={'소개사진'}
-        placeholder="blur"
-      />
-    </div>
+    </header>
   );
 };
 

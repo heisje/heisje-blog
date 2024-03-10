@@ -14,7 +14,7 @@ export type searchPostsType = {
 };
 
 export const postSize = 5;
-let posts: Post[][] = [];
+
 const categories: Set<string> = new Set(); // category 저장
 const tags: Set<string> = new Set(); // tag 저장
 
@@ -62,7 +62,7 @@ const slicePosts = (posts: Post[]): Post[][] => {
 // 카테고리 및 태그 기반 페이지네이션
 const sliceSymbolPosts = () => {
   const tempPosts: Post[] = sortPosts(); // 정렬된 Posts를 가져옴
-  const symbols: string[] = [...getTags(), ...getCategory()]; // 카테고리와 태그들을 가져옴
+  const symbols: string[] = [...getTags(), ...getCategories()]; // 카테고리와 태그들을 가져옴
 
   const temp = [...tempPosts];
   for (let i = 0; i < temp.length; i += postSize) {
@@ -86,13 +86,15 @@ const sliceSymbolPosts = () => {
 };
 
 // 전체 포스트 참조
-export const getPosts = () => {
-  if (!posts.length) {
-    const temp = sortPosts();
-    posts = slicePosts(temp);
-  }
-  return posts;
-};
+// export const getPosts = () => {
+//   let posts: Post[][] = [];
+//
+//   if (!posts.length) {
+//     const temp = sortPosts();
+//     posts = slicePosts(temp);
+//   }
+//   return posts;
+// };
 
 // 전체 태그 참조
 export const getTags = () => {
@@ -105,7 +107,7 @@ export const getTags = () => {
 };
 
 // 전체 카테고리 참조
-export const getCategory = () => {
+export const getCategories = () => {
   if (!categories.size) {
     searchCategoryPosts().forEach((category) => {
       categories.add(category);
@@ -137,4 +139,11 @@ export const getSearchPosts = () => {
     });
   }
   return searchPosts;
+};
+
+export const postsData = {
+  getSearchPosts: getSearchPosts(),
+  getTags: getTags(),
+  getCategories: getCategories(),
+  getSymbolPosts: getSymbolPosts(),
 };
