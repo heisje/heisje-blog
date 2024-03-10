@@ -2,7 +2,7 @@ import React from 'react';
 import PostsPagination from './PostsPagination';
 
 import PostCard from './PostCard';
-import { postsData } from '@/utils/posts';
+import { posts } from '@/utils/posts';
 import Link from 'next/link';
 
 export default function page({ searchParams }: any) {
@@ -12,13 +12,13 @@ export default function page({ searchParams }: any) {
   const paramSymbol = searchParams?.symbol || 'All';
 
   // 전체 검색어 정렬 포스트
-  const symbolPosts = postsData.getSymbolPosts;
+  const symbolPosts = posts.slicedSymbolPosts;
   const showPosts = symbolPosts[paramSymbol][paramPage - 1];
   const maxSize = symbolPosts[paramSymbol].length;
 
   // 모든 태그들
-  const allTags = postsData.getTags;
-  const categories = postsData.getCategories;
+  const allTags = posts.allTags;
+  const categories = posts.allCategories;
   const allSymbols = Array.from(new Set(['All', ...allTags, ...categories]));
 
   return (

@@ -1,7 +1,7 @@
 import { allPosts, Post } from '@/contentlayer/generated';
 
 // 필요한 PostData자료구조
-export type PostsType = {
+type PostsType = {
   [tag: string]: Post[][];
 };
 
@@ -15,135 +15,77 @@ export type searchPostsType = {
 
 export const postSize = 5;
 
-const categories: Set<string> = new Set(); // category 저장
-const tags: Set<string> = new Set(); // tag 저장
-
-const searchPosts: searchPostsType[] = []; // 서치 할 Post내용 저장
-
-// 심볼기반(category, tag)이 key인 Post 페이지네이션
-const symbolPosts: PostsType = {
-  All: [],
-};
-
 // 포스트 정렬
-const sortPosts = () => {
-  return [...allPosts].sort(function (a, b) {
-    const dateA: Date = new Date(a?.createdAt);
-    const dateB: Date = new Date(b?.createdAt);
-    return dateB.getTime() - dateA.getTime(); // 내림차순으로 정렬하려면 b - a
+const sortedPosts: Post[] = [...allPosts].sort(function (a, b) {
+  return new Date(b.createdAt).getTime() - new Date(a?.createdAt).getTime(); // 내림차순으로 정렬하려면 b - a
+});
+
+// 전체 카테고리
+const allCategories: string[] = (() => {
+  const categoriesSet: Set<string> = new Set();
+  sortedPosts.forEach((post) => {
+    categoriesSet.add(post?.category);
   });
-};
+  return Array.from(categoriesSet);
+})();
 
-// 포스트 카테고리 분석
-const searchCategoryPosts = () => {
-  return allPosts.reduce((tempCategories: string[], post: Post) => {
-    return [...tempCategories, post?.category];
-  }, []);
-};
-
-// 포스트 태그 분석
-export const searchTagPosts = () => {
-  return allPosts.reduce((tempTags: string[], post: Post) => {
-    const temp = post?.tags || [];
-    return [...tempTags, ...temp];
-  }, []);
-};
-
-// 전체 포스트 페이지네이션
-const slicePosts = (posts: Post[]): Post[][] => {
-  const result: Post[][] = [];
-  const temp = [...posts];
-  for (let i = 0; i < temp.length; i += postSize) {
-    result.push(temp.slice(i, i + postSize));
-  }
-  return result;
-};
+// 전체 태그
+const allTags: string[] = (() => {
+  const tags: Set<string> = new Set(); // tag 저장
+  sortedPosts.forEach((post) => {
+    post.tags?.forEach((tag) => {
+      tags.add(tag);
+    });
+  });
+  return Array.from(tags);
+})();
 
 // 카테고리 및 태그 기반 페이지네이션
-const sliceSymbolPosts = () => {
-  const tempPosts: Post[] = sortPosts(); // 정렬된 Posts를 가져옴
-  const symbols: string[] = [...getTags(), ...getCategories()]; // 카테고리와 태그들을 가져옴
-
-  const temp = [...tempPosts];
-  for (let i = 0; i < temp.length; i += postSize) {
-    symbolPosts['All'].push(temp.slice(i, i + postSize));
+const slicedSymbolPosts = (() => {
+  // 심볼기반(category, tag)이 key인 Post 페이지네이션
+  const symbolPosts: PostsType = {
+    All: [],
+  };
+  // 모든 포스트를 페이지네이션
+  for (let i = 0; i < sortedPosts.length; i += postSize) {
+    symbolPosts['All'].push(sortedPosts.slice(i, i + postSize));
   }
+
+  const symbols: string[] = [...allTags, ...allCategories]; // 카테고리와 태그들을 가져옴
 
   // category나 tags가 존재하면 필터에 포함시킨 뒤 페이지네이션 배열을 추가한다.
   symbols.forEach((symbol: string) => {
     symbolPosts[symbol] = [];
-    const temp = tempPosts.filter((post) => {
-      if (post?.tags) {
-        const tagsArray = Array.isArray(post.tags) ? post.tags : [post.tags];
-        return post.category === symbol || tagsArray.includes(symbol);
-      }
-      return post.category === symbol;
+    const temp = sortedPosts.filter((post) => {
+      if (post.category === symbol) return true;
+      if (post?.tags) return post.tags.includes(symbol);
+      // const tagsArray = Array.isArray(post.tags) ? post.tags : [post.tags];
     });
+
     for (let i = 0; i < temp.length; i += postSize) {
       symbolPosts[symbol].push(temp.slice(i, i + postSize));
     }
   });
-};
-
-// 전체 포스트 참조
-// export const getPosts = () => {
-//   let posts: Post[][] = [];
-//
-//   if (!posts.length) {
-//     const temp = sortPosts();
-//     posts = slicePosts(temp);
-//   }
-//   return posts;
-// };
-
-// 전체 태그 참조
-export const getTags = () => {
-  if (!tags.size) {
-    searchTagPosts().forEach((tag) => {
-      tags.add(tag);
-    });
-  }
-  return Array.from(tags);
-};
-
-// 전체 카테고리 참조
-export const getCategories = () => {
-  if (!categories.size) {
-    searchCategoryPosts().forEach((category) => {
-      categories.add(category);
-    });
-  }
-  return Array.from(categories);
-};
-
-// 검색 심볼들을 내보내기
-export const getSymbolPosts = () => {
-  if (!symbolPosts['All'].length) {
-    sliceSymbolPosts();
-  }
   return symbolPosts;
-};
+})();
 
-// 검색을 위한 포스트 생성
-export const getSearchPosts = () => {
-  if (!searchPosts.length) {
-    const tempPosts: Post[] = sortPosts(); // 정렬된 Posts를 가져옴
-    tempPosts.forEach((post) => {
-      const tempKeyword: string[] = [post.title, post.description, post.category, ...(post?.tags || [])];
-      searchPosts.push({
-        url: post._raw.flattenedPath,
-        title: post.title,
-        description: post.description,
-        keywords: tempKeyword.join(' '),
-      });
+// 검색을 기능을 위한 포스트 mapped 생성
+const forSearchPosts = (() => {
+  return sortedPosts.reduce<searchPostsType[]>((tempPosts, post) => {
+    const tempKeyword: string[] = [post.title, post.description, post.category, ...(post?.tags || [])];
+    tempPosts.push({
+      url: post._raw.flattenedPath,
+      title: post.title,
+      description: post.description,
+      keywords: tempKeyword.join(' '),
     });
-  }
-  return searchPosts;
-};
+    return tempPosts;
+  }, []);
+})();
 
-export const postsData = {
-  getSearchPosts: getSearchPosts(),
-  getTags: getTags(),
-  getCategories: getCategories(),
-  getSymbolPosts: getSymbolPosts(),
+export const posts = {
+  forSearchPosts,
+  allTags,
+  allCategories,
+  slicedSymbolPosts,
 };
