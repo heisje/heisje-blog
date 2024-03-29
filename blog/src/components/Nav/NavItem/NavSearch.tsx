@@ -15,7 +15,11 @@ export const NavSearch = ({ searchPosts }: { searchPosts: searchPostsType[] }) =
   const [isDisplay, setIsDisplay] = useState(false);
   return (
     <>
-      <li className={`h-8 ${styles.boxLi} ${styles.icon}`} onClick={() => setIsDisplay(!isDisplay)}>
+      <li
+        className={`h-8 ${styles.boxLi} ${styles.icon}`}
+        onClick={() => setIsDisplay(!isDisplay)}
+        id={'search-nav-button'}
+      >
         <div>
           <FiSearch size={'20'} />
         </div>

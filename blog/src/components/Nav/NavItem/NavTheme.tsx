@@ -18,6 +18,7 @@ export const NavTheme = ({ type }: { type: 'light' | 'dark' }) => {
     <li
       onClick={() => setTheme(type)}
       className={`h-8 ${styles.boxLi} ${styles.icon} ${isMounted && type === theme ? styles.activeLink : ''}`}
+      id={`${type}-nav-button`}
     >
       <div>
         <Icon size={'20'} />

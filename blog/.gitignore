@@ -2,6 +2,8 @@
 # custom
 /.contentlayer
 /.idea
+/cypress/screenshots
+/cypress/videos
 
 # dependencies
 /node_modules
