@@ -1,0 +1,189 @@
+---
+title: '[JavaScript] CJS, AMD, UMD, ESM 이란?'
+description: 라이브러리 배포시에 필요한 모듈시스템 지식을 알아보자
+category: JavaScript
+createdAt: 2024-04-24
+tags:
+  - JavaScript
+---
+
+참고자료: https://defineall.tistory.com/916
+
+# 왜 알아야할까?
+
+라이브러리를 배포할 때, 최적화를 위해 모듈로 구성하여 배포하게 된다. 각각 모듈의 특징이 존재하여 맞는 것을 찾아야한다.
+
+주로 번들링 도구를 통해 ESM와 UMD(CJS가능)를 동시에 번들하여, 호환성을 최대화하여 사용하는 것같다.
+
+리액트네이티브는 Metro 번들러가 ESM을 완전히 지원하지 않기 때문에, UMD(CJS가능)로 모듈화 해야했다.
+
+# **CJS, AMD, UMD, ESM**?
+
+모두 자바스크립트 모듈 시스템으로 코드를 분할하고 관리하기 위한 방식이다.
+
+**모듈 분리 시 장점**
+
+- **유지보수**
+  - 기능들이 모듈화가 잘 되어있다면 의존성을 줄일 수 있어 유지보수가 편하다.
+- **네임스페이스화**
+  - 모듈 분리를 하면 모듈만의 네임스페이스를 갖기 때문에 중복 변수명으로부터 자유로워진다.
+- **재사용성**
+  - 재사용 가능한 로직을 모듈로 분리시켜 필요할 때마다 사용할 수 있다.
+
+# CJS (CommonJS)
+
+javascript를 브라우저에서만 아니라 다른 곳에서도 사용할 수 있게 해주는 API
+
+특징 :
+
+- 동기적으로 로드되므로 서버 측에서 주로 사용됨
+  - CJS 사용처: Node.js, PINF
+- **`require`**와 **`module.exports`**문법을 사용함
+
+### 사용법
+
+```jsx
+// require를 통해 모듈을 변수에 담을 수 있게 되었다
+var lib = require('package/lib');
+
+// 가져온 모듈을 사용할 수 있게 되었다.
+function foo() {
+  lib.log('hello world!');
+}
+
+// foo 함수를 다른 파일에서 사용할 수 있도록, 다른 모듈로 추출할 수 있게 되었다
+exports.foobar = foo;
+```
+
+# AMD (Asynchronous Module Definition)
+
+클라이언트 사이드에서 주로 사용, 비동기적으로 작동
+
+- CommonJS의 단점이였던 동기를 **비동기** 형식으로 만든 모듈
+- 비동기적 로드를 지원해 주로 브라우저 환경에서 사용
+  - 사용처 : RequireJS, PINF
+- **`define`** 함수와 콜백을 통해 모듈을 정의
+- define - require 문법 사용
+
+```jsx
+// myModule.js
+// define을 이용해 새로운 모듈을 불러오고, 콜백함수로 전해줌
+define(['package/lib'], function (lib) {
+
+  // 콜백함수 이용해서, 불러온 모듈 사용가능
+  function foo () {
+    lib.log('hello world!');
+  }
+
+  // 다른파일에서 foo함수를, foobar이란 이름의 모듈로 불러올 수 있게 만듬
+  return {
+    foobar: foo
+  };
+});
+```
+
+```jsx
+// 위에서 선언한 모듈 불러오기
+require(['package/myModule'], function (myModule) {
+  myModule.foobar();
+});
+```
+
+# UMD **(Univarsal Module Definition)**
+
+서버와 클라이언트 양쪽에서 사용될 수 있는 모듈을 개발할 때 사용됩니다. 코드를 한 번 작성하여 여러 환경에서 동작하게 하려는 경우 유용합니다.
+
+특징:
+
+- AMD와 CommonJS에서 모두 사용가능하다.
+  - AMD - 클라이언트 사이드
+  - CommonJS - 서버 사이드
+
+사용법
+
+```jsx
+(function (root, factory) {
+  if(typeof define === 'function' && define.amd) {
+    // define이 함수이고, define.amd가 존재할때 AMD사용
+    define(['exports', 'b'], factory);
+  } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+    // export가 객체이고, export.nodeName이 문자열이 아닐때, CommonJS사용
+    factory(exports, require('b'));
+  } else {
+    //Browser globals
+    factory((root.commonJsStrict = {}), root.b);
+  }
+}(this, function (exports, b) {
+  // use b in some fashion.
+  // attach properties to the exports object to define
+  // the
+  exports.action = function () {};
+}));
+```
+
+# ESM (ECMAScript Module)
+이 중 가장 최신 모듈 포멧. 동기 비동기를 지원하지만, 호환이 안되는 브라우저가 있을 수도 있어 번들어와 함께 사용된다.
+
+- ECMSScript에서 ES6 부터 지원하고 있는 표준 모듈 시스템
+- `export` - `import` 문법 사용
+- `<script>`태그에 type="module"을 선언하면 자바스크립트 파일을 모듈로 사용할 수 있다.
+- nodejs에서는 package.json에 "type":"module" 추가
+- import와 export를 지원하지 않는 브라우저가 많아 번들러를 함께 사용
+- 이때, 모듈이라는 것을 정확히 표현하기 위해 mjs 확장자를 사용하도록 권장한다
+
+사용법
+
+```jsx
+// import, from 구문을 사용할 수 있다!
+import lib from 'package/lib';
+
+function foo () {
+  lib.log('hello world!');
+}
+
+export {
+  foobar: foo
+};
+```
+
+사용법
+
+```jsx
+<html>
+<body>
+  <!script type="module" src="foo.mjs"></!script>
+  <!script type="module" src="foo.mjs"></!script>
+</body>
+</html>
+```
+
+```jsx
+// foo.mjs
+var x = 'foo';
+
+console.log(x);  // foo
+
+console.log(window.x);
+```
+
+사용하는 곳
+
+```jsx
+// bar.mjs
+// import를 사용해, 모듈을 불러온다
+
+import test from "./module.mjs";
+console.log(test);
+
+var x = 'bar';
+
+console.log(x);
+
+console.log(window.x);
+```
+
+# 관련글
+
+CJS와 ESM : https://junghyeonsu.com/posts/deploy-simple-npm-library/
+
+CJS와 ESM에 대응하는 라이브러리 개발하기 : https://toss.tech/article/commonjs-esm-exports-field
