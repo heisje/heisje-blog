@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open",
+    "build-and-start": "next build && next start",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -16,6 +19,7 @@
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
     "contentlayer": "^0.3.4",
+    "cypress": "^13.7.0",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "gray-matter": "^4.0.3",

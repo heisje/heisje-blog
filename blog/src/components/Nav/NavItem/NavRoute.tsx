@@ -25,6 +25,7 @@ export const NavRoute = ({ path }: NavLinkProps) => {
       <Link
         href={path.href}
         className={`${styles.boxLi} ${styles.text} ${pathname === path.check ? styles.activeLink : ''}`}
+        id={`${path.text}-nav-button`}
       >
         <span>{path.text}</span>
       </Link>

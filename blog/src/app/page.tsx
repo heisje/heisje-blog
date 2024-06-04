@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useEffect, useState, useRef } from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { FaLinkedin, FaSquareGithub } from 'react-icons/fa6';
 import Image from 'next/image';
@@ -48,13 +48,20 @@ export default function HomePage() {
           <div className={'mt-12'}>
             <h3>블로그 스펙</h3>
             <div className={'flex flex-wrap'}>
-              {['Next.js', 'TypeScript', 'Contentlayer', 'tailwind', 'Docker', 'Jenkins', 'EC2/ubuntu/Nginx'].map(
-                (stack) => (
-                  <code key={stack} className={'text-sm bg-c-gray-400/20 mr-2 mt-1 px-1 py-0.5 rounded'}>
-                    {stack}
-                  </code>
-                ),
-              )}
+              {[
+                'Next.js',
+                'TypeScript',
+                'Contentlayer',
+                'tailwind',
+                'Cypress',
+                'Docker',
+                'Jenkins',
+                'EC2/ubuntu/Nginx',
+              ].map((stack) => (
+                <code key={stack} className={'text-sm bg-c-gray-400/20 mr-2 mt-1 px-1 py-0.5 rounded'}>
+                  {stack}
+                </code>
+              ))}
             </div>
           </div>
         </div>

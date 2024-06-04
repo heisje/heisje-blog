@@ -1,9 +1,10 @@
-import ViewCounterTest from '@/app/(main)/testing/ViewCounterTestButton';
+import { posts } from '@/utils/posts';
 
 const TestingPage = () => {
   return (
     <section>
-      <ViewCounterTest />
+      {JSON.stringify(posts)}
+      {/*<ViewCounterTest />*/}
     </section>
   );
 };

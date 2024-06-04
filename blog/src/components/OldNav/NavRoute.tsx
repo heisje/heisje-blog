@@ -1,6 +1,6 @@
 'use client';
 
-import { getSearchPosts, searchPostsType } from '@/utils/posts';
+import { searchPostsType } from '@/utils/posts';
 import { NavSearchLink } from '@/components/OldNav/NavSearchLink';
 import styles from './Nav.module.css';
 import { NavRouteItem } from '@/components/OldNav/NavRouteItem';

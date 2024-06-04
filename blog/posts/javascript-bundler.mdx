@@ -1,0 +1,153 @@
+---
+title: '[JavaScript] 번들러 종류와 특징 (webpack, rollup, esbuild, vite)'
+description: 모듈시스템을 효과적으로 사용하기 위한 번들러의 종류와 특징을 알아보자
+category: JavaScript
+createdAt: 2024-04-25
+tags:
+  - JavaScript
+---
+# 번들러 왜 필요할까?
+
+웹서비스가 방대해지며, 코드를 분리한 모듈로 관리를 해야했다. 그래서 모듈 시스템(Commonjs, AMD, UMD, ESM)이 등장했다.  이 모듈 시스템을 효과적으로 사용하기 위해 번들러`webpack` `rollup` `esbuild` `vite`가 등장했다.
+
+- 더 작은 용량의, 더 최적화된 리소스를 제공
+- 흩어져 있는 여러 파일을 하나로 통합하고 문자를 압축
+- 다양한 사용자 환경에서도 돌아가도록 코드 변환
+- 안 쓰이는 소스코드 부분을 분석해서 제거
+- ...
+
+이를 자동화 시켜주는 것이 번들러이다.
+
+등장 순서는 `webpack` `rollup` `esbuild` `vite` 이다.
+
+# Webpack
+
+**한 줄 요약: 통합에 집중, 가장 방대한 커뮤니티를 가진 번들러**
+
+**특징:**
+
+- 강력한 개발 커뮤니티
+- plugin과 loader
+  - loader = 파일변환, 번들링, 빌드
+  - plugin = output 파일 튜닝
+- 소스코드의 변화를 감지하여 바로 반영
+- Code Splotting(번들 로드 최적화) 코드를 분리하여 페이지 로딩속도 개선 = lazy loading
+
+**코드 예시:**
+```jsx
+//Webpack.config.js
+const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: {
+    home: './pages/home.js',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+    ],
+  },
+  plugins: [new HtmlWebpackPlugin()],
+};
+```
+
+# Rollup
+
+한줄 요약: 확장. 번들의 결과물에 집중하여 라이브러리 구축 시 추천
+
+2017년 이후 나온 모듈번들러
+
+정체성은 확장이다. 같은 소스코드를 다양한 환경에 맞게 빌드할 수 있다. 그래서 어플리케이션을 만들 땐 Webpack, 라이브러리를 만들 땐 Rollup이란 말이 있다.
+
+**특징**
+
+- Webpack은 내부적으로 CommonJS를 사용하지만 Rollup은 typescript(ES6)를 사용한다. 그래서 아래 특성들이 나타난다.
+- Rollup은 좀 더 빠르다
+  - Rollup은 호이스팅으로 한번에 평가
+  - webpack은 모듈을 함수로 감싸서 평가
+- tree shaking은 ES6에서 제대로 동작한다. 레퍼런스 되지 않는 코드를 제거하는 것이 아닌, 모듈만 AST 트리에 포함시키는 방식으로 제거한다.
+- ES6에서는 CommonJS식의 require를 지원하지 않는다.
+  - 하지만 Rollup은 둘다 가능하다.
+  - Webpack은 공식적으로는 둘 중 하나만 사용하기를 권장한다.
+
+**Rollup의 사용방식**
+
+- Webpack과 흡사
+- input과 entry를 설정하고 번들링에 적용할 기능을 plugin 형태로 끼워 넣으면 된다.
+
+```jsx
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
+
+const production = !process.env.ROLLUP_WATCH;
+
+export default {
+  input: 'src/main.js',
+  output: {
+    file: 'public/bundle.js',
+    format: 'iife',
+    sourcemap: true,
+  },
+  plugins: [
+    resolve(),
+    commonjs(),
+    production && terser(),
+  ],
+};
+```
+
+# ESBuild
+
+**한줄 요약: 정말 빠른 빌드 속도를 자랑하는 번들러!**
+
+이전까지는 모두 JavaScript기반이였다. 하지만 JavaScript는 성능상 한계가 있다. ESBuild는 Go로 제작되어 10배나 빠르다.
+
+**빠른 이유**
+
+- 네이티브 코드 방식 사용
+- 병렬처리 최적화
+- 메모리 사용 최적화
+- 자체 JavaScript 파서 사용
+
+**단점**
+
+- 메이저 버전이 릴리즈 되지 못했다.
+- es5이하 문법을 100%지원하지 않는다.
+
+# Vite
+
+**한줄 요약: 빠르고 만능, ESBuild와 Rollup의 장점을 합쳤다.**
+
+~~바이트인지 알았는데 비트이다.~~
+
+**특징: 빠르다!**
+
+- **`native ES modules`** 기반의 강력한 개발서버
+- **`esbuild`**로 파일들을 통합하고 **`rollup`**을 통해 번들링
+- 개발 서버 구동 시간이 거의 **`0`**에 가까움,
+- 모든 CommonJS 및 UMD 파일을 ESM으로 불러올 수 있도록 변환함
+- 쉽다: 별도의 설정이 없이 다양한 리소스 **`import`** 가능
+- [**CSS 빌드 최적화**](https://vitejs-kr.github.io/guide/features.html#build-optimizations)
+  - **`Direct Import`** 구문에 대해 **`Preload`** 하도록 함으로써, 네트워크 비용 줄임
+
+### 주의 해야할 점
+
+- **vites는 기본적으로 ES6을 타겟으로 번들을 생성합니다.**
+- 따라서 ES5이하로 타겟을 잡으려면 별도로 polyfill를 다뤄야 합니다.
+- 그래도 공식적으로 [**`@vitejs/plugin-legacy`**](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 플러그인을 제공 해줍니다.
+- **vite는 기본적으로 `<root>/index.html` 파일이 빌드를 위한 진입점입니다.**
+- 순수한 JS 번들을 생성하기 위해서는 [**`라이브러리 모드`**](https://vitejs-kr.github.io/guide/build.html#library-mode)를 설정해야 합니다.
+
+# 많이 참고한 자료
+
+https://bepyan.github.io/blog/2023/bundlers

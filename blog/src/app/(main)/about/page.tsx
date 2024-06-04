@@ -27,9 +27,8 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <section>
-      <header className={'mb-20'}>
-        <AboutHeader />
-      </header>
+      <AboutHeader className={'mb-20'} />
+
       <article className={'mb-20 leading-7'}>
         <div className={'mb-20'}>
           <h1 className={'mb-4'}>Developer.</h1>

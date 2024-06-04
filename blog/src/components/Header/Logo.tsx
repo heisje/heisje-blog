@@ -4,7 +4,7 @@ import TextTransition, { presets } from 'react-text-transition';
 import useMounted from '@/hook/useMounted';
 import Link from 'next/link';
 import { Pretendard } from '@/app/_fonts/localFonts';
-const TEXTS = ['heisje.devLog', '김희제블로그'];
+const TEXTS = ['heisje.devBlog', '김희제블로그'];
 
 export const Logo = () => {
   const [index, setIndex] = React.useState(0);
@@ -40,7 +40,7 @@ export const Logo = () => {
           {isMounted ? (
             <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
           ) : (
-            'heisje.devLog'
+            'heisje.devBlog'
           )}
         </span>
       </div>
