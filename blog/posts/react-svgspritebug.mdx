@@ -1,0 +1,139 @@
+---
+title: '[React] SVG Sprite 색이 바뀌지 않는 문제'
+description: SVG색이 안바뀐다.. 이렇게 귀찮게 바꿔야되나
+category: 버그
+createdAt: 2024-05-08
+tags:
+  - React
+  - Figma
+  - 버그
+---
+# 이슈
+
+**문제 :** SVG sprite를 fill속성으로 컬러 변환을 시도했으나 되지 않았다.
+
+**예상 문제 원인:** svg파일을 sprite use로 사용하면서, fill의 계층이 달라져서 생긴 문제
+
+**해결방법 요약:**
+
+방법 1. filter 속성으로 해결
+
+방법 2. path속성에서 `fill="currentColor"`로 설정해두고
+
+- 상위 svg에서 `color={color}`로 변환하거나
+- 클래스로 color를 변환
+
+# 문제 찾기
+
+### 기존: 문제가 생겼던 React파일.
+
+svg sprite로 use를 사용해서 참조 중이었다.
+
+fill로 색을 바꾸려고 했으나 되지 않음
+
+```jsx
+export const SvgIcon = ({
+  iconId,
+  size = "1.5rem",
+  color,
+  ...props
+}: SVGIconProps) => (
+  <svg width={size} height={size} fill={color} {...props}>
+    <use
+      href={`${Svgs}#${iconId}`}
+    />
+  </svg>
+);
+```
+
+### 기존: 문제가 생겼던 SVG파일
+
+계층구조가 존재하여 svg의 적용이 잘 되지 않음을 유추할 수 있음
+
+```html
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" >
+  <defs>
+    <symbol id="home" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fill="#0000FF" fill-rule="evenodd" d="m21.069 8.204-8.447-6.717a.998.998 0 0 0-1.244 0L2.93 8.204a2 2 0 0 0-.755 1.565v9.418a2.4 2.4 0 0 0 2.4 2.4H10v-4.752a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4.752h5.424a2.4 2.4 0 0 0 2.4-2.4V9.77a2 2 0 0 0-.755-1.565" clip-rule="evenodd"/>
+    </symbol>
+  ....
+  </defs>
+</svg>
+```
+
+# 문제 예상 원인
+
+svg sprite로 use를 사용할 경우, 직접 fill을 통해 바꿀 수 없음. 계층구조가 복잡하기 때문
+
+# 문제 해결방법
+
+1. filter로 해결하는 방법
+
+rgb(#000000)값으로 해결하지 못하는 부분이 아쉬웠다.
+
+[https://stackoverflow.com/questions/22252472/how-can-i-change-the-color-of-an-svg-element](https://stackoverflow.com/questions/22252472/how-can-i-change-the-color-of-an-svg-element)
+
+2. path에 currentColor을 주고, css로 상위 color를 변경하는 방법
+
+[https://stackoverflow.com/questions/56483476/svg-fill-with-use-tag](https://stackoverflow.com/questions/56483476/svg-fill-with-use-tag)
+
+
+# 2번 해결법 상세설명
+
+path에 currentColor을 주고, css로 상위 color를 변경하는 방법
+
+### 기존 SVG:
+
+```jsx
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" >
+  <defs>
+    <symbol id="home" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fill="#0000FF" fill-rule="evenodd" d="m21.069 8.204-8.447-6.717a.998.998 0 0 0-1.244 0L2.93 8.204a2 2 0 0 0-.755 1.565v9.418a2.4 2.4 0 0 0 2.4 2.4H10v-4.752a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4.752h5.424a2.4 2.4 0 0 0 2.4-2.4V9.77a2 2 0 0 0-.755-1.565" clip-rule="evenodd"/>
+    </symbol>
+  ....
+  </defs>
+</svg>
+```
+
+### 변경 후 SVG
+
+path안의 fill을 currentColor로 변환
+
+```jsx
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" >
+  <defs>
+    <symbol id="home" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fill="currentColor" fill-rule="evenodd" d="m21.069 8.204-8.447-6.717a.998.998 0 0 0-1.244 0L2.93 8.204a2 2 0 0 0-.755 1.565v9.418a2.4 2.4 0 0 0 2.4 2.4H10v-4.752a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4.752h5.424a2.4 2.4 0 0 0 2.4-2.4V9.77a2 2 0 0 0-.755-1.565" clip-rule="evenodd"/>
+    </symbol>
+  ....
+  </defs>
+</svg>
+```
+
+### 변경 후 react코드
+
+fill을 color로 변환
+
+```jsx
+export const SvgIcon = ({
+  iconId,
+  size = "100%",
+  color,
+  ...props
+}: SVGIconProps) => (
+  <svg width={size} height={size} color={"color"} {...props}>
+    <use href={`${Svgs}#${iconId}`} />
+  </svg>
+);
+```
+
+## 추가
+
+svg와 use에 모두 width, height를 써줘야 커진다.
+
+```jsx
+<svg color={color} width={size} height={size} {...props}>
+  <use href={`${Svgs}#${iconId}`} width={size} height={size} />
+</svg>
+```
