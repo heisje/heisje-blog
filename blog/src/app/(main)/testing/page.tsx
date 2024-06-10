@@ -1,9 +1,9 @@
-import { posts } from '@/utils/posts';
+import { allPosts } from '@/contentlayer/generated';
 
 const TestingPage = () => {
   return (
     <section>
-      {JSON.stringify(posts)}
+      {JSON.stringify(allPosts)}
       {/*<ViewCounterTest />*/}
     </section>
   );
