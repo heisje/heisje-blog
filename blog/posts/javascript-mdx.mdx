@@ -1,0 +1,39 @@
+---
+title: '[개발일상] mdx에서 export라고 쓰면 당연히 에러가 난다'
+description: mdx도 jsx이자 javacript다. js문법과 겹치지 않게 주의하자
+category: 개발일상
+createdAt: 2024-04-25
+tags:
+  - JavaScript
+---
+# 결론: mdx는 Markdown에서 jsx를 쓸 수 있게 만든 것이다.
+따라서 export를 쓰면 에러가 난다. 다만 위처럼 중간에 쓰면 에러가 나지 않는 것을 볼 수 있다. (이 포스팅도 mdx를 파싱해서 js로 변환해서 쓰고있다.)
+
+# jsx?
+jsx를 사용하면 js코드 안에서 직관적인 코드를 작성할 수 있다. 기존에 javascript를 사용한 웹 코딩은 직관적이지 않았다. React의 코드가 직관적인 이유이기도 하다.
+React에서 자랑하는 것을 공식문서를 통해 확인할 수 있다. [https://react.dev/learn/writing-markup-with-jsx](https://react.dev/learn/writing-markup-with-jsx)
+```jsx
+const element = <h1>Hello, world!</h1>;
+```
+위에 문법은 JSX(JavaScript XML)라는 JavaScript에 XML을 추가하여 확장한 문법이다. 브라우저는 읽을 수 없는 문법이기 때문에 Babel과 같은 도구를 통해 JavaScript로 변환된다.
+
+```jsx
+// JSX 코드
+const element = <h1>Hello, world!</h1>;
+
+// Babel을 통해 변환된 JavaScript 코드
+const element = React.createElement('h1', null, 'Hello, world!');
+```
+위의 예시를 보면 얼마나 직관적인지 알 수 있다.
+
+# mdx?
+MDX는 Markdown과 JSX(JavaScript XML)를 결합한 파일 형식이다.
+MDX를 사용하면 Markdown 문서 내에서 React 컴포넌트를 포함하고 사용할 수 있다.
+Markdown의 간결한 문서 작성 기능과 React의 컴포넌트 기반 UI 구성을 결합하여 동적인 문서를 작성할 수 있게 해줍니다.
+[contentlayer](https://contentlayer.dev/)로 next.js에서 쉽고 빠르게 mdx를 시작할 수 있다.
+
+# 참고자료
+[https://react.dev/learn/writing-markup-with-jsx](https://react.dev/learn/writing-markup-with-jsx)
+[https://contentlayer.dev/](https://contentlayer.dev/)
+
+

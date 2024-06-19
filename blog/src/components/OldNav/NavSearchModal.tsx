@@ -1,10 +1,10 @@
 'use client';
 
 import { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
-import { searchPostsType } from '@/utils/posts';
 import styles from '@/components/OldNav/Nav.module.css';
 import { FiSearch } from 'react-icons/fi';
 import Link from 'next/link';
+import { SearchPostsType } from '@/model/post';
 
 export const NavSearchModal = ({
   isDisplay,
@@ -13,7 +13,7 @@ export const NavSearchModal = ({
 }: {
   isDisplay: boolean;
   setIsDisplay: Dispatch<SetStateAction<boolean>>;
-  searchPosts: searchPostsType[];
+  searchPosts: SearchPostsType[];
 }) => {
   // input을 참조
   const inputRef = useRef<HTMLInputElement | null>(null);

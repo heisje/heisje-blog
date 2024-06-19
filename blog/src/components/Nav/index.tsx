@@ -1,6 +1,6 @@
-import { posts } from '@/utils/posts';
 import { NavBar } from '@/components/Nav/NavBar';
 import { NavItem } from '@/components/Nav/NavItem';
+import { postManager } from '@/model/post';
 
 export const paths = [
   { href: '/about', text: 'Portfolio', check: '/about' },
@@ -8,7 +8,7 @@ export const paths = [
 ];
 
 export const Nav = () => {
-  const searchPosts = posts.forSearchPosts; // 검색만을 위한 배열
+  const searchPosts = postManager.getPostsForSearch(); // 검색만을 위한 배열
 
   return (
     <nav className={`block mt-3 sm:mt-0`}>
