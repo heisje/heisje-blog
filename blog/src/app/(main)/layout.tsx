@@ -14,8 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <Header />
-      <main className={'px-4 min-h-screen mx-auto max-w-[640px]'}>{children}</main>
-
+      <main className={`px-4 min-h-screen mx-auto max-w-[1024px]`}>{children}</main>
       <Footer />
     </>
   );

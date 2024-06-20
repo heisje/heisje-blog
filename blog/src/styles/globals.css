@@ -37,7 +37,7 @@
 body {
   @apply
     font-display
-    text-base font-light
+    text-base font-normal
     text-c-gray-600 dark:text-c-gray-300
     transition
   ;
