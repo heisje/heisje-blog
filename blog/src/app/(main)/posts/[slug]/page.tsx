@@ -1,5 +1,5 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { allPosts, Post } from '@/../.contentlayer/generated';
+import { allPosts } from '@/../.contentlayer/generated';
 import Image from 'next/image';
 import PostComment from './PostComment';
 import { Metadata, ResolvingMetadata } from 'next';
@@ -7,6 +7,7 @@ import * as process from 'process';
 import { rootURL } from '@/constants';
 import PostCounter from '@/app/(main)/posts/[slug]/PostCounter';
 import { toDateString } from '@/utils/toDateString';
+import { Pretendard } from '@/app/_fonts/localFonts';
 
 /*
  * mdx slug를 기반으로 params SSG 생성
@@ -54,7 +55,7 @@ const PostDetailPage = ({ params: { slug } }: { params: { slug: string } }) => {
 
   return (
     <article>
-      <div>
+      <div className={'mt-4'}>
         <span className={'font-bold'}>{post?.category}.</span>
         {/*태그*/}
       </div>
@@ -65,7 +66,7 @@ const PostDetailPage = ({ params: { slug } }: { params: { slug: string } }) => {
         <span>작성자 김희제</span>
       </div>
 
-      <div className={'mb-3 py-2 border-b'}>
+      <div className={`mb-3 py-2 border-b`}>
         {post?.tags
           ? post?.tags.map((tag) => {
               return (
@@ -86,7 +87,7 @@ const PostDetailPage = ({ params: { slug } }: { params: { slug: string } }) => {
         </div>
       )}
 
-      <div className={'markdown-body'}>
+      <div className={`${Pretendard.className} mt-10 markdown-body`}>
         <MDXComponent />
       </div>
 

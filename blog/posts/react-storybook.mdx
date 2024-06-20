@@ -12,7 +12,7 @@ tags:
 
 ### 개요
 
-스토리북으로 디자인 시스템을 자동으로/무료로 쉽게 배포할 수 있다. 심지어 무료배포 뿐 아닌 협업지원, 회귀테스트도 쉽게 설치할 수 있다.
+스토리북으로 디자인 시스템을 자동으로/무료로 쉽게 배포할 수 있다. 심지어 무료배포가 끝이 아니라, 협업지원과 회귀테스트 도구도 쉽게 설치할 수 있다.
 
 # 0. 시행착오 전 알면 좋은 것
 
@@ -51,7 +51,7 @@ npx storybook@latest init
 
 `package.json` 에 있는 `"storybook": "storybook dev -p 6006"`실행시켜보자. 예제와 자동 docs, Actions등이 자동으로 설치되었다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/95635447-cb34-4736-b1c0-32fe26a006b4/c6b527e0-1fe8-4e62-8d91-b621c477a0f3/Untitled.png)
+![Untitled](/assets/react-storybook/Untitled.png)
 
 # 3. 크로마틱 설정
 
@@ -73,11 +73,11 @@ https://www.toptal.com/developers/gitignore/
 1. 크로마틱 홈페이지[chromatic.com](https://www.chromatic.com/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook)에 들어가서 깃허브 계정으로 로그인한다.
 2. Add project를 누르고, `Choose from GitHub`(왼쪽)을 누르고 동기화 하고싶은 프로젝트를 선택한다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/95635447-cb34-4736-b1c0-32fe26a006b4/96311844-90bc-460c-aac4-37c3a7774b2c/Untitled.png)
+![Untitled](/assets/react-storybook/Untitled1.png)
 
 1. 이런 화면이 나오면, 프로젝트의 터미널에 순차입력한다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/95635447-cb34-4736-b1c0-32fe26a006b4/0e28efa9-b7a4-48ad-a49e-4e75bc7c497e/Untitled.png)
+![Untitled](/assets/react-storybook/Untitled2.png)
 
 ```python
 pnpm install --save-dev chromatic
@@ -148,11 +148,11 @@ jobs:
 
 1. 깃허브 레포지토리의 `Settings/Secrets and variables`에 들어가 New repository secret 버튼을 선택한 후, Name에 `CHROMATIC_PROJECT_TOKEN` 내용에 메모장에 저장해두었던 토큰을 붙여넣어주자
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/95635447-cb34-4736-b1c0-32fe26a006b4/51f1404b-c359-4f9a-abc3-7b0a5708c639/Untitled.png)
+![Untitled](/assets/react-storybook/Untitled3.png)
 
 1. git에 변경사항을 push해주면 다음처럼 뜨면서, 커밋 옆 노란 점을 누르면 다음처럼 뜰 것이다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/95635447-cb34-4736-b1c0-32fe26a006b4/49278bec-0b30-4755-82bf-f968604530b5/Untitled.png)
+![Untitled](/assets/react-storybook/Untitled4.png)
 
 이 상황에서 에러가 나는 경우가 많을 수 있다. Details를 클릭해 로그를 확인해 수정해주자. 스토리북8에서는 node18버전 이상을 요구하기 때문에, 에러가 나는 경우가 있다.
 

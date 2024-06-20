@@ -72,8 +72,9 @@ export const NavSearchModal = ({
             <input
               id={'SEARCH'}
               ref={inputRef}
+              autoComplete="off"
               className={'bg-transparent outline-0 border-0'}
-              placeholder={'Posts 검색'}
+              placeholder={'블로그 포스트 검색'}
               onChange={handleSearchChange}
             />
           </div>

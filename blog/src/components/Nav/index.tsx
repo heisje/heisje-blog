@@ -3,7 +3,7 @@ import { NavItem } from '@/components/Nav/NavItem';
 import { postManager } from '@/model/post';
 
 export const paths = [
-  { href: '/about', text: 'Portfolio', check: '/about' },
+  { href: '/portfolio', text: 'Portfolio', check: '/portfolio' },
   { href: '/posts?page=1', text: 'Posts', check: '/posts' },
 ];
 
@@ -21,6 +21,7 @@ export const Nav = () => {
 
       <NavBar>
         <NavItem.theme type={'light'} />
+        <NavItem.theme type={'system'} />
         <NavItem.theme type={'dark'} />
       </NavBar>
     </nav>
