@@ -4,13 +4,13 @@ import { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
+  defaultTheme?: string;
 }
-export default function Providers({ children }: Props) {
+export default function Providers({ children, defaultTheme = 'system' }: Props) {
   const STORAGE_KEY = 'theme';
-  const DEFAULT_THEME = 'system';
 
   return (
-    <ThemeProvider attribute={'class'} storageKey={STORAGE_KEY} defaultTheme={DEFAULT_THEME}>
+    <ThemeProvider enableSystem={true} attribute={'class'} storageKey={STORAGE_KEY} defaultTheme={defaultTheme}>
       {children}
     </ThemeProvider>
   );
