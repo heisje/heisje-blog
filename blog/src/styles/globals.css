@@ -42,14 +42,40 @@ body {
     transition
   ;
 
+  overflow-y: visible; /* 반드시 overlay 처리 */
   background-color: rgba(var(--back));
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
-  -webkit-transition: background-color 9999s ease-out;
-  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+
+@keyframes slideUp0 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-3rem);
+  }
+}
+
+@keyframes slideUp1 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-13rem);
+  }
+}
+
+
+.slideUp0 {
+  animation: slideUp0 1s ease-in-out forwards;
+}
+
+.slideUp1 {
+  animation: slideUp1 1s ease-in-out forwards;
+}
+
+.portfolio-card-container:hover{
+  & .portfolio-card-img{
+    @apply ease-out duration-300 scale-110;
+  }
 }

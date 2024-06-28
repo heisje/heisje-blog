@@ -23,9 +23,7 @@ export const PortfolioNavItem = ({ path }: NavLinkProps) => {
     <li>
       <Link
         href={path.href}
-        className={`hover:text-primary-500 hover:font-bold ${
-          pathname === path.check ? 'text-primary-500 font-bold' : 'font-normal'
-        }`}
+        className={`hover:font-extrabold ${pathname === path.check ? 'font-extrabold' : 'font-normal'}`}
         id={`${path.text}-nav-button`}
       >
         {path.text}

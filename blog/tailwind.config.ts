@@ -10,10 +10,29 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      display: 'system-ui, Pretendard, Noto Sans KR', // Adds a new `font-display` class
+      display: 'Pretendard, system-ui, Noto Sans KR', // Adds a new `font-display` class
     },
 
     extend: {
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp0: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-3rem)' },
+        },
+        slideUp1: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-13rem)' },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 1s ease-in-out forwards',
+        slideUp0: 'slideUp0 1s ease-in-out forwards',
+        slideUp1: 'slideUp1 1s ease-in-out forwards',
+      },
       colors: {
         // custom gray = zinc
         'c-gray-50': 'rgb(250 250 250)',

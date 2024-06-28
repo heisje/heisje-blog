@@ -7,5 +7,5 @@ export default defineConfig({
     },
   },
   trashAssetsBeforeRuns: false,
-  video: true,
+  // video: true,
 });

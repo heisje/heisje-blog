@@ -8,7 +8,7 @@ const searchPosts = postManager.getPostsForSearch(); // 검색만을 위한 배�
 const PortfolioNav = () => {
   return (
     <>
-      <nav className={'z-10 w-full h-11 fixed top-0 flex justify-between items-center py-1 px-4 bg-c-gray-950 '}>
+      <nav className={'z-10 w-full h-11 fixed top-0 flex justify-between items-center py-1 px-4 bg-black/0 '}>
         <Logo />
 
         <ul className={'flex gap-4 items-center text-sm'}>
@@ -19,7 +19,7 @@ const PortfolioNav = () => {
           <NavThemeReactive />
         </ul>
       </nav>
-      <div className={'h-11'}></div>
+      {/*<div className={'h-11'}></div>*/}
     </>
   );
 };
