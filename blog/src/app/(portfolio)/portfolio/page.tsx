@@ -1,28 +1,7 @@
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import PortfolioNav from '@/app/(portfolio)/portfolio/PortfolioNav';
-import Image from 'next/image';
-import aboutTitleImg from '@public/images/aboutTitle.png';
-
-const data = [
-  {
-    title: 'Poke type Calculator',
-    description: '포켓몬 타입 계산기',
-    image: aboutTitleImg,
-    link: '',
-  },
-  {
-    title: '지피지기',
-    description: 'Chat-GPT 프롬프트 공유',
-    image: aboutTitleImg,
-    link: '',
-  },
-  {
-    title: '지금 여기 블로그',
-    description: '이 블로그입니다...',
-    image: aboutTitleImg,
-    link: '',
-  },
-];
+import PortfolioMain from '@/app/(portfolio)/portfolio/PortfolioMain';
+import PortfolioProjects from '@/app/(portfolio)/portfolio/PortfolioProjects';
 
 interface ExperienceItem {
   title: string;
@@ -89,80 +68,39 @@ const experiences: Array<ExperienceItem> = [
 
 export default function HomePage() {
   return (
-    <div>
+    <>
       <PortfolioNav />
+      <PortfolioMain />
 
-      <div className={'h-96 flex justify-center items-center'}>
-        이 페이지는 리뉴얼중입니다. 예쁘게 봐주세요..........
-      </div>
+      <PortfolioProjects />
 
-      <ul className={'mx-4 my-12 grid grid-cols-1 sm:grid-cols-2 gap-2'}>
-        {data.map((d) => (
-          <li
-            key={d.title}
-            className={'relative ease-in-out duration-300 hover:scale-105 hover:shadow h-96 rounded overflow-hidden'}
-          >
-            <Image
-              src={d.image}
-              alt={`${d.title} image`}
-              placeholder="blur"
-              objectFit="cover"
-              objectPosition="center"
-              className={'absolute left-0 top-0 -z-10 '}
-            />
-            <div className={'h-full flex flex-col items-center justify-center bg-c-gray-950/50'}>
-              <h3 className={'text-2xl'}>{d.title}</h3>
-              <p>{d.description}</p>
-              <button
-                className={
-                  'ease-out duration-300 hover:scale-105 hover:shadow px-4 py-1.5 bg-blue-500 rounded-full text-sm text-c-gray-50'
-                }
-              >
-                더 알아보기
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {/*<HorizontalScrollComponent />*/}
 
       <div className={'w-full flex justify-center items-center '}>
         <ul className={'mx-4 my-12 relative'}>
           {experiences.map((e, i) => (
-            <>
-              <li key={e.title} className={'sm:flex'}>
-                <div className={'hidden sm:block whitespace-nowrap'}>
-                  {e.startDate}
-                  {e?.endDate && <span> ~ {e?.endDate}</span>}
-                </div>
+            <li key={e.title} className={'sm:flex'}>
+              <div className={'hidden sm:block whitespace-nowrap'}>
+                {e.startDate}
+                {e?.endDate && <span> ~ {e?.endDate}</span>}
+              </div>
 
-                <div className={'hidden sm:block mx-8 '}></div>
-                <div>
-                  <h3 className={'text-2xl'}>
-                    {e.title}
-                    <span className={'font-normal text-sm ml-4 sm:hidden whitespace-nowrap'}>
-                      {e.startDate} ~ {e?.endDate && e.endDate}
-                    </span>
-                  </h3>
+              <div className={'hidden sm:block mx-8 '}></div>
+              <div>
+                <h3 className={'text-2xl'}>
+                  {e.title}
+                  <span className={'font-normal text-sm ml-4 sm:hidden whitespace-nowrap'}>
+                    {e.startDate} ~ {e?.endDate && e.endDate}
+                  </span>
+                </h3>
 
-                  <p>{e.description}</p>
-                  <div className={'mt-4 mb-12 flex-nowrap'}>{e?.others}</div>
-                </div>
-              </li>
-            </>
+                <p>{e.description}</p>
+                <div className={'mt-4 mb-12 flex-nowrap'}>{e?.others}</div>
+              </div>
+            </li>
           ))}
         </ul>
       </div>
-
-      <div className={'p-12 bg-white'}>
-        <h1 className={'text-c-gray-500'}>기술스택</h1>
-        <div className={'inline-block'}>
-          <ul className={'rounded-full flex py-1 px-1 bg-c-gray-400'}>
-            <li className={'rounded-full bg-red-400 py-1 px-2'}>프론트엔드</li>
-            <li className={'rounded-full py-1 px-2'}>백엔드</li>
-            <li className={'rounded-full py-1 px-2'}>기타</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

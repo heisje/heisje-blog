@@ -1,33 +1,30 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const useIntersectionObserver = ({ threshold = 0.1 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const targetRef = useRef(null);
+interface useIntersectionObserverProps {
+  root?: null;
+  rootMargin?: string;
+  threshold?: number;
+  onIntersect: IntersectionObserverCallback;
+}
+
+const useIntersectionObserver = ({
+  root,
+  rootMargin = '0px',
+  threshold = 0,
+  onIntersect,
+}: useIntersectionObserverProps) => {
+  const [target, setTarget] = useState<HTMLElement | null | undefined>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: threshold, // 10%가 화면에 보일 때 트리거됩니다.
-      },
-    );
+    if (!target) return;
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
-    }
+    const observer: IntersectionObserver = new IntersectionObserver(onIntersect, { root, rootMargin, threshold });
+    observer.observe(target);
 
-    return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
-      }
-    };
-  }, []);
-  return { ref: targetRef };
+    return () => observer.unobserve(target);
+  }, [onIntersect, root, rootMargin, target, threshold]);
+
+  return { setTarget };
 };
 
 export default useIntersectionObserver;
