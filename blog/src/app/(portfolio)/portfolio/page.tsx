@@ -1,54 +1,7 @@
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import PortfolioNav from '@/app/(portfolio)/portfolio/PortfolioNav';
-import Image, { StaticImageData } from 'next/image';
-import aboutTitleImg from '@public/images/aboutTitle.png';
-import pokelogImg from '@public/medias/pokecal.png';
-import zippyImg from '@public/medias/zippyziggy.gif';
-import PortfolioCard from '@/app/(portfolio)/portfolio/PortfolioCard';
 import PortfolioMain from '@/app/(portfolio)/portfolio/PortfolioMain';
-import { FiArrowDown } from 'react-icons/fi';
-
-type dataType = {
-  title: string;
-  description: string;
-  image: StaticImageData;
-  link: string;
-  position?: 'top' | 'bottom';
-};
-
-const data: dataType[] = [
-  {
-    title: 'Poke type Calculator',
-    description: '포켓몬 타입 계산기',
-    image: pokelogImg,
-    link: '',
-    position: 'top',
-  },
-  {
-    title: '지피지기',
-    description: 'Chat-GPT 프롬프트 공유',
-    image: zippyImg,
-    link: '',
-  },
-  {
-    title: '지금 여기 블로그',
-    description: '이 블로그입니다...',
-    image: aboutTitleImg,
-    link: '',
-  },
-  {
-    title: '지금 여기 블로그',
-    description: '이 블로그입니다...',
-    image: aboutTitleImg,
-    link: '',
-  },
-  {
-    title: '지금 여기 블로그',
-    description: '이 블로그입니다...',
-    image: aboutTitleImg,
-    link: '',
-  },
-];
+import PortfolioProjects from '@/app/(portfolio)/portfolio/PortfolioProjects';
 
 interface ExperienceItem {
   title: string;
@@ -115,31 +68,13 @@ const experiences: Array<ExperienceItem> = [
 
 export default function HomePage() {
   return (
-    <div className={''}>
-      <div className={'fixed bottom-8'}>
-        <FiArrowDown />
-      </div>
-
+    <>
       <PortfolioNav />
-
       <PortfolioMain />
 
-      <h1 className={'mt-48 mx-4 text-center'}>프로젝트</h1>
-      <ul className={'mx-auto my-12 max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-2'}>
-        {data.map((d, i) => (
-          <PortfolioCard animation={i % 2} key={i} title={d.title} description={d.description} position={d?.position}>
-            <Image
-              src={d.image}
-              alt={`${d.title} image`}
-              // placeholder="blur"
-              fill
-              objectFit="cover"
-              objectPosition="center"
-              className={`portfolio-card-img absolute left-0 top-0 ease-in-out duration-300 hover:scale-105 pointer-events-none dark:border-white/5 border-black/10 border`}
-            />
-          </PortfolioCard>
-        ))}
-      </ul>
+      <PortfolioProjects />
+
+      {/*<HorizontalScrollComponent />*/}
 
       <div className={'w-full flex justify-center items-center '}>
         <ul className={'mx-4 my-12 relative'}>
@@ -166,6 +101,6 @@ export default function HomePage() {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 }

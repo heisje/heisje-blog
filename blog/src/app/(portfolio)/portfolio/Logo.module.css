@@ -4,8 +4,8 @@
 
 .container{
     position: relative;
-    height: 300vh;
-    background-color: rgb(0, 0, 0);
+    height: 350vh;
+    /*background-color: white;*/
 }
 
 .stickyMask{
@@ -18,20 +18,25 @@
     justify-content: center;
     mask-image: url('/medias/heeje-1.svg');
     /*mask-position: 46.40% 39.98%;*/
-    mask-position: 50% center;
+    mask-position: 50% 50%;
 
     mask-repeat: no-repeat;
-    mask-size: 80%;
+    mask-size: 100%;
+}
+.lottie svg{
+    width: 300vw !important;
+    height: 100vh !important;
+    object-fit: cover !important;
 }
 
-/*.stickyMask video{*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    object-fit: cover;*/
-/*}*/
+.lottie svg g{
+    width: 300vw !important;
+    height: 100vh !important;
+    object-fit: cover !important;
+}
 
-.lottie svg{
-    width: auto !important;
-    /*height: 100%;*/
-    /*object-fit: cover;*/
+.video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }

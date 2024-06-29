@@ -39,18 +39,30 @@ export default function PortfolioCard({
   return (
     <li
       key={title}
-      className={`portfolio-card-container relative hover:shadow h-96 cursor-pointer overflow-hidden `}
+      className={`portfolio-card-container h-96 p-4 flex flex-col cursor-pointer overflow-hidden bg-c-gray-50 dark:bg-c-gray-800/50 rounded-2xl duration-300 transition-origin origin-bottom-left hover:-rotate-1 hover:shadow-xl  hover:shadow-primary-400/20 border border-c-gray-500/20 `}
       ref={setTarget}
     >
-      {children}
-      <div className={`absolute top-0 left-0 w-full flex flex-col`}>
-        <div className={'m-3 py-4 px-6 bg-c-gray-50 dark:bg-c-gray-900 shadow-lg hover:opacity-80'}>
-          <span className={'text-xs font-light'}>#웹 프로젝트</span>
-          <div className={'text-2xl font-bold m-0 '}>{title}</div>
-          <div className={'text-sm m-0'}>{description}</div>
-        </div>
-        {/*{position === 'top' ? null : <div className={'h-12'}></div>}*/}
+      <ul className={'flex gap-2 text-sm'}>
+        <li>#JavaScript</li>
+        <li>#React</li>
+      </ul>
+      <div className={'text-2xl font-bold m-0 '}>{title}</div>
+      <div className={'text-sm mb-2'}>{description}</div>
+      <div
+        className={
+          'flex-1 w-auto h-full overflow-hidden relative rounded-xl dark:border-white/5 border-black/10 border'
+        }
+      >
+        {children}
       </div>
+
+      {/*<div className={`absolute top-0 left-0 w-full flex flex-col`}>*/}
+      {/*  <div className={'m-3 py-4 px-6 bg-c-gray-50 dark:bg-c-gray-900 shadow-lg hover:opacity-80'}>*/}
+      {/*    <span className={'text-xs font-light'}>#웹 프로젝트</span>*/}
+
+      {/*  </div>*/}
+      {/*  /!*{position === 'top' ? null : <div className={'h-12'}></div>}*!/*/}
+      {/*</div>*/}
     </li>
   );
 }
