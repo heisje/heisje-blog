@@ -1,0 +1,75 @@
+---
+title: '[Projects] 개인 블로그'
+description: 프로젝트 개인 블로그
+category: Projects
+createdAt: 2023-10-01
+---
+
+# 개인 블로그
+
+![Untitled](/assets/projects/blog/Untitled.png)
+
+### 📝 개요
+
+- 풀스택 개인 블로그 프로젝트, 개발의 전반적인 경험(Cloud/Web/Test)과 Next.js를 공부하기 좋아보여 개발
+
+### 📝 성과
+
+- 유저 행동을 TEST코드로 작성하고 배포 자동화에 포함하며, 효율적인 CI/CD환경 구성방법 취득
+
+### 📝 기술 스택
+
+![Untitled](/assets/projects/blog/Untitled%201.png)
+
+- Cloud: `AWS EC2`, `EGINX`, `Jenkins`, `Docker`, `Vercel`(2024.06 이후)
+- Test: `Cypress`
+- Web: `Next.js`, `TypeScript`, `tailwind`, `Pnpm`, `Mongo db Atlas`
+
+### 📝 기능 구현 요약
+
+- 블로그 SSG 포스팅, 페이지네이션, 태그, 검색, 댓글, 조회수, 다크모드,
+- CI/CD : 클라우드 구축 및 자동 배포
+- 자동화 E2E 테스트 : Cypress를 사용하여 에러시 viewport별 에러 캡처
+- 아키텍처 구축 : 성능 96점(평균) / SEO 100점(Lighthouse)
+
+# 📚 상세 구현 내용
+
+### 1. 자동화 테스트
+
+- 문제점 : 배포 시에 중복된 에러 검출. SSG로 제작되어, Dev모드와 빌드과정에서 에러 검출이 불가능했음.
+- 행동 : Cypress를 사용해 End-to-End 자동화 Test를 작성
+- 결과 : Viewport크기 별로 에러를 스크린샷하여 에러를 빠르게 확인 가능
+
+### 2. Docker 빌드 시간 단축
+
+- 문제점 : 빌드 단계의 시간이 과도하게 걸림
+- 행동 : Nextjs의 standalone속성으로 image경량화 및 빌드 속도를 단축했습니다.
+- 결과 : 용량은 1/5, 빌드 속도 1/4로 단축
+
+![Untitled](/assets/projects/blog/Untitled%202.png)
+
+### 3. DB 커넥션 시간 단축
+
+- 문제점 : Next의 DB연결에 과도한 시간이 걸림
+- 행동 :  DB커넥션을 유지해 재통신 API속도를 단축했습니다.
+- 결과 : 재 통신 속도가 7배 빨라짐
+
+![Untitled](/assets/projects/blog/Untitled%203.png)
+
+### 4. 다크모드 깜박임 문제 해결
+
+- hydrate 과정의 다크모드, UI 깜박임 문제를 isMounted hook과 Next Theme로 최소화했습니다. 또한 Color를 변수화하여 테마를 적용했습니다.
+
+![Untitled](/assets/projects/blog/Untitled%204.png)
+
+# 📚 배운 점
+
+- 아키텍처 설계 : 클라우드와 가상화환경에서 자동화된 CI/CD를 구축하는 법
+- 빌드 구조 설계 : 빌드 단계에서 성능/테스트 등 전략 구사 방법
+- 렌더링 전략 : 렌더링 설계로 타겟에 맞는 렌더링 전략 구사 방법
+
+# 📚 보완할 점 / 아쉬운 점
+
+- 이미지 전용 AWS S3를 구성하면 더 빨라질 수 있습니다.
+- 서버 사양의 문제점 : 서버에 용량을 자주 추가했습니다. 서버 리스 아키텍처에 관심이 생겼습니다.
+- Tailwind-css 변수로 디테일한 로직처리가 어려워, Post-css와 혼용하며 직관성이 떨어졌습니다.

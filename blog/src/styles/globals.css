@@ -49,19 +49,25 @@ body {
 
 @keyframes slideUp0 {
   0% {
-    transform: translateY(0);
+
+    /*transform: translateX(-20rem);*/
+    opacity: 0;
+    transform: rotateY(-180deg);
   }
   100% {
-    transform: translateY(-3rem);
+    transform: translateY(-2rem);
+    opacity: 100;
   }
 }
 
 @keyframes slideUp1 {
   0% {
     transform: translateY(0);
+    opacity: 0;
   }
   100% {
-    transform: translateY(-13rem);
+    transform: translateY(-4rem);
+    opacity: 100;
   }
 }
 
@@ -86,5 +92,19 @@ body {
   }
   100% {
     transform: translateX(0);
+  }
+}
+.underline, .underline:before, .underline:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.project-modal{
+
+  @apply mx-4 my-4 sm:my-16 sm:mx-16 p-4;
+  & img{
+    width: 100%;
   }
 }
