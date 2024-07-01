@@ -1,5 +1,0 @@
-.card:hover{
-    & image{
-        @apply ease-out duration-300 hover:scale-105;
-    }
-}

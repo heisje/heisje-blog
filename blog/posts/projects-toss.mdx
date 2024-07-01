@@ -1,0 +1,69 @@
+---
+title: '[Projects] 토스 주식 UI 클론코딩'
+description: 프로젝트 토스 주식 UI 클론코딩
+category: Projects
+createdAt: 2024-05-01
+---
+![Untitled](/assets/projects/toss/Untitled.png)
+
+# 토스 주식 UI 클론코딩
+
+### 📝 개요
+
+- 토스주식 메인페이지를 클론코딩하며, 실무에 적용가능한 쉽고 편한 협업 방안 찾기
+- 팀 구성 : 디자이너 1 / Frontend 1(본인)
+- 기간 : 2024.05 (2주)
+
+### 📝 성과
+
+- **SVG Sprite로 이미지 용량 60%축소**
+- 컴포넌트 자동 테스트&문서화 방법 습득
+
+### 📝 기술 스택
+
+![Untitled](/assets/projects/toss/Untitled%201.png)
+
+- `React`, `Vite`, `TypeScript`, `Storybook`, `StyledComponent`, `Github-WorkFlow`
+`Figma`, `Chromatic`, `Notion`
+
+### 📝 내 역할 요약
+
+- 토스 주식 메인페이지 UI 클론
+- SVG Sprite를 사용해 용량이 60% 축소된 편의성을 가진 컴포넌트 구현
+- StoryBook을 통한 Components 문서화
+- Figma Devtools를 사용한 빠른 Assets 추출/개발
+- 디자인시스템 기반 UI Components 개발
+- Chromatic연동 (시각회귀테스트/UI협업도구)
+- Github-Actions 자동배포
+
+# 📚 상세 구현 사항
+
+### 1. SVG Sprite로 용량 축소/쉬운 개발
+
+- 문제상황 : SVG 추출 시에 더미코드가 많아 더 효율적인 방식을 찾음
+- 행동 : SVG Sprite를 사용해 SVG 묶음을 한 파일로 지정해두고 use로 사용하는 컴포넌트 제작
+- **결과1 : 209kb에서 131kb로 용량 60%로 축소**
+- **결과2 : Type지정으로 자동완성을 사용해 빠른 참조 가능**
+- 결과3 : 이미지 호출 횟수 축소 (페이지에 사용된 아이콘 배수)
+
+### 2. StoryBook & Chromatic UI컴포넌트 문서화
+
+- 문제상황 : 디자이너가 개발 상황을 매번 찾아 확인하기 어려운 문제
+- 행동1 : 디자인시스템 UI컴포넌트 문서화를 위해 StoryBook 도입, 매개변수 타입지정으로 문서 자동완성
+- 결과1 : StoryBook으로 매개변수별 코드와 UI를 한 눈에 볼 수 있게 문서화
+- 행동2 : 디자인 컨펌이 쉽도록 협업도구 Chromatic을 도입.
+- 결과2 : 시각적 회귀 테스트로 변경사항을 쉽게 확인하고 디자이너가 컨펌가능하게 제작
+
+### 3. 정확한 UI구현
+
+- 문제상황 : 디자이너가 디자인한 UI를 빠르고 정확하게 구현하고 싶음
+- 행동1 : Figma Devtools를 사용해 CSS를 참조해 빠른 개발을 시도함
+- 행동2 : Figma Plugin을 사용해 디자인토큰 일괄 내보내기
+- 결과 : 디자이너가 설정한 에셋을 자동완성된 내보내기로 정확하고 빠른 구현.
+
+# 회고
+
+- 로직을 많이 배제하여 시간 안에 구현했다. 체계화된 UI개발이 얼마나 어려운지도 깨달았다. 다양한 것을 실험해보며, 프로젝트 기간 2주 중 1.5주나 프로젝트 세팅에 시간을 보냈다.
+- npm으로 배포해보며 Rollup과 Vite를 활용한 번들러 지식을 얻을 수 있었다.
+- npm으로 배포 후 모노레포 reactNative에서 구현해보려했지만, 시간 내에 못해서 아쉽다.
+- 다양한 디바이스 환경을 고려하는 어려움을 이해할 수 있었다.

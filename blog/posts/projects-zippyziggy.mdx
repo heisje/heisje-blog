@@ -1,0 +1,187 @@
+---
+title: '[Projects] 지피지기'
+description: 프로젝트 지피지기
+category: Projects
+createdAt: 2023-06-05
+---
+![main.gif](/assets/projects/zippyziggy/main.gif)
+
+![Untitled](/assets/projects/zippyziggy/Untitled.gif)
+
+# 지피지기
+
+### 📝 개요
+
+- Chat-GPT프롬프트 공유 및 대화 공유 서비스. 더미 프롬프트를 통해 질문의 정확도를 올리는 서비스
+- 팀 구성 : Backend 3 / Frontend 3 (웹/확장/앱)
+- 기간 : 2023.05 (6주)
+
+### 📝 성과
+
+- 🏆 **SSAFY 자율 프로젝트 우수상 수상 (5팀 중 1등)**
+- 6달간 약 80명의 사용자 유지 (2023/11/27 종료 > SSAFY에서 후속 제작됨)
+- **성능개선 : [CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초**
+
+### 📝 기술 스택
+
+![Untitled](/assets/projects/zippyziggy/Untitled.png)
+
+- `Next.js`, `TypeScript`, `StyledComponent`, `Redux-Toolkit`, `React-query`, `ES-Lint`
+
+### 📝 내 역할 요약
+
+- 프론트엔드 웹 담당
+- Next.js를 사용한 웹사이트의 전반의 구조 설계, 기능 개발
+  - 메인페이지 (Animation, Navigation 등)
+  - 프롬프트 공유 (CRUD, 사용하기, 포크, 생성 가이드, 북마크 등)
+  - 대화 공유 (CRUD, 사용하기)
+  - 유저관련 (JWT로그인, 수정, 프로필 페이지 등)
+  - 유저 검증 HOC 컴포넌트, 모달/토스트/좋아요 등 공통 컴포넌트
+  - 반응형 UI / 다크모드
+- 에러개선 : 제니퍼 프론트 모니터링 도구를 활용한 에러개선 392건
+- 성능개선 : [CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초
+- 서버비용 축소: 이미지압축, SSE(Server Sends Events) 실시간 알림, React-query캐싱
+
+# 📚 주요 구현 사항 (Frontend)
+
+### 1. 에러로그를 통한 에러해결
+
+![Untitled](/assets/projects/zippyziggy/Untitled%201.png)
+
+- 문제점 : 3주의 빠른 개발 일정으로, 예상하지 못한 에러를 해결해야 했음
+- 행동 : 제니퍼프론트로 모니터링 인프라를 구축하여 에러로그를 통해 문제 해결
+- 결과 : 베타테스터 400명(analytics기준)이 남겨준 에러로그 392건을 분석하여 모두 해결
+
+## 2. 성능테스트 (Lighthouse / Page speed insights)
+
+![Untitled](/assets/projects/zippyziggy/Untitled%202.png)
+
+- 문제점 : 모니터링을 사용해보며 렌더링 시간이 긴 것을 파악, Light-house를 통해 성능을 측정해본 결과 LCS부분의 속도가 2.8초로 느림
+- 행동1 : React-query 캐싱, 이미지 압축을 해보았으나 유의미하지 않음
+- 행동2 : 클라이언트사이드 렌더링(CSR)을 서버사이드렌더링(CSR)으로 변경함
+- 결과 : SSR에서 초기 인식 속도(LCS)가 3배 빨라짐(2.8초에서 0.8초) (Lighthouse/Page speed insights를 활용해 각 디바이스별 8회 평균을 추산)
+
+## 3. 유저의 피드백 반영
+
+![Untitled](/assets/projects/zippyziggy/Untitled%203.png)
+- 유저의 피드백(ex. 프롬프트가 뭐지?, 버그 등)을 기준으로 요구사항을 정리하고 버전관리
+
+# 🏆 프로젝트 성과
+
+🏆 [2학기] 특화 프로젝트 우수상 수상 **(5팀 중 1등)** (삼성전자)
+
+- 300명의 사용자 수 (2023.5 기준)
+  - **이미지**
+
+![Untitled](/assets/projects/zippyziggy/Untitled%204.png)
+
+- 매달 80명의 다운로드 수 (2023.12 까지)
+- 성능개선 : [CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초
+
+# 💻 프로젝트 회고
+
+**배운 점 / 회고**
+
+- 렌더링 전략 : 렌더링 설계로 타겟에 맞는 렌더링 전략 구사 방법을 배웠습니다.
+- 고객 관점의 중요성: 고객에게는 어렵게 느껴짐을 알게되어, UX관점에서 더 친절히 알려주기 위한 토스트 메세지,  스탭형 가이드를 제작하며 중요성을 느꼈습니다.
+- 개발 서버 분리의 필요성: 고객에게 버그를 제공하지 않기 위해 꼭 필요함을 느꼈습니다.
+- 문서화의 필요성 : JWT와 같은 복잡한 로직을 시퀀스다이어그램 등을 통해 문서화하면 커뮤니케이션에도움이 되는 것을 느꼈습니다.
+- 모니터링 : 제니퍼프론트 및 Sentry를 사용해보고 에러트레킹 방법에 대해 학습했습니다.
+
+보완할 점
+
+- 관심사 분리의 아쉬움 : 빠른 개발로 인한 코드의 퀄리티가 아쉬웠습니다. 코드가 방대해지자
+에러 부분에서 try-catch만을 썼을 때 구분하기 어려웠습니다. 이후 Error-boundary와 같이 에러의
+관심사만 분리하는 방법이나, 컴파운드 컴포넌트 패턴을 통해 관심사를 분리하는 방법에 대해 배웠습니다.
+
+---
+
+# UI구현 사항 서비스 설명
+
+### 메인 화면
+
+: 확장 프로그램 다운로드 링크와 첫 방문자를 위한 튜토리얼이 제공됩니다. 간단한 예시들을 통해 효과적인 프롬프트 작성을 쉽게 확인하실 수 있습니다. 다른 사람들의 Chat GPT 대화를 살펴보러 가는 링크도 추가되어 있습니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%201.gif)
+
+### 로그인
+
+: 카카오/구글 인증과 Spring Security + JWT를 활용하여 로그인 서비스를 구현하였습니다. 유저들에게 보다 빠른 회원가입을 통해 저희 사이트 방문에 대한 편리성을 제공합니다. 마이페이지를 통해 닉네임 및 프로필 수정이 가능하며, 회원 탈퇴 기능도 제공합니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%202.gif)
+
+### 테마 변경
+
+: 사용자들의 취향을 고려하여 다크 모드를 지원하고 있습니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%203.gif)
+
+### 반응형 웹
+
+![Untitled](/assets/projects/zippyziggy/Untitled%204.gif)
+
+### 프롬프트 목록
+
+: 총 5가지의 유형으로 프롬프트가 구분되며, 좋아요/조회수/최신순으로 정렬하여 확인이 가능합니다. 페이지네이션을 통해 사용자들이 보다 쉽고 빠르게 원하는 프롬프트를 찾을 수 있습니다. 엘라스틱 서치를 활용한 검색 엔진으로 더욱 빠른 검색 기능도 제공합니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled.gif)
+
+### 프롬프트 상세
+
+: 프롬프트의 상세 내역으로 프롬프트의 정보를 확인하고 댓글과 평점을 남길 수 있습니다. 뿐만 아니라 해당 프롬프트로 나눈 대화를 다른 사람과 공유하여 볼 수 있는 대화 공유 기능을 제공합니다. 오른쪽 리모컨 UI를 통해 ChatGPT에 직접 들어가서 해당 프롬프트를 사용해 볼 수 있습니다. 만약 해당 프롬프트를 수정해서 사용해보고 싶은 경우 수정해서 사용해보기를 통해 직접 프롬프트를 업그레이드 할 수 있습니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%205.gif)
+
+### 프롬프트 생성
+
+: 프롬프트에 대한 작성이 가능합니다. 작성법에 관한 메뉴얼도 함께 제공하고 있습니다. 프롬프트가 잘 동작하는지 테스트 버튼을 통해 확인이 가능합니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%206.gif)
+
+### 확장 프로그램 다운로드
+
+: 사용자에게 보다 빠르고 더 나은 서비스를 제공하기 위해 확장 프로그램 기능을 제공하고 있습니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%207.gif)
+
+### 확장 프로그램 로그인
+
+: ChatGPT 사이트에서도 저희 사이트에 로그인이 가능합니다. 웹 사이트와 연동되어 로그인/로그아웃이 진행되게 됩니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%208.gif)
+
+### 확장 프로그램 메인
+
+: 프롬프트에 대한 목록을 보다 직관적으로 확인해볼 수 있습니다. 카테고리, 좋아요, 조회수, 최신순에 대한 정렬 기능과 검색 기능을 제공합니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%209.gif)
+
+### 확장 프로그램 사용
+
+: 사용하고자 하는 프롬프트를 클릭 후 예시에 맞는 질문을 하게 되면 ChatGPT를 통해 간편하게 답변을 받으실 수 있습니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%2010.gif)
+
+### 확장 프로그램 추가 기능
+
+: 검색창 우측 편에 추가적인 기능을 두어 사용자의 편의성을 추구했습니다. 간결하게, 요약, 자세하게, 계속해서 등과 같은 기능들을 제공합니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%2011.gif)
+
+### 대화 공유
+
+: ChatGPT와 나눈 대화를 공유하기를 통해 웹사이트에 공유가 가능합니다. 유저들 간의 자유로운 소통과 프롬프트 사용에 대한 재미를 느껴볼 수 있습니다.
+
+![Untitled](/assets/projects/zippyziggy/Untitled%2012.gif)
+
+---
+
+## 💻 협업 방식
+
+[팀 든든](https://www.notion.so/b36768fbd5704b83a599d0c2424b3114?pvs=21)
+
+## 💻 서비스 영상
+
+제작 : 김희제
+
+[https://www.youtube.com/watch?v=y5e62YD9vhc](https://www.youtube.com/watch?v=y5e62YD9vhc)
