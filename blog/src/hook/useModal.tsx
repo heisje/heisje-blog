@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import Modal from '../components/Modal';
 import { ProjectType } from '@/app/(portfolio)/portfolio/_components/ProjectsProvider';
 
@@ -16,6 +16,14 @@ const useModal = () => {
   const close = useCallback(() => {
     setIsOpen(() => false);
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen]);
 
   // isOpen이 true라면 Modal 컴포넌트를 반환, false라면 null을 반환
   return {

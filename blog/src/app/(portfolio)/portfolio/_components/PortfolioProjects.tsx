@@ -38,7 +38,7 @@ const PortfolioProjects = ({ projects1, projects2 }: { projects1: ProjectType[];
           {projects2.map((d, i) => (
             <PortfolioCard
               key={i}
-              animation={1}
+              animation={0}
               project={d}
               title={d.title}
               description={d.description}

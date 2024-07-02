@@ -20,6 +20,7 @@ export type ProjectType = {
   link?: string;
   github?: string;
   stacks: string[];
+  etc?: string[];
   position?: 'top' | 'bottom';
   ModalComponent?: JSX.Element;
 };
@@ -32,6 +33,7 @@ const ProjectsProvider = () => {
       image: zippyImg,
       github: 'https://github.com/heisje/zippyziggy',
       stacks: ['Next.js', 'TypeScript'],
+      etc: ['[CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초', '🏆 SSAFY 자율 프로젝트 우수상 수상 (5팀 중 1등)'],
       ModalComponent: <ModalComponent slug={'projects-zippyziggy'} />,
     },
     {
@@ -41,6 +43,7 @@ const ProjectsProvider = () => {
       link: 'https://663f9414d4b5f61567c50725-idusrrwaxm.chromatic.com/?path=/docs/components-app--docs',
       github: 'https://github.com/heisje/study-clone-toss-stock',
       stacks: ['React.js', 'Storybook'],
+      etc: ['SVG Sprite로 이미지 용량 60%축소'],
       ModalComponent: <ModalComponent slug={'projects-toss'} />,
     },
     {
@@ -50,6 +53,7 @@ const ProjectsProvider = () => {
       link: 'https://heisje.notion.site/SPACE-ROCKET-DELIVERY-fdc11348621540319c6773fe12f1a832?pvs=4',
       github: 'https://github.com/heisje/SpaceRocketDelivey',
       stacks: ['Unity', 'C#'],
+      etc: ['🏆 SSAFY 메타버스 게임 우수상 수상 (7팀 중 1등)'],
       ModalComponent: <ModalComponent slug={'projects-space'} />,
     },
     {
@@ -77,6 +81,7 @@ const ProjectsProvider = () => {
       link: 'https://heisje-blog.vercel.app/posts',
       github: 'https://github.com/heisje/heisje-blog',
       stacks: ['Next.js', 'TypeScript'],
+      etc: ['다크모드 호환 / SSG 블로그'],
       ModalComponent: <ModalComponent slug={'projects-blog'} />,
     },
     {
@@ -85,6 +90,7 @@ const ProjectsProvider = () => {
       image: tonnybunnyImg,
       github: 'https://github.com/heisje/TonnyBunny',
       stacks: ['Vue.js', 'Spring Boot'],
+      etc: ['🏆 SSAFY 공통 프로젝트 우수상 수상 (8팀 중 3등)'],
       ModalComponent: <ModalComponent slug={'projects-tonnybunny'} />,
     },
     {
@@ -93,6 +99,7 @@ const ProjectsProvider = () => {
       image: project20Img,
       github: 'https://github.com/heisje/20-movie-recommend-project',
       stacks: ['Vue.js', 'Django'],
+      etc: ['🏆 SSAFY 프로젝트 경진대회 우수상 수상 (11팀 중 2등)'],
       ModalComponent: <ModalComponent slug={'projects-20'} />,
     },
     {
@@ -102,6 +109,7 @@ const ProjectsProvider = () => {
       link: 'https://chromewebstore.google.com/detail/gfloehjeofkkppfekapbcidhllfdocgn',
       github: 'https://github.com/pearbug/poke-type-calc-extension',
       stacks: ['React.js', 'StyledComponent'],
+      etc: ['크롬 extension 사용자 45명'],
       ModalComponent: <ModalComponent slug={'projects-pokecal'} />,
     },
   ];
