@@ -24,8 +24,12 @@ const Modal = ({ onClose, children, project }: ModalProps) => {
         }
         onClick={(e) => e.stopPropagation()}
       >
-        <ul className={'sticky  top-0 right-0 flex justify-between'}>
-          <h2>{project?.title}</h2>
+        <ul
+          className={
+            'sticky top-0 right-0 flex justify-between items-center rounded-full bg-c-gray-50/80 dark:bg-c-gray-800/80 p-1'
+          }
+        >
+          <h2 className={'ml-2'}>{project?.title}</h2>
           <div className={' flex justify-end gap-2'}>
             {project?.github && (
               <a href={project?.github} target="_blank" rel="noopener noreferrer">

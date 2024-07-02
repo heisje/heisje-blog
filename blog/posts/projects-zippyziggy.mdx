@@ -20,7 +20,7 @@ createdAt: 2023-06-05
 
 - 🏆 **SSAFY 자율 프로젝트 우수상 수상 (5팀 중 1등)**
 - 6달간 약 80명의 사용자 유지 (2023/11/27 종료 > SSAFY에서 후속 제작됨)
-- **성능개선 : [CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초**
+- **성능개선 : [CSR > SSR전환] Lighthouse LCP 부분 2.8초 > 0.8초**
 
 ### 📝 기술 스택
 
@@ -39,7 +39,7 @@ createdAt: 2023-06-05
   - 유저 검증 HOC 컴포넌트, 모달/토스트/좋아요 등 공통 컴포넌트
   - 반응형 UI / 다크모드
 - 에러개선 : 제니퍼 프론트 모니터링 도구를 활용한 에러개선 392건
-- 성능개선 : [CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초
+- 성능개선 : [CSR > SSR전환] Lighthouse LCP 부분 2.8초 > 0.8초
 - 서버비용 축소: 이미지압축, SSE(Server Sends Events) 실시간 알림, React-query캐싱
 
 # 📚 주요 구현 사항 (Frontend)
@@ -56,10 +56,10 @@ createdAt: 2023-06-05
 
 ![Untitled](/assets/projects/zippyziggy/Untitled%202.png)
 
-- 문제점 : 모니터링을 사용해보며 렌더링 시간이 긴 것을 파악, Light-house를 통해 성능을 측정해본 결과 LCS부분의 속도가 2.8초로 느림
+- 문제점 : 모니터링을 사용해보며 렌더링 시간이 긴 것을 파악, Light-house를 통해 성능을 측정해본 결과 LCP부분의 속도가 2.8초로 느림
 - 행동1 : React-query 캐싱, 이미지 압축을 해보았으나 유의미하지 않음
-- 행동2 : 클라이언트사이드 렌더링(CSR)을 서버사이드렌더링(CSR)으로 변경함
-- 결과 : SSR에서 초기 인식 속도(LCS)가 3배 빨라짐(2.8초에서 0.8초) (Lighthouse/Page speed insights를 활용해 각 디바이스별 8회 평균을 추산)
+- 행동2 : 클라이언트사이드 렌더링(CSR)을 서버사이드렌더링(SSR)으로 변경함
+- 결과 : SSR에서 초기 인식 속도(LCP)가 3배 빨라짐(2.8초에서 0.8초) (Lighthouse/Page speed insights를 활용해 각 디바이스별 8회 평균을 추산)
 
 ## 3. 유저의 피드백 반영
 
@@ -76,7 +76,7 @@ createdAt: 2023-06-05
 ![Untitled](/assets/projects/zippyziggy/Untitled%204.png)
 
 - 매달 80명의 다운로드 수 (2023.12 까지)
-- 성능개선 : [CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초
+- 성능개선 : [CSR > SSR전환] Lighthouse LCP 부분 2.8초 > 0.8초
 
 # 💻 프로젝트 회고
 

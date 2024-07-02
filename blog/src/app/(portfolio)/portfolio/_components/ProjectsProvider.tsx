@@ -33,7 +33,7 @@ const ProjectsProvider = () => {
       image: zippyImg,
       github: 'https://github.com/heisje/zippyziggy',
       stacks: ['Next.js', 'TypeScript'],
-      etc: ['[CSR > SSR전환] Lighthouse LCS 부분 2.8초 > 0.8초', '🏆 SSAFY 자율 프로젝트 우수상 수상 (5팀 중 1등)'],
+      etc: ['[CSR > SSR전환] Lighthouse LCP 부분 2.8초 > 0.8초', '🏆 SSAFY 자율 프로젝트 우수상 수상 (5팀 중 1등)'],
       ModalComponent: <ModalComponent slug={'projects-zippyziggy'} />,
     },
     {

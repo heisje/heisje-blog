@@ -68,10 +68,14 @@ const PortfolioMain = () => {
                   <source src="/medias/EmojiMovie741318895.mp4" type="video/mp4" />
                 </video>
               </div>
-              <div className={'pt-12 pb-2 w-full h-full flex flex-col items-center px-2 text-center'}>
+              <div
+                className={
+                  'pt-12 pb-2 w-full h-full flex flex-col items-center px-2 text-center dark:text-c-gray-50 text-c-gray-950'
+                }
+              >
                 <h4>About</h4>
                 <h2>개발자 김희제</h2>
-                <p className={'mt-2'}>
+                <p className={'mt-2 dark:text-c-gray-100 text-c-gray-900'}>
                   더 편한, 더 참신한
                   <br /> 상상을 하고 직접 만드는 <span className={'font-bold'}>개발자</span>입니다.
                   <br />
@@ -79,7 +83,7 @@ const PortfolioMain = () => {
                   <br /> 사용자 데이터로 더 좋은 서비스를 만들려다,
                   <br /> 직접 개발하는 매력에 빠졌습니다.
                 </p>
-                <ul className={'mt-auto flex gap-3'}>
+                <ul className={'mt-auto flex gap-3 dark:text-c-gray-100 text-c-gray-900'}>
                   <li>#사용자</li>
                   <li>#피드백</li>
                   <li>#분석</li>
@@ -91,7 +95,7 @@ const PortfolioMain = () => {
         </div>
 
         <div className={'animate-bounce z-10 sticky mx-auto center bottom-8 flex justify-center'}>
-          <div className={'p-1 bg-blue-500 text-white'}>
+          <div className={'p-1 bg-blue-500 text-whiteZ'}>
             <FiArrowDown size={16} />
           </div>
         </div>
