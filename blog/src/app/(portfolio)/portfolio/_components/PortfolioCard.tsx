@@ -58,14 +58,23 @@ export default function PortfolioCard({
           {project.stacks &&
             project.stacks.map((stack) => (
               <li key={stack} className={'border border-c-gray-500/20 rounded px-1'}>
-                #{stack}
+                {stack}
               </li>
             ))}
         </ul>
         <div className={'text-2xl font-bold mt-1'}>{title}</div>
-        <div className={'text-sm mb-2'}>{description}</div>
+        <div className={'text-sm mt-1'}>{description}</div>
+        {project?.etc && (
+          <ul className={'list-disc list-inside mb-2'}>
+            {project?.etc.map((et, i) => (
+              <li key={i} className={'mt-1 text-sm'}>
+                {et}
+              </li>
+            ))}
+          </ul>
+        )}
 
-        <div className={'h-32 w-auto'}>
+        <div className={'mt-1 h-48 w-auto'}>
           <div className={'h-full overflow-hidden relative rounded-xl dark:border-white/5 border-black/10 border'}>
             {children}
           </div>
