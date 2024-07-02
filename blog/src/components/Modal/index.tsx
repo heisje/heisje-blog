@@ -25,28 +25,30 @@ const Modal = ({ onClose, children, project }: ModalProps) => {
         onClick={(e) => e.stopPropagation()}
       >
         <ul className={'sticky  top-0 right-0 flex justify-between'}>
-          <h3>{project?.title}</h3>
+          <h2>{project?.title}</h2>
           <div className={' flex justify-end gap-2'}>
-            <a href={'https://github.com/heisje'} target="_blank" rel="noopener noreferrer">
-              <li
-                onClick={onClose}
-                className={
-                  'w-10 h-10 text-c-gray-50 bg-c-gray-900 rounded-full flex justify-center items-center cursor-pointer z-50'
-                }
-              >
-                <FaGithub size={'1.5rem'} />
-              </li>
-            </a>
-            <a>
-              <li
-                onClick={onClose}
-                className={
-                  'w-10 h-10 text-c-gray-50 bg-c-gray-400 rounded-full flex justify-center items-center cursor-pointer z-50'
-                }
-              >
-                <FiLink size={'1.25rem'} />
-              </li>
-            </a>
+            {project?.github && (
+              <a href={project?.github} target="_blank" rel="noopener noreferrer">
+                <li
+                  className={
+                    'w-10 h-10 text-c-gray-50 bg-c-gray-900 rounded-full flex justify-center items-center cursor-pointer z-50'
+                  }
+                >
+                  <FaGithub size={'1.5rem'} />
+                </li>
+              </a>
+            )}
+            {project?.link && (
+              <a href={project?.link} target="_blank" rel="noopener noreferrer">
+                <li
+                  className={
+                    'w-10 h-10 text-c-gray-50 bg-c-gray-400 rounded-full flex justify-center items-center cursor-pointer z-50'
+                  }
+                >
+                  <FiLink size={'1.25rem'} />
+                </li>
+              </a>
+            )}
 
             <li
               onClick={onClose}
