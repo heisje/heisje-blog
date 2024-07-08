@@ -73,7 +73,7 @@ const PortfolioTimeline = () => {
   return (
     <div className={'mt-24 pt-24'}>
       <h1 className={'mx-4 text-center'} data-shadow="Projects.">
-        Projects.
+        Experience.
       </h1>
       <div className={'w-full flex justify-center items-center '}>
         <ul className={'mx-4 my-12 relative'}>
