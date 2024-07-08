@@ -4,14 +4,6 @@ import useMounted from '@/hook/useMounted';
 import { useEffect } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-const paths = [
-  { href: '/about', text: 1 },
-  { href: '/blog', text: 2 },
-  { href: '/blog', text: 3 },
-  { href: '/blog', text: 4 },
-  { href: '/blog', text: 5 },
-];
-
 type props = {
   page: number;
   maxSize: number;
@@ -46,11 +38,13 @@ const PostsPagination = ({ page, maxSize }: props) => {
 
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const onClick = (num: number) => {
     return () => {
       // window.scroll({ top: 0, behavior: 'smooth' });
-      router.push(`${pathname}?page=${num}`, { scroll: true });
+      const symbol = searchParams.get('symbol');
+      router.push(`${pathname}?page=${num}&symbol=${symbol ? symbol : 'All'}`, { scroll: true });
     };
   };
 
